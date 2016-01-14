@@ -1,0 +1,490 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+			"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta name=Title content="Gravity View Help">
+<meta name=Keywords content="">
+
+<meta name="AppleTitle" content="Gravity View Help" />
+<meta name="AppleIcon" content="GravityAppIcon.png" />
+
+<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+
+<link href="styles.css" rel="stylesheet" type="text/css" />
+
+<!-- script for toggling the sections on and off -->
+<script language="javascript" type="text/javascript">
+	// this function toggles the display of chapter pages
+	function toggleView(image,list)
+	{
+		var listElementStyle=document.getElementById(list).style;
+		if (listElementStyle.display=="none")
+		{
+			listElementStyle.display="block";
+			document.getElementById(image).src="images/down.gif";
+		}
+		else
+		{
+			listElementStyle.display="none";
+			document.getElementById(image).src="images/up.gif";
+		}
+	}
+
+	// used to start off with a page of only chapter headings
+	function collapseAll()
+	{
+		var elems = document.getElementsByClassName("section");
+		var len = elems.length;
+
+		for (var i=0; i < len; i++)
+		{
+			var el = elems.item(i);
+
+			if (el != null)
+				el.style.display="none";
+		}
+
+		elems = document.getElementsByClassName("subsection");
+		len = elems.length;
+
+		for (var i=0; i < len; i++)
+		{
+			var el = elems.item(i);
+
+			if (el != null)
+			el.style.display="none";
+		}
+
+	}
+</script>
+
+</head>
+
+<body lang="EN-US">
+
+<div class="WordSection1">
+
+<p class="Plain" align="center" style='text-align:center'>
+	<span>
+		<img width="131" height="131" src="GravityAppIcon.png"/>
+	</span></p>
+
+<a onclick="toggleView('image0', 'warranty')">
+	<h1 class="Warranty">
+		<img id="image0" src="images/up.gif"/> License Agreement
+	</h1>
+</a>
+
+<div class="section" id="warranty">
+
+<h2 class="Warranty">Gravity View 1.0. License Agreement.</h2>
+
+<p class="Warranty">This is a legal agreement between you and David C. Salmon. If you do not agree with
+the terms of this Agreement, promptly destroy all copies of Gravity View 1.0.</p>
+
+<p class="Warranty">1. GRANT OF LICENSE. This license agreement (“License”) permits you to use
+Gravity View 1.0 (“SOFTWARE”) on any computer.</p>
+
+<p class="Warranty">2. COPYRIGHT. The SOFTWARE is owned by David C. Salmon and is protected by
+United States copyright laws and international treaty provisions. Therefore, you must
+treat the SOFTWARE like any other copyrighted material (e.g., a book or musical recording)
+ except that you may make copies of the SOFTWARE for distribution provided that this
+ notice is contained in such copies in its entirety.</p>
+
+<p class="Warranty">3. OTHER RESTRICTIONS. This version of the SOFTWARE is intended for the sole use of
+people interested in learning the behavior of structures under load. Any other
+use of the SOFTWARE is in violation of this agreement. You may not rent, lease, or
+transfer the SOFTWARE or the written materials accompanying the SOFTWARE.</p>
+
+<h2 class="Warranty">Warranty</h2>
+
+<p class="Warranty">This sofware is provided for entertainment and educational use only.</p>
+
+<p class="Warranty">NO WARRANTY. David C. Salmon disclaims all warranties, express or implied including
+but not limited to warranties of merchantability and fitness for a particular purpose,
+with respect to the SOFTWARE and the accompanying written materials.</p>
+
+<p class="Warranty">NO LIABILITY FOR CONSEQUENTIAL DAMAGES. In no event shall David C. Salmon be liable
+for any damages whatsoever (including, without limitation, damages for loss of business
+profits, business interruption, loss of business information, or other pecuniary loss)
+arising out of the use of or inability to use the SOFTWARE or the accompanying written
+materials, even if David C. Salmon has been advised of the possibility of such damages.
+Because some states do not allow the exclusion or limitation of liability for
+consequential or incidental damages, the above limitation may not apply to you.</p>
+
+<h2 class="Warranty">U.S. Government Restricted Rights</h2>
+
+<p class="Warranty">The SOFTWARE and any accompanying written materials are provided with RESTRICTED
+RIGHTS. Use, duplication, or disclosure by the Government is subject to restrictions as
+set forth in sub paragraph (c)(1)(ii) of the Rights in Technical Data and Computer
+Software clause at DFARS 252.227-7013 or subparagraphs (c)(1) and (2) of the Commercial
+Computer Software–Restricted Rights at 48 CFR 52.227-19, as applicable.</p>
+
+</div>
+
+<div style='border:none;border-bottom:solid #4F81BD 1.0pt;padding:0in 0in 4.0pt 0in'>
+
+<p class="Title">Gravity View</p>
+
+</div>
+
+<!-- Section 1 -->
+
+<a onclick="toggleView('image1', 'section1')">
+	<h1>
+		<img id="image1" src="images/up.gif"/> About Gravity View
+	</h1>
+</a>
+
+<div class="section" id="section1">
+
+<!-- Sub-Section 1-1 -->
+
+<a onclick="toggleView('image1-1', 'section1-1')">
+	<h2>
+		<img id="image1-1" src="images/up.gif"/> Overview
+	</h2>
+</a>
+
+<div class="subsection" id="section1-1">
+
+<p class="Plain">
+The Gravity View application solves the two-dimensional simultaneous differential
+equations for Newton's law of gravitation</p>
+
+<p class="Equation">
+<img id="newton1" width="107" height="55" src="images/Newton.png"/>
+</p>
+
+<p class="Plain">
+for each body defined. Figure 1 shows the data entry and control window for the
+application.
+</p>
+
+<p class="Figure">
+<img id="figure1" width="582" height="359" src="images/Figure01.png"/>
+</p>
+
+<p class="Caption">
+Figure 1. Mass List Control Window.
+</p>
+
+<p class="Plain">
+Each row of the table defines a mass located at the specied (x, y) coordinates with
+initial velocity (Vx, Vy). Size, tail, and color are for the display and have no impact on the
+numerical simulation. Mass is specified in EarthMass units, time in days, and distance in AU
+(The distance from the earth to the sun). These units cause the simulation to run a full year
+or the solar system in 365 seconds at the default speed.
+</p>
+
+<p class="Plain">
+After at least two masses have been defined, the simulation may be started. The
+display shows the progress of the simulation during the calculation. However, because the step size is
+dynamic the speed of each body may not be accurate during the computaton. When you are satisfied
+with the simulation, you may stop the simulation and replay it. The speed of the replay shows
+the relative speeds of the bodies more accurately than the display during computation.
+</p>
+
+</div> <!-- end Sub-Section 1-1 -->
+
+<a onclick="toggleView('image1-2', 'section1-2')">
+	<h2>
+		<img id="image1-1" src="images/up.gif"/> Example - Solar system.
+	</h2>
+</a>
+
+<div class="subsection" id="section1-2">
+
+<p class="Plain">
+The solar system example uses the mass, location, and velocity figures
+for the Sun, Mercury, Venus, Earth, Mars, and Jupiter, and Saturn. Note that the sizes are
+not to scale, but have been chosen to portray the idea that Sun and Jupiter, and Staurn are
+larger than the inner planets.
+</p>
+
+<p class="Plain">
+The masses chosen use the mass of the earth as one. On this scale, the Sun has
+a mass of 332,949, while Jupiter has a mass of 317.94. The sun is chosen as motionless at
+the center of our coordinate system.
+</p>
+
+<p class="Plain">
+At aphelion (farthest distance from the sun), the velocity of each planet
+is exactly tangential to its path, so these locations are chosen as the starting locations
+with a y value of 0, and velocity exactly in the y direction.
+</p>
+
+<p class="Plain">
+The initial velocity of the earth (and the other planets) may be calculated
+in the following way.
+</p>
+
+<p class="Plain">
+Newton's law of universal gravitation gives the attractive force between
+two bodies as:
+</p>
+
+<table class="Equation"><tr>
+<td><img id="eq1" src="images/Newton.png"/></td>
+<td column-width="100" align="right"><span class="EqNum">(1)</span></td>
+</tr></table>
+
+<p class="Plain">
+where G is the Gravitational constant, m1 and m2 are the masses of the two bodies, and r
+is the distance between them.
+</p>
+
+<p class="Plain">
+From the relationship between acceleration and velocity, an object
+travelling on a curved path must be subject to a force in the direction of curvature
+equal to:
+</p>
+
+<table class="Equation"><tr>
+<td><img id="eq2" src="images/ForceCurvature.png"/></td>
+<td column-width="100" align="right"><span class="EqNum">(2)</span></td>
+</tr></table>
+
+<p class="Plain">
+where m is the mass of the orbiting object, V is the tangential velocity, and ρ is the
+radius of curvation of the path.
+</p>
+
+<p class="Plain">
+For a two body system, these two forces must be equal. The solar system contains more
+than two bodies, but because the sun is so much more massive than the planets, and the
+distance between the heavier planets is so large, assuming that each planet is affected
+only by the Sun is a pretty good approximation.
+</p>
+
+<p class="Plain">
+Therefore:
+</p>
+
+<table class="Equation"><tr>
+<td><img id="eq3" src="images/TangentV1.png"/></td>
+<td column-width="100" align="right"><span class="EqNum">(3)</span></td>
+</tr></table>
+
+<p class="Plain">
+The radius of curvature of an elipse on the major axis is given as:
+</p>
+
+<table class="Equation"><tr>
+<td><img id="eq4" src="images/EllipseCurvature.png"/></td>
+<td column-width="100" align="right"><span class="EqNum">(4)</span></td>
+</tr></table>
+
+<p class="Plain">
+where a is the major axis length, and b is the minor axis length.
+</p>
+
+<p class="Plain">
+Substituting equation (4) into equation (3) and noting that the central mass is the solar
+mass gives:
+</p>
+
+<table class="Equation"><tr>
+<td><img id="eq4" src="images/TangentVelocity.png"/></td>
+<td column-width="100" align="right"><span class="EqNum">(5)</span></td>
+</tr></table>
+
+<p class="Plain" style="vertical-align:middle;">
+where <img style="vertical-align:middle;" id="sm" src="images/SolarMassSymbol.png"/> is the mass of the sun.
+</p>
+
+<p class="Plain">
+Using the properties of the planets, and assuming elliptical orbits, gives the starting
+point for 6 of the solar system planets. M<sub><small>&#x2A01;</small></sub> is the mass of the earth.
+</p>
+
+<p class="Figure">
+<img id="figure2" src="images/Values.png"/>
+</p>
+
+<p class="Caption">
+Figure 2. Solar System Initial Values.
+</p>
+
+<p class="Plain">
+Note that Mercury was omitted from the solar system sample due to its proximity to the sun.
+</p>
+
+</div> <!-- end Sub-Section 1-2 -->
+
+<!-- Sub-Section 1-2 -->
+
+<a onclick="toggleView('image1-3', 'section1-3')">
+	<h2>
+		<img id="image1-3" src="images/up.gif"/> Application controls
+	</h2>
+</a>
+
+<div class="subsection" id="section1-3">
+
+<p class="Plain">
+Masses are added to the list by pressing "New Mass" and entering the location, velocity,
+size, tail, and color data.
+</p>
+
+<p class="Plain">
+"Mass" is the mass of the body in units of Earth mass (5.972 x 10<sup>24</sup> kg).
+</p>
+
+<p class="Plain">
+"x", and "y" are the initial coordinates along the x and y
+coordinate axes of the body at the start of the simulation in Astronomical Units (AU). 1 AU
+is the mean distance from the Sun to the Earth defined as 1.4960 x 10<sup>11</sup> m.
+</p>
+
+<p class="Plain">
+"Vx", and "Vy" are the velocities in the x and y directions, respectively. They are expressed
+in units of AU/day.
+</p>
+
+<p class="Plain">
+"Size" designates the size of the circle to draw for the specified body. This is not to scale, but
+allows relative size information to be conveyed.
+</p>
+
+<p class="Plain">
+"Tail" indicates the number of display time-steps of tail to draw behind the object. This
+makes the path of the body easier to see.
+</p>
+
+<p class="Plain">
+"Color" indicates the color that is to be used when drawing the body. It may be changed by
+clicking in the cell to invoke the color picker.
+</p>
+
+<p class="Plain">
+After all the mass data is entered into the table, the simulation is started by pressing
+the "Start Simulation" button. This will start the computation of the simulation. While
+the simulation is being computed, the "Start Simulation" button changes to "Stop Simulation"
+and the number of days computed is shown as the current step. The simulation may be resumed
+by pressing "Start Simulation" again.
+</p>
+
+<p class="Plain">
+While the computation is running, the locations of the all the masses in the system are written
+to the file ("Simulation Output"). This file resides in the same folder as the data file or in a temporary
+location if the data has not been saved. Every step taken by the simulation is not recorded in the
+output file; rather a snapshot of the locations are written to the file every "Save Step Size"
+simulation day. You can control the size of the file (and to some extent the speed of the
+computation) by increasing this value. This will, however, increase the coarseness of the resulting
+replay. If the replay seems jumpy, the save step size can be reduced to make the replay smoother.
+</p>
+
+
+<p class="Plain">
+During computation, the display shows the last computed point once per second, irrespective of the
+time required to compute it. The adaptive nature of the computation means that some points require
+significantly more steps to compute than others. This will cause the display to speed up and slow
+down while the points are being computed. The purspose of the display during computation is to
+monitor the locations of the masses and to be able to stop the simulation and change the masses
+or velocities.
+</p>
+
+<p class="Plain">
+After a simulation is complete, the "Replay" button may be used to replay it. The display
+during replay shows the speed of each of the body using a scale of "Display Step Size" days per second of
+display time. The "Display Step Size" may be increased to increase the speed of playback.
+</p>
+
+<p class="Plain">
+The "View Origin may be set to any of the masses, or to the center of gravity (C.G) of the
+whole system. This allows you to see the relative motion of the bodies from the perspective
+of any of the planets. The numbers in the table correspond to the rows in the mass table.
+</p>
+
+<p class="Plain">
+Checking "Draw Tails" causes the tails following each mass to be drawn using the tail sizes
+indicated in the mass table.
+</p>
+
+<p class="Plain">
+Finally "View Scale" is scale of the display. A scale of 1 is 1 pixel per AU. The scale may be
+increased or decreased to see more or less of the simulation.
+</p>
+
+</div> <!-- end Sub-Section 1-3 -->
+
+</div> <!-- end Section 1 -->
+
+<!-- Section 2 -->
+
+<a onclick="toggleView('image2', 'section2')">
+	<h1>
+		<img id="image2" src="images/up.gif"/> Solution method
+	</h1>
+</a>
+
+<div class="section" id="section2">
+
+<p class="Plain">
+Consider the three-body system in Figure 3. Each body is attracted to each
+other body by a force given by Newton's Law of Universal Gravitation. Each of these forces
+cause each body to accelerate according to Newton's Third Law
+</p>
+
+<table class="Equation"><tr>
+<td><b>F</b> = m <b>a</b></td>
+<td column-width="100" align="right"><span class="EqNum">(5)</span></td>
+</tr></table>
+
+<p class="Plain">
+Where for each body <span class="EqNum"><b>F</b></span> is the resultant force vector,
+m is the mass, and <span class="EqNum"><b>a</b></span> is the acceleration vector.
+</p>
+
+<p class="Figure">
+<img id="figure3" src="images/Forces.png"/>
+</p>
+
+<p class="Caption">
+Figure 3. Gravitational Forces.
+</p>
+
+<p class="Plain">
+The acceleration vector is the change in the velocity vector.
+</p>
+
+<p class="Plain">
+For each mass, we compute the acceleration by summing the contribution for each mass, i.
+|<b>r</b>|<sup><small>2</small></sup> is the square of the distance between the masses and
+<b>r</b>/|<b>r</b>| is a unit vector in the direction of the force.
+</p>
+
+<table class="Equation"><tr>
+	<td><b>a</b> = d<b>v</b>/dt = ∑ <b>F</b>/m = ∑ <b>r</b> G m<sub><small>i</small></sub> /|<b>r</b>|<sup><small>3</small></sup></td>
+	<td column-width="100" align="right"><span class="EqNum">(6)</span></td>
+</tr></table>
+
+<p class="Plain">
+and
+</p>
+
+<table class="Equation"><tr>
+	<td><b>v</b> = d<b>x</b>/dt</td>
+		<td column-width="100" align="right"><span class="EqNum">(7)</span></td>
+</tr></table>
+
+<p class="Plain">
+This gives two simultaneous first order differential equations per coordinate (x, y) per mass which
+can be solved using an adaptive 4th order Runge-Kutta solution method (see Numerical Recipes in C,
+by Press, Flannery, et al).
+</p>
+
+</div> <!-- end Section 2 -->
+
+</div> <!-- WordSection1 -->
+
+<script language="javascript">
+	collapseAll();
+</script>
+
+</body>
+
+</html>
