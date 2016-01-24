@@ -108,53 +108,7 @@
 #	define TARG_CPP 0
 #endif
 
-#if defined(__MWERKS__)
-#	define TARG_COMPILER_MWERKS 1
-#	define TARG_COMPILER_GCC 0
-#	define TARG_COMPILER_MS 0
-#	if defined(__POWERPC__)
-#		define TARG_ARCH_PPC 1
-#		define TARG_ARCH_PENTIUM 0
-#		define TARG_ARCH_68K 0
-#		if defined(__MACH__)
-#			ifndef __CARBON__
-#				include <Carbon/Carbon.h>
-#			endif
-#			if _MSL_USING_MW_C_HEADERS
-#				define _LIMITS_H___
-#				define _SYS_SIGNAL_H_
-#			endif
-#			define TARG_OS_UNIX	1
-#			define TARG_API_OSX	1
-#			if __option (objective_c)
-#				define TARG_API_COCOA		1
-#				define TARG_API_POWERPLANT 	0
-#			else
-#				define TARG_API_COCOA		0
-#				define TARG_API_POWERPLANT 	1
-#			endif
-#		else
-#			if USE_PRECOMPILED_MAC_HEADERS
-#				include <MacHeadersCarbon++>
-#			else
-#				include <MacHeaders.c>
-#			endif
-#			define TARG_OS_UNIX	0
-#			define TARG_API_OSX	0
-#			define TARG_API_COCOA		0
-#			define TARG_API_POWERPLANT 	1
-#		endif
-#		define TARG_OS_DARWIN	TARG_OS_UNIX
-#		define TARG_OS_MAC		1
-#		define TARG_OS_WIN32	0
-#		define TARG_BIGENDIAN	1
-#		define TARG_LITTLENDIAN	0
-#	else
-#		define TARG_ARCH_PPC 0
-#		define TARG_ARCH_PENTIUM 0
-#		define TARG_ARCH_68K 1
-#	endif
-#elif defined(__GNUC__)
+#if defined(__GNUC__)
 #	define TARG_COMPILER_MWERKS 0
 #	define TARG_COMPILER_GCC 1
 #	define TARG_COMPILER_MS 0

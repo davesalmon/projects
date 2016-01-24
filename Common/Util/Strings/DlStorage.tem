@@ -1,0 +1,178 @@
+//+
+//	DlStorage.cpp
+//
+//	©1998 David C. Salmon. All Rights Reserved
+//
+//	Implement some longer DlStorage functions.
+//-
+/*
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along
+with this program; if not, write to the Free Software Foundation, Inc.,
+51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+*/
+
+//---------------------------------- Includes ----------------------------------
+
+#include "DlStorage.h"
+#include <stdexcept>
+
+//---------------------------------- Methods -----------------------------------
+
+//------------------------------------------------------------------------------
+//	DlStorage<T>::branch
+//
+//		brach the object.
+//
+//------------------------------------------------------------------------------
+template <typename T>
+void
+DlStorage<T>::branch() 
+{
+	if ( !itsBlock->unique() ) {
+		DlBlock * oldBlock = itsBlock;
+		itsBlock = NEW DlBlock( *oldBlock );
+		oldBlock->decCount();
+	}
+}
+
+//------------------------------------------------------------------------------
+//	DlStorage<T>::copy
+//
+//		copy the buffer into a new object.
+//
+//	newSize			->	the number of elements to allocate
+//	returns			<-	new storage with copy of this storage
+//------------------------------------------------------------------------------
+template <typename T>
+DlStorage<T>
+DlStorage<T>::copy( size_t newSize ) const
+{
+	DlStorage<T>	theStore( newSize > numelems() ? newSize : numelems() );
+	theStore.pset( ptr(), numelems(), 0 );
+	return theStore;
+}
+
+//------------------------------------------------------------------------------
+//	DlStorage<T>::allocate
+//
+//		Allocate at least reqSize space for the buffer. If the buffer is already
+//		large enough, no action is taken. Otherwise, the buffer is grown, if and 
+//		only if the buffer is owned.
+//
+//	reqSize			->	the required number of elements
+//	returns			<-	true if the allocation succeeded
+//------------------------------------------------------------------------------
+template <typename T>
+void
+DlStorage<T>::allocate( size_t reqSize )
+{
+	if ( owned() ) {
+	
+		if ( numelems() < reqSize ) {
+			//	double the allocation if we are expanding.
+			size_t	mySize = numelems() << 1;
+			if ( mySize < reqSize )
+				mySize = reqSize;
+
+			//	make a new copy
+			DlStorage<T>	theStore = copy( mySize );
+			*this = theStore;
+		} else {
+			branch();
+		}
+	} else {
+		if ( numelems() < reqSize ) {
+			_DlAssert("Attempt to expand unowned string" == NULL);
+			throw std::logic_error("cannot resize locked memory");
+		}
+	}
+}
+
+//------------------------------------------------------------------------------
+//	DlStorage<T>::set
+//
+//		Set the elements of the buffer, starting at element ofs to contain the 
+//		elements pointed to by p. Note: the allocation for the data must already 
+//		exists.
+//
+//	p					->	the data to set
+//	len					->	the length of data
+//	ofs					->	the offset into the buffer to start setting.
+//------------------------------------------------------------------------------
+template <typename T>
+void
+DlStorage<T>::pset( const T * p, size_t len, size_t ofs )
+{
+	_DlAssert( ofs >= 0 && len + ofs <= numelems() );
+	
+	if ( len + ofs <= numelems() ) {
+		T	* dest = ptr() + ofs;
+		for ( size_t i = 0; i < len; i++ )
+			*dest++ = *p++;
+	}
+}
+
+//------------------------------------------------------------------------------
+//	DlStorage<T>::move
+//
+//		Data of length elemsToMove is moved from offset from to offset to. There
+//		must be sufficient space in the buffer to move the data.
+//
+//	elemsToMove			->	the number of elements (chars) to move
+//	from				->	where to start moving
+//	to					->	where to move to
+//------------------------------------------------------------------------------
+template <typename T>
+void		
+DlStorage<T>::pmove( size_t elemsToMove, size_t from, size_t to )
+{
+	_DlAssert( from + elemsToMove < numelems() && 
+				to + elemsToMove < numelems() );
+	if ( from > to ) {
+		const T * src = ptr() + from + elemsToMove;
+		T * dest = ptr() + to + elemsToMove;
+		for ( size_t i = 0; i < elemsToMove; i++ ) {
+			*(--dest) = *(--src);
+		}
+	} else if ( from < to ) {
+		const T * src = ptr() + from;
+		T * dest = ptr() + to;
+		for ( size_t i = 0; i < elemsToMove; i++ ) {
+			*dest++ = *src++;
+		}
+	}
+}
+
+//------------------------------------------------------------------------------
+//	DlStorage<T>::get
+//
+//		Data of length l is moved to buf from offset within the array ofs.
+//
+//	ofs					->	the offset to get characters from
+//	len					->	number of characters to get
+//	buf					<-	destination
+//------------------------------------------------------------------------------
+template <typename T>
+void		
+DlStorage<T>::get( size_t ofs, size_t len, T * buf ) const
+{
+	_DlAssert( ofs >= 0 && ofs + len < numelems() );
+	if ( len != 0 ) {
+		const T * src = ptr() + ofs;
+		for ( size_t i = 0; i < len; i++ ) {
+			*buf++ = *src++;
+		}
+	}
+}
+
+//	eof

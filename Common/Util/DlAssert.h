@@ -33,38 +33,6 @@
 
 //--------------------------------- Includes -----------------------------------
 
-#ifndef _H_DlException
-#include "DlException.h"
-#endif
-
-//--------------------------------- Declares -----------------------------------
-
-
-//------------------------------------------------------------------------------
-///	Define the assert exception. This exception is used to display alerts and
-/// is thrown if the user chooses to cancel after an assert.
-//------------------------------------------------------------------------------
-
-class	DlAssertException : public DlException {
-
-#if !EXECUTE_DOXYGEN_ONLY
-	DlExceptionBegin( DlAssertException )
-		Generic
-		//	@comment This is a generic string 
-		//	@string "Assert %s failed on line %ld of file %s."
-		//	@end
-	DlExceptionEnd()
-#endif
-
-public:
-	/// Construct the assert exception.
-	/// @param cond	The condition that failed.
-	/// @param file The file where the condition is defined.
-	/// @param line The line within the file.
-	DlAssertException( const char* cond, const char* file, DlInt32 line ) :
-		DlException("Assert %s failed on line %ld of file %s.", cond, line, file) {}
-};	
-
 /// The base assert function
 void	DlAssert( const char* cond, const char* file, DlInt32 line );
 

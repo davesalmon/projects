@@ -1,0 +1,10 @@
+/* 
+  UtilTest.strings
+  Common_Util
+
+  Created by David Salmon on 12/24/14.
+
+*/
+
+astring = "this is a string";
+bstring = "Another string";
