@@ -1,0 +1,924 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0B195ED01907F62C00422AAB /* RemoveElementAction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0B195ECE1907F62C00422AAB /* RemoveElementAction.cpp */; };
+		0B195ED11907F62C00422AAB /* RemoveElementAction.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B195ECF1907F62C00422AAB /* RemoveElementAction.h */; };
+		0B295B9D18A2DC9F0018140C /* StructureTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0B295B9C18A2DC9F0018140C /* StructureTest.cpp */; };
+		0B295B9F18A2DC9F0018140C /* StructLib_Tests.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0B295B9E18A2DC9F0018140C /* StructLib_Tests.1 */; };
+		0B295C1218A2DEA10018140C /* gtest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B295C1118A2DEA10018140C /* gtest.framework */; };
+		0B295C1418A2DEB00018140C /* libgtest_main.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B295C1318A2DEB00018140C /* libgtest_main.a */; };
+		0B295C1518A2DEB50018140C /* libStructLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2AAC046055464E500DB518D /* libStructLib.a */; };
+		0B295C3D18A2E3E50018140C /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B295C3C18A2E3E50018140C /* Carbon.framework */; };
+		0B34D0841AE7DC3F00C32D9C /* LoadCaseCombination.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0B34D0831AE7DC3F00C32D9C /* LoadCaseCombination.cpp */; };
+		0B576F2F1C56C52A001AE474 /* libRecipes.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B576F2D1C56C52A001AE474 /* libRecipes.a */; };
+		0B576F301C56C52A001AE474 /* libUtil.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B576F2E1C56C52A001AE474 /* libUtil.a */; };
+		0B6D41B8190A8F9B00A28B83 /* PrismPinPinElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0B6D41B6190A8F9B00A28B83 /* PrismPinPinElement.cpp */; };
+		0B6D41B9190A8F9B00A28B83 /* PrismPinPinElement.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B6D41B7190A8F9B00A28B83 /* PrismPinPinElement.h */; };
+		0B6D41BC190A9B9800A28B83 /* ElementFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0B6D41BA190A9B9800A28B83 /* ElementFactory.cpp */; };
+		0B6D41BD190A9B9800A28B83 /* ElementFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B6D41BB190A9B9800A28B83 /* ElementFactory.h */; };
+		0B6D41C0190AF45B00A28B83 /* PropertyFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0B6D41BE190AF45B00A28B83 /* PropertyFactory.cpp */; };
+		0B6D41C1190AF45B00A28B83 /* PropertyFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B6D41BF190AF45B00A28B83 /* PropertyFactory.h */; };
+		0B9084520ABD790000C07666 /* PropertyTypeEnumerator.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B9084510ABD790000C07666 /* PropertyTypeEnumerator.h */; };
+		0B9C235A1C567CF4002BCBA1 /* CoordTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0B9C23581C567CF4002BCBA1 /* CoordTest.cpp */; };
+		0BB28BB21AFB914D00336018 /* LoadCaseAction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0BB28BB01AFB914D00336018 /* LoadCaseAction.cpp */; };
+		0BB28BB31AFB914D00336018 /* LoadCaseAction.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BB28BB11AFB914D00336018 /* LoadCaseAction.h */; };
+		0BBF5EB70ABAC33500470E20 /* AddElementAction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF5E6C0ABAC33500470E20 /* AddElementAction.cpp */; };
+		0BBF5EB80ABAC33500470E20 /* AddElementAction.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BBF5E6D0ABAC33500470E20 /* AddElementAction.h */; };
+		0BBF5EB90ABAC33500470E20 /* AddElemLoadAction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF5E6E0ABAC33500470E20 /* AddElemLoadAction.cpp */; };
+		0BBF5EBA0ABAC33500470E20 /* AddElemLoadAction.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BBF5E6F0ABAC33500470E20 /* AddElemLoadAction.h */; };
+		0BBF5EBB0ABAC33500470E20 /* AddNodeAction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF5E700ABAC33500470E20 /* AddNodeAction.cpp */; };
+		0BBF5EBC0ABAC33500470E20 /* AddNodeAction.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BBF5E710ABAC33500470E20 /* AddNodeAction.h */; };
+		0BBF5EBD0ABAC33500470E20 /* AddNodeLoadAction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF5E720ABAC33500470E20 /* AddNodeLoadAction.cpp */; };
+		0BBF5EBE0ABAC33500470E20 /* AddNodeLoadAction.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BBF5E730ABAC33500470E20 /* AddNodeLoadAction.h */; };
+		0BBF5EBF0ABAC33500470E20 /* BaseEnumerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF5E740ABAC33500470E20 /* BaseEnumerator.cpp */; };
+		0BBF5EC00ABAC33500470E20 /* BaseEnumerator.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BBF5E750ABAC33500470E20 /* BaseEnumerator.h */; };
+		0BBF5EC20ABAC33500470E20 /* Element.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF5E770ABAC33500470E20 /* Element.cpp */; };
+		0BBF5EC30ABAC33500470E20 /* ElementEnumerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF5E780ABAC33500470E20 /* ElementEnumerator.cpp */; };
+		0BBF5EC40ABAC33500470E20 /* ElementImp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF5E790ABAC33500470E20 /* ElementImp.cpp */; };
+		0BBF5EC50ABAC33500470E20 /* ElementImp.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BBF5E7A0ABAC33500470E20 /* ElementImp.h */; };
+		0BBF5EC60ABAC33500470E20 /* ElementList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF5E7B0ABAC33500470E20 /* ElementList.cpp */; };
+		0BBF5EC70ABAC33500470E20 /* ElementList.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BBF5E7C0ABAC33500470E20 /* ElementList.h */; };
+		0BBF5EC80ABAC33500470E20 /* ElementLoad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF5E7D0ABAC33500470E20 /* ElementLoad.cpp */; };
+		0BBF5EC90ABAC33500470E20 /* ElementLoadEnumerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF5E7E0ABAC33500470E20 /* ElementLoadEnumerator.cpp */; };
+		0BBF5ECA0ABAC33500470E20 /* ElemLoadImp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF5E7F0ABAC33500470E20 /* ElemLoadImp.cpp */; };
+		0BBF5ECB0ABAC33500470E20 /* ElemLoadImp.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BBF5E800ABAC33500470E20 /* ElemLoadImp.h */; };
+		0BBF5ECC0ABAC33500470E20 /* ElemLoadList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF5E810ABAC33500470E20 /* ElemLoadList.cpp */; };
+		0BBF5ECD0ABAC33500470E20 /* ElemLoadList.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BBF5E820ABAC33500470E20 /* ElemLoadList.h */; };
+		0BBF5ECF0ABAC33500470E20 /* EnumeratorImp.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BBF5E850ABAC33500470E20 /* EnumeratorImp.h */; };
+		0BBF5ED00ABAC33500470E20 /* frame_data.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF5E860ABAC33500470E20 /* frame_data.cpp */; };
+		0BBF5ED10ABAC33500470E20 /* frame_data.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BBF5E870ABAC33500470E20 /* frame_data.h */; };
+		0BBF5ED20ABAC33500470E20 /* FrameStructure.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF5E880ABAC33500470E20 /* FrameStructure.cpp */; };
+		0BBF5ED30ABAC33500470E20 /* LoadCaseResults.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF5E890ABAC33500470E20 /* LoadCaseResults.cpp */; };
+		0BBF5ED50ABAC33500470E20 /* MoveNodeAction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF5E8B0ABAC33500470E20 /* MoveNodeAction.cpp */; };
+		0BBF5ED60ABAC33500470E20 /* MoveNodeAction.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BBF5E8C0ABAC33500470E20 /* MoveNodeAction.h */; };
+		0BBF5ED70ABAC33500470E20 /* Node.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF5E8D0ABAC33500470E20 /* Node.cpp */; };
+		0BBF5ED80ABAC33500470E20 /* NodeEnumerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF5E8E0ABAC33500470E20 /* NodeEnumerator.cpp */; };
+		0BBF5ED90ABAC33500470E20 /* NodeImp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF5E8F0ABAC33500470E20 /* NodeImp.cpp */; };
+		0BBF5EDA0ABAC33500470E20 /* NodeImp.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BBF5E900ABAC33500470E20 /* NodeImp.h */; };
+		0BBF5EDB0ABAC33500470E20 /* NodeList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF5E910ABAC33500470E20 /* NodeList.cpp */; };
+		0BBF5EDC0ABAC33500470E20 /* NodeList.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BBF5E920ABAC33500470E20 /* NodeList.h */; };
+		0BBF5EDD0ABAC33500470E20 /* NodeLoad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF5E930ABAC33500470E20 /* NodeLoad.cpp */; };
+		0BBF5EDE0ABAC33500470E20 /* NodeLoadEnumerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF5E940ABAC33500470E20 /* NodeLoadEnumerator.cpp */; };
+		0BBF5EDF0ABAC33500470E20 /* NodeLoadImp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF5E950ABAC33500470E20 /* NodeLoadImp.cpp */; };
+		0BBF5EE00ABAC33500470E20 /* NodeLoadImp.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BBF5E960ABAC33500470E20 /* NodeLoadImp.h */; };
+		0BBF5EE10ABAC33500470E20 /* NodeLoadList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF5E970ABAC33500470E20 /* NodeLoadList.cpp */; };
+		0BBF5EE20ABAC33500470E20 /* NodeLoadList.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BBF5E980ABAC33500470E20 /* NodeLoadList.h */; };
+		0BBF5EE30ABAC33500470E20 /* PasteSameStructureAction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF5E990ABAC33500470E20 /* PasteSameStructureAction.cpp */; };
+		0BBF5EE40ABAC33500470E20 /* PasteSameStructureAction.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BBF5E9A0ABAC33500470E20 /* PasteSameStructureAction.h */; };
+		0BBF5EE50ABAC33500470E20 /* PointEnumerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF5E9B0ABAC33500470E20 /* PointEnumerator.cpp */; };
+		0BBF5EE60ABAC33500470E20 /* PointEnumeratorImp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF5E9C0ABAC33500470E20 /* PointEnumeratorImp.cpp */; };
+		0BBF5EE70ABAC33500470E20 /* PointEnumeratorImp.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BBF5E9D0ABAC33500470E20 /* PointEnumeratorImp.h */; };
+		0BBF5EE80ABAC33500470E20 /* PrismElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF5E9E0ABAC33500470E20 /* PrismElement.cpp */; };
+		0BBF5EE90ABAC33500470E20 /* PrismElement.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BBF5E9F0ABAC33500470E20 /* PrismElement.h */; };
+		0BBF5EEA0ABAC33500470E20 /* Property.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF5EA00ABAC33500470E20 /* Property.cpp */; };
+		0BBF5EEB0ABAC33500470E20 /* PropertyAction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF5EA10ABAC33500470E20 /* PropertyAction.cpp */; };
+		0BBF5EEC0ABAC33500470E20 /* PropertyAction.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BBF5EA20ABAC33500470E20 /* PropertyAction.h */; };
+		0BBF5EED0ABAC33500470E20 /* PropertyEnumerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF5EA30ABAC33500470E20 /* PropertyEnumerator.cpp */; };
+		0BBF5EEE0ABAC33500470E20 /* PropertyImp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF5EA40ABAC33500470E20 /* PropertyImp.cpp */; };
+		0BBF5EEF0ABAC33500470E20 /* PropertyImp.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BBF5EA50ABAC33500470E20 /* PropertyImp.h */; };
+		0BBF5EF00ABAC33500470E20 /* PropertyList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF5EA60ABAC33500470E20 /* PropertyList.cpp */; };
+		0BBF5EF10ABAC33500470E20 /* PropertyList.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BBF5EA70ABAC33500470E20 /* PropertyList.h */; };
+		0BBF5EF20ABAC33500470E20 /* PropertyTypeEnumerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF5EA80ABAC33500470E20 /* PropertyTypeEnumerator.cpp */; };
+		0BBF5EF40ABAC33500470E20 /* PropertyTypeList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF5EAA0ABAC33500470E20 /* PropertyTypeList.cpp */; };
+		0BBF5EF50ABAC33500470E20 /* PropertyTypeList.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BBF5EAB0ABAC33500470E20 /* PropertyTypeList.h */; };
+		0BBF5EF60ABAC33500470E20 /* RemoveNodeAction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF5EAC0ABAC33500470E20 /* RemoveNodeAction.cpp */; };
+		0BBF5EF70ABAC33500470E20 /* RemoveNodeAction.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BBF5EAD0ABAC33500470E20 /* RemoveNodeAction.h */; };
+		0BBF5EF80ABAC33500470E20 /* StitchAction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF5EAE0ABAC33500470E20 /* StitchAction.cpp */; };
+		0BBF5EF90ABAC33500470E20 /* StitchAction.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BBF5EAF0ABAC33500470E20 /* StitchAction.h */; };
+		0BBF5EFA0ABAC33500470E20 /* StringEnumerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF5EB00ABAC33500470E20 /* StringEnumerator.cpp */; };
+		0BBF5EFB0ABAC33500470E20 /* StringList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF5EB10ABAC33500470E20 /* StringList.cpp */; };
+		0BBF5EFC0ABAC33500470E20 /* StringList.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BBF5EB20ABAC33500470E20 /* StringList.h */; };
+		0BBF5EFD0ABAC33500470E20 /* UnitTable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF5EB30ABAC33500470E20 /* UnitTable.cpp */; };
+		0BBF5EFF0ABAC33500470E20 /* WorldPoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF5EB50ABAC33500470E20 /* WorldPoint.cpp */; };
+		0BBF5F000ABAC33500470E20 /* WorldRect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF5EB60ABAC33500470E20 /* WorldRect.cpp */; };
+		0BBF5F1E0ABAC35100470E20 /* Action.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BBF5F040ABAC35100470E20 /* Action.h */; };
+		0BBF5F200ABAC35100470E20 /* Element.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BBF5F060ABAC35100470E20 /* Element.h */; };
+		0BBF5F210ABAC35100470E20 /* ElementEnumerator.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BBF5F070ABAC35100470E20 /* ElementEnumerator.h */; };
+		0BBF5F220ABAC35100470E20 /* ElementLoad.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BBF5F080ABAC35100470E20 /* ElementLoad.h */; };
+		0BBF5F230ABAC35100470E20 /* ElementLoadEnumerator.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BBF5F090ABAC35100470E20 /* ElementLoadEnumerator.h */; };
+		0BBF5F240ABAC35100470E20 /* Enumerator.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BBF5F0A0ABAC35100470E20 /* Enumerator.h */; };
+		0BBF5F250ABAC35100470E20 /* FrameStructure.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BBF5F0B0ABAC35100470E20 /* FrameStructure.h */; };
+		0BBF5F260ABAC35100470E20 /* Node.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BBF5F0C0ABAC35100470E20 /* Node.h */; };
+		0BBF5F270ABAC35100470E20 /* NodeEnumerator.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BBF5F0D0ABAC35100470E20 /* NodeEnumerator.h */; };
+		0BBF5F280ABAC35100470E20 /* NodeLoad.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BBF5F0E0ABAC35100470E20 /* NodeLoad.h */; };
+		0BBF5F290ABAC35100470E20 /* NodeLoadEnumerator.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BBF5F0F0ABAC35100470E20 /* NodeLoadEnumerator.h */; };
+		0BBF5F2A0ABAC35100470E20 /* PointEnumerator.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BBF5F100ABAC35100470E20 /* PointEnumerator.h */; };
+		0BBF5F2B0ABAC35100470E20 /* Property.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BBF5F110ABAC35100470E20 /* Property.h */; };
+		0BBF5F2C0ABAC35100470E20 /* PropertyEnumerator.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BBF5F120ABAC35100470E20 /* PropertyEnumerator.h */; };
+		0BBF5F2D0ABAC35100470E20 /* Settlement.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BBF5F130ABAC35100470E20 /* Settlement.h */; };
+		0BBF5F2E0ABAC35100470E20 /* StrDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BBF5F140ABAC35100470E20 /* StrDefines.h */; };
+		0BBF5F2F0ABAC35100470E20 /* StrErrCode.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BBF5F150ABAC35100470E20 /* StrErrCode.h */; };
+		0BBF5F300ABAC35100470E20 /* StringEnumerator.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BBF5F160ABAC35100470E20 /* StringEnumerator.h */; };
+		0BBF5F310ABAC35100470E20 /* StrInputStream.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BBF5F170ABAC35100470E20 /* StrInputStream.h */; };
+		0BBF5F320ABAC35100470E20 /* StrMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BBF5F180ABAC35100470E20 /* StrMessage.h */; };
+		0BBF5F330ABAC35100470E20 /* StrOutputStream.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BBF5F190ABAC35100470E20 /* StrOutputStream.h */; };
+		0BBF5F340ABAC35100470E20 /* TextInputStream.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BBF5F1A0ABAC35100470E20 /* TextInputStream.h */; };
+		0BBF5F350ABAC35100470E20 /* UnitTable.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BBF5F1B0ABAC35100470E20 /* UnitTable.h */; };
+		0BBF5F360ABAC35100470E20 /* WorldPoint.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BBF5F1C0ABAC35100470E20 /* WorldPoint.h */; };
+		0BBF5F370ABAC35100470E20 /* WorldRect.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BBF5F1D0ABAC35100470E20 /* WorldRect.h */; };
+		0BBF5F3A0ABAC36800470E20 /* structure_dbg.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BBF5F380ABAC36800470E20 /* structure_dbg.h */; };
+		0BBF5F3B0ABAC36800470E20 /* structure.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BBF5F390ABAC36800470E20 /* structure.h */; };
+		0BCF82CB0ABD7AE300CBECB3 /* LoadCaseResults.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BCF82CA0ABD7AE300CBECB3 /* LoadCaseResults.h */; };
+		0BDBB39518EC6D3600ACC81C /* PasteNewStructureAction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0BDBB39318EC6D3600ACC81C /* PasteNewStructureAction.cpp */; };
+		0BDBB39618EC6D3600ACC81C /* PasteNewStructureAction.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BDBB39418EC6D3600ACC81C /* PasteNewStructureAction.h */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		0B295C1618A2DEC60018140C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 08FB7793FE84155DC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D2AAC045055464E500DB518D;
+			remoteInfo = StructLib;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		0B295B9818A2DC9F0018140C /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+				0B295B9F18A2DC9F0018140C /* StructLib_Tests.1 in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		0B195ECE1907F62C00422AAB /* RemoveElementAction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RemoveElementAction.cpp; sourceTree = "<group>"; };
+		0B195ECF1907F62C00422AAB /* RemoveElementAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemoveElementAction.h; sourceTree = "<group>"; };
+		0B295B9A18A2DC9F0018140C /* StructLib-Tests */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "StructLib-Tests"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0B295B9C18A2DC9F0018140C /* StructureTest.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = StructureTest.cpp; sourceTree = "<group>"; };
+		0B295B9E18A2DC9F0018140C /* StructLib_Tests.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = StructLib_Tests.1; sourceTree = "<group>"; };
+		0B295C1118A2DEA10018140C /* gtest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = gtest.framework; path = "../../gtest-framework/Library/Frameworks/gtest.framework"; sourceTree = "<group>"; };
+		0B295C1318A2DEB00018140C /* libgtest_main.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libgtest_main.a; path = "../../gtest-framework/usr/local/lib/libgtest_main.a"; sourceTree = "<group>"; };
+		0B295C3C18A2E3E50018140C /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
+		0B34D0821AE7D96C00C32D9C /* LoadCaseCombination.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoadCaseCombination.h; sourceTree = "<group>"; };
+		0B34D0831AE7DC3F00C32D9C /* LoadCaseCombination.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LoadCaseCombination.cpp; sourceTree = "<group>"; };
+		0B576F2D1C56C52A001AE474 /* libRecipes.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libRecipes.a; path = "../../../Library/Developer/Xcode/DerivedData/Frame-feczvqenhcatwzfhxcvqhjwjwlgd/Build/Products/Debug/libRecipes.a"; sourceTree = "<group>"; };
+		0B576F2E1C56C52A001AE474 /* libUtil.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libUtil.a; path = "../../../Library/Developer/Xcode/DerivedData/Frame-feczvqenhcatwzfhxcvqhjwjwlgd/Build/Products/Debug/libUtil.a"; sourceTree = "<group>"; };
+		0B6D41B6190A8F9B00A28B83 /* PrismPinPinElement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PrismPinPinElement.cpp; sourceTree = "<group>"; };
+		0B6D41B7190A8F9B00A28B83 /* PrismPinPinElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrismPinPinElement.h; sourceTree = "<group>"; };
+		0B6D41BA190A9B9800A28B83 /* ElementFactory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ElementFactory.cpp; sourceTree = "<group>"; };
+		0B6D41BB190A9B9800A28B83 /* ElementFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ElementFactory.h; sourceTree = "<group>"; };
+		0B6D41BE190AF45B00A28B83 /* PropertyFactory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PropertyFactory.cpp; sourceTree = "<group>"; };
+		0B6D41BF190AF45B00A28B83 /* PropertyFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PropertyFactory.h; sourceTree = "<group>"; };
+		0B9084510ABD790000C07666 /* PropertyTypeEnumerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PropertyTypeEnumerator.h; sourceTree = "<group>"; };
+		0B9C23581C567CF4002BCBA1 /* CoordTest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CoordTest.cpp; sourceTree = "<group>"; };
+		0B9C23591C567CF4002BCBA1 /* CoordTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoordTest.h; sourceTree = "<group>"; };
+		0BB28BB01AFB914D00336018 /* LoadCaseAction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LoadCaseAction.cpp; sourceTree = "<group>"; };
+		0BB28BB11AFB914D00336018 /* LoadCaseAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadCaseAction.h; sourceTree = "<group>"; };
+		0BBF5E6C0ABAC33500470E20 /* AddElementAction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AddElementAction.cpp; sourceTree = "<group>"; };
+		0BBF5E6D0ABAC33500470E20 /* AddElementAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddElementAction.h; sourceTree = "<group>"; };
+		0BBF5E6E0ABAC33500470E20 /* AddElemLoadAction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AddElemLoadAction.cpp; sourceTree = "<group>"; };
+		0BBF5E6F0ABAC33500470E20 /* AddElemLoadAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddElemLoadAction.h; sourceTree = "<group>"; };
+		0BBF5E700ABAC33500470E20 /* AddNodeAction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AddNodeAction.cpp; sourceTree = "<group>"; };
+		0BBF5E710ABAC33500470E20 /* AddNodeAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddNodeAction.h; sourceTree = "<group>"; };
+		0BBF5E720ABAC33500470E20 /* AddNodeLoadAction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AddNodeLoadAction.cpp; sourceTree = "<group>"; };
+		0BBF5E730ABAC33500470E20 /* AddNodeLoadAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddNodeLoadAction.h; sourceTree = "<group>"; };
+		0BBF5E740ABAC33500470E20 /* BaseEnumerator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BaseEnumerator.cpp; sourceTree = "<group>"; };
+		0BBF5E750ABAC33500470E20 /* BaseEnumerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseEnumerator.h; sourceTree = "<group>"; };
+		0BBF5E770ABAC33500470E20 /* Element.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Element.cpp; sourceTree = "<group>"; };
+		0BBF5E780ABAC33500470E20 /* ElementEnumerator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ElementEnumerator.cpp; sourceTree = "<group>"; };
+		0BBF5E790ABAC33500470E20 /* ElementImp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ElementImp.cpp; sourceTree = "<group>"; };
+		0BBF5E7A0ABAC33500470E20 /* ElementImp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ElementImp.h; sourceTree = "<group>"; };
+		0BBF5E7B0ABAC33500470E20 /* ElementList.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ElementList.cpp; sourceTree = "<group>"; };
+		0BBF5E7C0ABAC33500470E20 /* ElementList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ElementList.h; sourceTree = "<group>"; };
+		0BBF5E7D0ABAC33500470E20 /* ElementLoad.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ElementLoad.cpp; sourceTree = "<group>"; };
+		0BBF5E7E0ABAC33500470E20 /* ElementLoadEnumerator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ElementLoadEnumerator.cpp; sourceTree = "<group>"; };
+		0BBF5E7F0ABAC33500470E20 /* ElemLoadImp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ElemLoadImp.cpp; sourceTree = "<group>"; };
+		0BBF5E800ABAC33500470E20 /* ElemLoadImp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ElemLoadImp.h; sourceTree = "<group>"; };
+		0BBF5E810ABAC33500470E20 /* ElemLoadList.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ElemLoadList.cpp; sourceTree = "<group>"; };
+		0BBF5E820ABAC33500470E20 /* ElemLoadList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ElemLoadList.h; sourceTree = "<group>"; };
+		0BBF5E840ABAC33500470E20 /* Enumerator.tem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Enumerator.tem; sourceTree = "<group>"; };
+		0BBF5E850ABAC33500470E20 /* EnumeratorImp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnumeratorImp.h; sourceTree = "<group>"; };
+		0BBF5E860ABAC33500470E20 /* frame_data.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = frame_data.cpp; sourceTree = "<group>"; };
+		0BBF5E870ABAC33500470E20 /* frame_data.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = frame_data.h; sourceTree = "<group>"; };
+		0BBF5E880ABAC33500470E20 /* FrameStructure.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FrameStructure.cpp; sourceTree = "<group>"; };
+		0BBF5E890ABAC33500470E20 /* LoadCaseResults.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LoadCaseResults.cpp; sourceTree = "<group>"; };
+		0BBF5E8B0ABAC33500470E20 /* MoveNodeAction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MoveNodeAction.cpp; sourceTree = "<group>"; };
+		0BBF5E8C0ABAC33500470E20 /* MoveNodeAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoveNodeAction.h; sourceTree = "<group>"; };
+		0BBF5E8D0ABAC33500470E20 /* Node.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Node.cpp; sourceTree = "<group>"; };
+		0BBF5E8E0ABAC33500470E20 /* NodeEnumerator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NodeEnumerator.cpp; sourceTree = "<group>"; };
+		0BBF5E8F0ABAC33500470E20 /* NodeImp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NodeImp.cpp; sourceTree = "<group>"; };
+		0BBF5E900ABAC33500470E20 /* NodeImp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NodeImp.h; sourceTree = "<group>"; };
+		0BBF5E910ABAC33500470E20 /* NodeList.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NodeList.cpp; sourceTree = "<group>"; };
+		0BBF5E920ABAC33500470E20 /* NodeList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NodeList.h; sourceTree = "<group>"; };
+		0BBF5E930ABAC33500470E20 /* NodeLoad.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NodeLoad.cpp; sourceTree = "<group>"; };
+		0BBF5E940ABAC33500470E20 /* NodeLoadEnumerator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NodeLoadEnumerator.cpp; sourceTree = "<group>"; };
+		0BBF5E950ABAC33500470E20 /* NodeLoadImp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NodeLoadImp.cpp; sourceTree = "<group>"; };
+		0BBF5E960ABAC33500470E20 /* NodeLoadImp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NodeLoadImp.h; sourceTree = "<group>"; };
+		0BBF5E970ABAC33500470E20 /* NodeLoadList.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NodeLoadList.cpp; sourceTree = "<group>"; };
+		0BBF5E980ABAC33500470E20 /* NodeLoadList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NodeLoadList.h; sourceTree = "<group>"; };
+		0BBF5E990ABAC33500470E20 /* PasteSameStructureAction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PasteSameStructureAction.cpp; sourceTree = "<group>"; };
+		0BBF5E9A0ABAC33500470E20 /* PasteSameStructureAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PasteSameStructureAction.h; sourceTree = "<group>"; };
+		0BBF5E9B0ABAC33500470E20 /* PointEnumerator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PointEnumerator.cpp; sourceTree = "<group>"; };
+		0BBF5E9C0ABAC33500470E20 /* PointEnumeratorImp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PointEnumeratorImp.cpp; sourceTree = "<group>"; };
+		0BBF5E9D0ABAC33500470E20 /* PointEnumeratorImp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PointEnumeratorImp.h; sourceTree = "<group>"; };
+		0BBF5E9E0ABAC33500470E20 /* PrismElement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PrismElement.cpp; sourceTree = "<group>"; };
+		0BBF5E9F0ABAC33500470E20 /* PrismElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrismElement.h; sourceTree = "<group>"; };
+		0BBF5EA00ABAC33500470E20 /* Property.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Property.cpp; sourceTree = "<group>"; };
+		0BBF5EA10ABAC33500470E20 /* PropertyAction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PropertyAction.cpp; sourceTree = "<group>"; };
+		0BBF5EA20ABAC33500470E20 /* PropertyAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PropertyAction.h; sourceTree = "<group>"; };
+		0BBF5EA30ABAC33500470E20 /* PropertyEnumerator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PropertyEnumerator.cpp; sourceTree = "<group>"; };
+		0BBF5EA40ABAC33500470E20 /* PropertyImp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PropertyImp.cpp; sourceTree = "<group>"; };
+		0BBF5EA50ABAC33500470E20 /* PropertyImp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PropertyImp.h; sourceTree = "<group>"; };
+		0BBF5EA60ABAC33500470E20 /* PropertyList.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PropertyList.cpp; sourceTree = "<group>"; };
+		0BBF5EA70ABAC33500470E20 /* PropertyList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PropertyList.h; sourceTree = "<group>"; };
+		0BBF5EA80ABAC33500470E20 /* PropertyTypeEnumerator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PropertyTypeEnumerator.cpp; sourceTree = "<group>"; };
+		0BBF5EAA0ABAC33500470E20 /* PropertyTypeList.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PropertyTypeList.cpp; sourceTree = "<group>"; };
+		0BBF5EAB0ABAC33500470E20 /* PropertyTypeList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PropertyTypeList.h; sourceTree = "<group>"; };
+		0BBF5EAC0ABAC33500470E20 /* RemoveNodeAction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RemoveNodeAction.cpp; sourceTree = "<group>"; };
+		0BBF5EAD0ABAC33500470E20 /* RemoveNodeAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemoveNodeAction.h; sourceTree = "<group>"; };
+		0BBF5EAE0ABAC33500470E20 /* StitchAction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StitchAction.cpp; sourceTree = "<group>"; };
+		0BBF5EAF0ABAC33500470E20 /* StitchAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StitchAction.h; sourceTree = "<group>"; };
+		0BBF5EB00ABAC33500470E20 /* StringEnumerator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StringEnumerator.cpp; sourceTree = "<group>"; };
+		0BBF5EB10ABAC33500470E20 /* StringList.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StringList.cpp; sourceTree = "<group>"; };
+		0BBF5EB20ABAC33500470E20 /* StringList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StringList.h; sourceTree = "<group>"; };
+		0BBF5EB30ABAC33500470E20 /* UnitTable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UnitTable.cpp; sourceTree = "<group>"; };
+		0BBF5EB50ABAC33500470E20 /* WorldPoint.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WorldPoint.cpp; sourceTree = "<group>"; };
+		0BBF5EB60ABAC33500470E20 /* WorldRect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WorldRect.cpp; sourceTree = "<group>"; };
+		0BBF5F040ABAC35100470E20 /* Action.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Action.h; sourceTree = "<group>"; };
+		0BBF5F060ABAC35100470E20 /* Element.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Element.h; sourceTree = "<group>"; };
+		0BBF5F070ABAC35100470E20 /* ElementEnumerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ElementEnumerator.h; sourceTree = "<group>"; };
+		0BBF5F080ABAC35100470E20 /* ElementLoad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ElementLoad.h; sourceTree = "<group>"; };
+		0BBF5F090ABAC35100470E20 /* ElementLoadEnumerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ElementLoadEnumerator.h; sourceTree = "<group>"; };
+		0BBF5F0A0ABAC35100470E20 /* Enumerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Enumerator.h; sourceTree = "<group>"; };
+		0BBF5F0B0ABAC35100470E20 /* FrameStructure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FrameStructure.h; sourceTree = "<group>"; };
+		0BBF5F0C0ABAC35100470E20 /* Node.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Node.h; sourceTree = "<group>"; };
+		0BBF5F0D0ABAC35100470E20 /* NodeEnumerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NodeEnumerator.h; sourceTree = "<group>"; };
+		0BBF5F0E0ABAC35100470E20 /* NodeLoad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NodeLoad.h; sourceTree = "<group>"; };
+		0BBF5F0F0ABAC35100470E20 /* NodeLoadEnumerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NodeLoadEnumerator.h; sourceTree = "<group>"; };
+		0BBF5F100ABAC35100470E20 /* PointEnumerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PointEnumerator.h; sourceTree = "<group>"; };
+		0BBF5F110ABAC35100470E20 /* Property.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Property.h; sourceTree = "<group>"; };
+		0BBF5F120ABAC35100470E20 /* PropertyEnumerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PropertyEnumerator.h; sourceTree = "<group>"; };
+		0BBF5F130ABAC35100470E20 /* Settlement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Settlement.h; sourceTree = "<group>"; };
+		0BBF5F140ABAC35100470E20 /* StrDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StrDefines.h; sourceTree = "<group>"; };
+		0BBF5F150ABAC35100470E20 /* StrErrCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StrErrCode.h; sourceTree = "<group>"; };
+		0BBF5F160ABAC35100470E20 /* StringEnumerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StringEnumerator.h; sourceTree = "<group>"; };
+		0BBF5F170ABAC35100470E20 /* StrInputStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StrInputStream.h; sourceTree = "<group>"; };
+		0BBF5F180ABAC35100470E20 /* StrMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StrMessage.h; sourceTree = "<group>"; };
+		0BBF5F190ABAC35100470E20 /* StrOutputStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StrOutputStream.h; sourceTree = "<group>"; };
+		0BBF5F1A0ABAC35100470E20 /* TextInputStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextInputStream.h; sourceTree = "<group>"; };
+		0BBF5F1B0ABAC35100470E20 /* UnitTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnitTable.h; sourceTree = "<group>"; };
+		0BBF5F1C0ABAC35100470E20 /* WorldPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorldPoint.h; sourceTree = "<group>"; };
+		0BBF5F1D0ABAC35100470E20 /* WorldRect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorldRect.h; sourceTree = "<group>"; };
+		0BBF5F380ABAC36800470E20 /* structure_dbg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = structure_dbg.h; sourceTree = "<group>"; };
+		0BBF5F390ABAC36800470E20 /* structure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = structure.h; sourceTree = "<group>"; };
+		0BCF82CA0ABD7AE300CBECB3 /* LoadCaseResults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadCaseResults.h; sourceTree = "<group>"; };
+		0BDBB39318EC6D3600ACC81C /* PasteNewStructureAction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PasteNewStructureAction.cpp; sourceTree = "<group>"; };
+		0BDBB39418EC6D3600ACC81C /* PasteNewStructureAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PasteNewStructureAction.h; sourceTree = "<group>"; };
+		0BF8598918A66EE300D0AF5F /* StructureTest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StructureTest.h; sourceTree = "<group>"; };
+		D2AAC046055464E500DB518D /* libStructLib.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libStructLib.a; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0B295B9718A2DC9F0018140C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0B576F2F1C56C52A001AE474 /* libRecipes.a in Frameworks */,
+				0B576F301C56C52A001AE474 /* libUtil.a in Frameworks */,
+				0B295C1518A2DEB50018140C /* libStructLib.a in Frameworks */,
+				0B295C3D18A2E3E50018140C /* Carbon.framework in Frameworks */,
+				0B295C1218A2DEA10018140C /* gtest.framework in Frameworks */,
+				0B295C1418A2DEB00018140C /* libgtest_main.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D289987405E68DCB004EDB86 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		08FB7794FE84155DC02AAC07 /* StructLib */ = {
+			isa = PBXGroup;
+			children = (
+				0B576F2D1C56C52A001AE474 /* libRecipes.a */,
+				0B576F2E1C56C52A001AE474 /* libUtil.a */,
+				0B295C3C18A2E3E50018140C /* Carbon.framework */,
+				08FB7795FE84155DC02AAC07 /* Source */,
+				C6A0FF2B0290797F04C91782 /* Documentation */,
+				0B295B9B18A2DC9F0018140C /* StructLib-Tests */,
+				1AB674ADFE9D54B511CA2CBB /* Products */,
+			);
+			name = StructLib;
+			sourceTree = "<group>";
+		};
+		08FB7795FE84155DC02AAC07 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				0BBF5F380ABAC36800470E20 /* structure_dbg.h */,
+				0BBF5F390ABAC36800470E20 /* structure.h */,
+				0BBF5F030ABAC35100470E20 /* Interface */,
+				0BBF5E6B0ABAC33500470E20 /* Src */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
+		0B195ED21907FA5A00422AAB /* Actions */ = {
+			isa = PBXGroup;
+			children = (
+				0BBF5E6C0ABAC33500470E20 /* AddElementAction.cpp */,
+				0BBF5E6D0ABAC33500470E20 /* AddElementAction.h */,
+				0BBF5E6E0ABAC33500470E20 /* AddElemLoadAction.cpp */,
+				0BBF5E6F0ABAC33500470E20 /* AddElemLoadAction.h */,
+				0BBF5E700ABAC33500470E20 /* AddNodeAction.cpp */,
+				0BBF5E710ABAC33500470E20 /* AddNodeAction.h */,
+				0BBF5E720ABAC33500470E20 /* AddNodeLoadAction.cpp */,
+				0BBF5E730ABAC33500470E20 /* AddNodeLoadAction.h */,
+				0BB28BB01AFB914D00336018 /* LoadCaseAction.cpp */,
+				0BB28BB11AFB914D00336018 /* LoadCaseAction.h */,
+				0BBF5E8B0ABAC33500470E20 /* MoveNodeAction.cpp */,
+				0BBF5E8C0ABAC33500470E20 /* MoveNodeAction.h */,
+				0BBF5E990ABAC33500470E20 /* PasteSameStructureAction.cpp */,
+				0BBF5E9A0ABAC33500470E20 /* PasteSameStructureAction.h */,
+				0BDBB39318EC6D3600ACC81C /* PasteNewStructureAction.cpp */,
+				0BDBB39418EC6D3600ACC81C /* PasteNewStructureAction.h */,
+				0BBF5EA10ABAC33500470E20 /* PropertyAction.cpp */,
+				0BBF5EA20ABAC33500470E20 /* PropertyAction.h */,
+				0B195ECE1907F62C00422AAB /* RemoveElementAction.cpp */,
+				0B195ECF1907F62C00422AAB /* RemoveElementAction.h */,
+				0BBF5EAC0ABAC33500470E20 /* RemoveNodeAction.cpp */,
+				0BBF5EAD0ABAC33500470E20 /* RemoveNodeAction.h */,
+				0BBF5EAE0ABAC33500470E20 /* StitchAction.cpp */,
+				0BBF5EAF0ABAC33500470E20 /* StitchAction.h */,
+			);
+			name = Actions;
+			sourceTree = "<group>";
+		};
+		0B295B9B18A2DC9F0018140C /* StructLib-Tests */ = {
+			isa = PBXGroup;
+			children = (
+				0B295C1118A2DEA10018140C /* gtest.framework */,
+				0B295C1318A2DEB00018140C /* libgtest_main.a */,
+				0B295B9C18A2DC9F0018140C /* StructureTest.cpp */,
+				0B9C23581C567CF4002BCBA1 /* CoordTest.cpp */,
+				0B9C23591C567CF4002BCBA1 /* CoordTest.h */,
+				0B295B9E18A2DC9F0018140C /* StructLib_Tests.1 */,
+				0BF8598918A66EE300D0AF5F /* StructureTest.h */,
+			);
+			path = "StructLib-Tests";
+			sourceTree = "<group>";
+		};
+		0BBF5E6B0ABAC33500470E20 /* Src */ = {
+			isa = PBXGroup;
+			children = (
+				0B195ED21907FA5A00422AAB /* Actions */,
+				0BBF5E740ABAC33500470E20 /* BaseEnumerator.cpp */,
+				0BBF5E750ABAC33500470E20 /* BaseEnumerator.h */,
+				0BBF5E770ABAC33500470E20 /* Element.cpp */,
+				0BBF5E780ABAC33500470E20 /* ElementEnumerator.cpp */,
+				0BBF5E790ABAC33500470E20 /* ElementImp.cpp */,
+				0BBF5E7A0ABAC33500470E20 /* ElementImp.h */,
+				0B6D41BA190A9B9800A28B83 /* ElementFactory.cpp */,
+				0B6D41BB190A9B9800A28B83 /* ElementFactory.h */,
+				0BBF5E7B0ABAC33500470E20 /* ElementList.cpp */,
+				0BBF5E7C0ABAC33500470E20 /* ElementList.h */,
+				0BBF5E7D0ABAC33500470E20 /* ElementLoad.cpp */,
+				0BBF5E7E0ABAC33500470E20 /* ElementLoadEnumerator.cpp */,
+				0BBF5E7F0ABAC33500470E20 /* ElemLoadImp.cpp */,
+				0BBF5E800ABAC33500470E20 /* ElemLoadImp.h */,
+				0BBF5E810ABAC33500470E20 /* ElemLoadList.cpp */,
+				0BBF5E820ABAC33500470E20 /* ElemLoadList.h */,
+				0BBF5E840ABAC33500470E20 /* Enumerator.tem */,
+				0BBF5E850ABAC33500470E20 /* EnumeratorImp.h */,
+				0BBF5E860ABAC33500470E20 /* frame_data.cpp */,
+				0BBF5E870ABAC33500470E20 /* frame_data.h */,
+				0BBF5E880ABAC33500470E20 /* FrameStructure.cpp */,
+				0B34D0831AE7DC3F00C32D9C /* LoadCaseCombination.cpp */,
+				0BBF5E890ABAC33500470E20 /* LoadCaseResults.cpp */,
+				0BBF5E8D0ABAC33500470E20 /* Node.cpp */,
+				0BBF5E8E0ABAC33500470E20 /* NodeEnumerator.cpp */,
+				0BBF5E8F0ABAC33500470E20 /* NodeImp.cpp */,
+				0BBF5E900ABAC33500470E20 /* NodeImp.h */,
+				0BBF5E910ABAC33500470E20 /* NodeList.cpp */,
+				0BBF5E920ABAC33500470E20 /* NodeList.h */,
+				0BBF5E930ABAC33500470E20 /* NodeLoad.cpp */,
+				0BBF5E940ABAC33500470E20 /* NodeLoadEnumerator.cpp */,
+				0BBF5E950ABAC33500470E20 /* NodeLoadImp.cpp */,
+				0BBF5E960ABAC33500470E20 /* NodeLoadImp.h */,
+				0BBF5E970ABAC33500470E20 /* NodeLoadList.cpp */,
+				0BBF5E980ABAC33500470E20 /* NodeLoadList.h */,
+				0BBF5E9B0ABAC33500470E20 /* PointEnumerator.cpp */,
+				0BBF5E9C0ABAC33500470E20 /* PointEnumeratorImp.cpp */,
+				0BBF5E9D0ABAC33500470E20 /* PointEnumeratorImp.h */,
+				0BBF5E9E0ABAC33500470E20 /* PrismElement.cpp */,
+				0BBF5E9F0ABAC33500470E20 /* PrismElement.h */,
+				0B6D41B6190A8F9B00A28B83 /* PrismPinPinElement.cpp */,
+				0B6D41B7190A8F9B00A28B83 /* PrismPinPinElement.h */,
+				0BBF5EA00ABAC33500470E20 /* Property.cpp */,
+				0BBF5EA30ABAC33500470E20 /* PropertyEnumerator.cpp */,
+				0B6D41BE190AF45B00A28B83 /* PropertyFactory.cpp */,
+				0B6D41BF190AF45B00A28B83 /* PropertyFactory.h */,
+				0BBF5EA40ABAC33500470E20 /* PropertyImp.cpp */,
+				0BBF5EA50ABAC33500470E20 /* PropertyImp.h */,
+				0BBF5EA60ABAC33500470E20 /* PropertyList.cpp */,
+				0BBF5EA70ABAC33500470E20 /* PropertyList.h */,
+				0BBF5EA80ABAC33500470E20 /* PropertyTypeEnumerator.cpp */,
+				0BBF5EAA0ABAC33500470E20 /* PropertyTypeList.cpp */,
+				0BBF5EAB0ABAC33500470E20 /* PropertyTypeList.h */,
+				0BBF5EB00ABAC33500470E20 /* StringEnumerator.cpp */,
+				0BBF5EB10ABAC33500470E20 /* StringList.cpp */,
+				0BBF5EB20ABAC33500470E20 /* StringList.h */,
+				0BBF5EB30ABAC33500470E20 /* UnitTable.cpp */,
+				0BBF5EB50ABAC33500470E20 /* WorldPoint.cpp */,
+				0BBF5EB60ABAC33500470E20 /* WorldRect.cpp */,
+			);
+			path = Src;
+			sourceTree = "<group>";
+		};
+		0BBF5F030ABAC35100470E20 /* Interface */ = {
+			isa = PBXGroup;
+			children = (
+				0BBF5F040ABAC35100470E20 /* Action.h */,
+				0BBF5F060ABAC35100470E20 /* Element.h */,
+				0BBF5F070ABAC35100470E20 /* ElementEnumerator.h */,
+				0BBF5F080ABAC35100470E20 /* ElementLoad.h */,
+				0BBF5F090ABAC35100470E20 /* ElementLoadEnumerator.h */,
+				0BBF5F0A0ABAC35100470E20 /* Enumerator.h */,
+				0BBF5F0B0ABAC35100470E20 /* FrameStructure.h */,
+				0B34D0821AE7D96C00C32D9C /* LoadCaseCombination.h */,
+				0BCF82CA0ABD7AE300CBECB3 /* LoadCaseResults.h */,
+				0BBF5F0C0ABAC35100470E20 /* Node.h */,
+				0BBF5F0D0ABAC35100470E20 /* NodeEnumerator.h */,
+				0BBF5F0E0ABAC35100470E20 /* NodeLoad.h */,
+				0BBF5F0F0ABAC35100470E20 /* NodeLoadEnumerator.h */,
+				0BBF5F100ABAC35100470E20 /* PointEnumerator.h */,
+				0BBF5F110ABAC35100470E20 /* Property.h */,
+				0BBF5F120ABAC35100470E20 /* PropertyEnumerator.h */,
+				0B9084510ABD790000C07666 /* PropertyTypeEnumerator.h */,
+				0BBF5F130ABAC35100470E20 /* Settlement.h */,
+				0BBF5F140ABAC35100470E20 /* StrDefines.h */,
+				0BBF5F150ABAC35100470E20 /* StrErrCode.h */,
+				0BBF5F160ABAC35100470E20 /* StringEnumerator.h */,
+				0BBF5F170ABAC35100470E20 /* StrInputStream.h */,
+				0BBF5F180ABAC35100470E20 /* StrMessage.h */,
+				0BBF5F190ABAC35100470E20 /* StrOutputStream.h */,
+				0BBF5F1A0ABAC35100470E20 /* TextInputStream.h */,
+				0BBF5F1B0ABAC35100470E20 /* UnitTable.h */,
+				0BBF5F1C0ABAC35100470E20 /* WorldPoint.h */,
+				0BBF5F1D0ABAC35100470E20 /* WorldRect.h */,
+			);
+			path = Interface;
+			sourceTree = "<group>";
+		};
+		1AB674ADFE9D54B511CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D2AAC046055464E500DB518D /* libStructLib.a */,
+				0B295B9A18A2DC9F0018140C /* StructLib-Tests */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C6A0FF2B0290797F04C91782 /* Documentation */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Documentation;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		D2AAC043055464E500DB518D /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0BB28BB31AFB914D00336018 /* LoadCaseAction.h in Headers */,
+				0B6D41BD190A9B9800A28B83 /* ElementFactory.h in Headers */,
+				0BBF5EB80ABAC33500470E20 /* AddElementAction.h in Headers */,
+				0BBF5EBA0ABAC33500470E20 /* AddElemLoadAction.h in Headers */,
+				0BBF5EBC0ABAC33500470E20 /* AddNodeAction.h in Headers */,
+				0BBF5EBE0ABAC33500470E20 /* AddNodeLoadAction.h in Headers */,
+				0BBF5EC00ABAC33500470E20 /* BaseEnumerator.h in Headers */,
+				0BBF5EC50ABAC33500470E20 /* ElementImp.h in Headers */,
+				0BBF5EC70ABAC33500470E20 /* ElementList.h in Headers */,
+				0BBF5ECB0ABAC33500470E20 /* ElemLoadImp.h in Headers */,
+				0BBF5ECD0ABAC33500470E20 /* ElemLoadList.h in Headers */,
+				0B6D41B9190A8F9B00A28B83 /* PrismPinPinElement.h in Headers */,
+				0BBF5ECF0ABAC33500470E20 /* EnumeratorImp.h in Headers */,
+				0BBF5ED10ABAC33500470E20 /* frame_data.h in Headers */,
+				0B6D41C1190AF45B00A28B83 /* PropertyFactory.h in Headers */,
+				0BBF5ED60ABAC33500470E20 /* MoveNodeAction.h in Headers */,
+				0BBF5EDA0ABAC33500470E20 /* NodeImp.h in Headers */,
+				0BBF5EDC0ABAC33500470E20 /* NodeList.h in Headers */,
+				0BBF5EE00ABAC33500470E20 /* NodeLoadImp.h in Headers */,
+				0BBF5EE20ABAC33500470E20 /* NodeLoadList.h in Headers */,
+				0BBF5EE40ABAC33500470E20 /* PasteSameStructureAction.h in Headers */,
+				0BBF5EE70ABAC33500470E20 /* PointEnumeratorImp.h in Headers */,
+				0BBF5EE90ABAC33500470E20 /* PrismElement.h in Headers */,
+				0BBF5EEC0ABAC33500470E20 /* PropertyAction.h in Headers */,
+				0BBF5EEF0ABAC33500470E20 /* PropertyImp.h in Headers */,
+				0BBF5EF10ABAC33500470E20 /* PropertyList.h in Headers */,
+				0BBF5EF50ABAC33500470E20 /* PropertyTypeList.h in Headers */,
+				0BBF5EF70ABAC33500470E20 /* RemoveNodeAction.h in Headers */,
+				0BBF5EF90ABAC33500470E20 /* StitchAction.h in Headers */,
+				0BBF5EFC0ABAC33500470E20 /* StringList.h in Headers */,
+				0BBF5F1E0ABAC35100470E20 /* Action.h in Headers */,
+				0BBF5F200ABAC35100470E20 /* Element.h in Headers */,
+				0BBF5F210ABAC35100470E20 /* ElementEnumerator.h in Headers */,
+				0BBF5F220ABAC35100470E20 /* ElementLoad.h in Headers */,
+				0BBF5F230ABAC35100470E20 /* ElementLoadEnumerator.h in Headers */,
+				0BBF5F240ABAC35100470E20 /* Enumerator.h in Headers */,
+				0BBF5F250ABAC35100470E20 /* FrameStructure.h in Headers */,
+				0BBF5F260ABAC35100470E20 /* Node.h in Headers */,
+				0BBF5F270ABAC35100470E20 /* NodeEnumerator.h in Headers */,
+				0BBF5F280ABAC35100470E20 /* NodeLoad.h in Headers */,
+				0BBF5F290ABAC35100470E20 /* NodeLoadEnumerator.h in Headers */,
+				0BBF5F2A0ABAC35100470E20 /* PointEnumerator.h in Headers */,
+				0BBF5F2B0ABAC35100470E20 /* Property.h in Headers */,
+				0BBF5F2C0ABAC35100470E20 /* PropertyEnumerator.h in Headers */,
+				0BBF5F2D0ABAC35100470E20 /* Settlement.h in Headers */,
+				0BBF5F2E0ABAC35100470E20 /* StrDefines.h in Headers */,
+				0BBF5F2F0ABAC35100470E20 /* StrErrCode.h in Headers */,
+				0BBF5F300ABAC35100470E20 /* StringEnumerator.h in Headers */,
+				0BDBB39618EC6D3600ACC81C /* PasteNewStructureAction.h in Headers */,
+				0BBF5F310ABAC35100470E20 /* StrInputStream.h in Headers */,
+				0BBF5F320ABAC35100470E20 /* StrMessage.h in Headers */,
+				0BBF5F330ABAC35100470E20 /* StrOutputStream.h in Headers */,
+				0BBF5F340ABAC35100470E20 /* TextInputStream.h in Headers */,
+				0BBF5F350ABAC35100470E20 /* UnitTable.h in Headers */,
+				0BBF5F360ABAC35100470E20 /* WorldPoint.h in Headers */,
+				0BBF5F370ABAC35100470E20 /* WorldRect.h in Headers */,
+				0BBF5F3A0ABAC36800470E20 /* structure_dbg.h in Headers */,
+				0BBF5F3B0ABAC36800470E20 /* structure.h in Headers */,
+				0B195ED11907F62C00422AAB /* RemoveElementAction.h in Headers */,
+				0B9084520ABD790000C07666 /* PropertyTypeEnumerator.h in Headers */,
+				0BCF82CB0ABD7AE300CBECB3 /* LoadCaseResults.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		0B295B9918A2DC9F0018140C /* StructLib-Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0B295BA018A2DC9F0018140C /* Build configuration list for PBXNativeTarget "StructLib-Tests" */;
+			buildPhases = (
+				0B295B9618A2DC9F0018140C /* Sources */,
+				0B295B9718A2DC9F0018140C /* Frameworks */,
+				0B295B9818A2DC9F0018140C /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0B295C1718A2DEC60018140C /* PBXTargetDependency */,
+			);
+			name = "StructLib-Tests";
+			productName = "StructLib-Tests";
+			productReference = 0B295B9A18A2DC9F0018140C /* StructLib-Tests */;
+			productType = "com.apple.product-type.tool";
+		};
+		D2AAC045055464E500DB518D /* StructLib */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1DEB91EB08733DB70010E9CD /* Build configuration list for PBXNativeTarget "StructLib" */;
+			buildPhases = (
+				D2AAC043055464E500DB518D /* Headers */,
+				D2AAC044055464E500DB518D /* Sources */,
+				D289987405E68DCB004EDB86 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = StructLib;
+			productName = StructLib;
+			productReference = D2AAC046055464E500DB518D /* libStructLib.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		08FB7793FE84155DC02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0600;
+			};
+			buildConfigurationList = 1DEB91EF08733DB70010E9CD /* Build configuration list for PBXProject "StructLib" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+			);
+			mainGroup = 08FB7794FE84155DC02AAC07 /* StructLib */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D2AAC045055464E500DB518D /* StructLib */,
+				0B295B9918A2DC9F0018140C /* StructLib-Tests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0B295B9618A2DC9F0018140C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0B295B9D18A2DC9F0018140C /* StructureTest.cpp in Sources */,
+				0B9C235A1C567CF4002BCBA1 /* CoordTest.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D2AAC044055464E500DB518D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0BBF5EB70ABAC33500470E20 /* AddElementAction.cpp in Sources */,
+				0BDBB39518EC6D3600ACC81C /* PasteNewStructureAction.cpp in Sources */,
+				0BBF5EB90ABAC33500470E20 /* AddElemLoadAction.cpp in Sources */,
+				0BBF5EBB0ABAC33500470E20 /* AddNodeAction.cpp in Sources */,
+				0BBF5EBD0ABAC33500470E20 /* AddNodeLoadAction.cpp in Sources */,
+				0BBF5EBF0ABAC33500470E20 /* BaseEnumerator.cpp in Sources */,
+				0B6D41B8190A8F9B00A28B83 /* PrismPinPinElement.cpp in Sources */,
+				0BBF5EC20ABAC33500470E20 /* Element.cpp in Sources */,
+				0BBF5EC30ABAC33500470E20 /* ElementEnumerator.cpp in Sources */,
+				0BBF5EC40ABAC33500470E20 /* ElementImp.cpp in Sources */,
+				0BBF5EC60ABAC33500470E20 /* ElementList.cpp in Sources */,
+				0BBF5EC80ABAC33500470E20 /* ElementLoad.cpp in Sources */,
+				0B6D41C0190AF45B00A28B83 /* PropertyFactory.cpp in Sources */,
+				0BBF5EC90ABAC33500470E20 /* ElementLoadEnumerator.cpp in Sources */,
+				0BBF5ECA0ABAC33500470E20 /* ElemLoadImp.cpp in Sources */,
+				0BBF5ECC0ABAC33500470E20 /* ElemLoadList.cpp in Sources */,
+				0B34D0841AE7DC3F00C32D9C /* LoadCaseCombination.cpp in Sources */,
+				0BBF5ED00ABAC33500470E20 /* frame_data.cpp in Sources */,
+				0B195ED01907F62C00422AAB /* RemoveElementAction.cpp in Sources */,
+				0BBF5ED20ABAC33500470E20 /* FrameStructure.cpp in Sources */,
+				0BBF5ED30ABAC33500470E20 /* LoadCaseResults.cpp in Sources */,
+				0BBF5ED50ABAC33500470E20 /* MoveNodeAction.cpp in Sources */,
+				0BBF5ED70ABAC33500470E20 /* Node.cpp in Sources */,
+				0BBF5ED80ABAC33500470E20 /* NodeEnumerator.cpp in Sources */,
+				0BBF5ED90ABAC33500470E20 /* NodeImp.cpp in Sources */,
+				0BBF5EDB0ABAC33500470E20 /* NodeList.cpp in Sources */,
+				0BBF5EDD0ABAC33500470E20 /* NodeLoad.cpp in Sources */,
+				0BBF5EDE0ABAC33500470E20 /* NodeLoadEnumerator.cpp in Sources */,
+				0BBF5EDF0ABAC33500470E20 /* NodeLoadImp.cpp in Sources */,
+				0BBF5EE10ABAC33500470E20 /* NodeLoadList.cpp in Sources */,
+				0BBF5EE30ABAC33500470E20 /* PasteSameStructureAction.cpp in Sources */,
+				0BBF5EE50ABAC33500470E20 /* PointEnumerator.cpp in Sources */,
+				0BBF5EE60ABAC33500470E20 /* PointEnumeratorImp.cpp in Sources */,
+				0BBF5EE80ABAC33500470E20 /* PrismElement.cpp in Sources */,
+				0BBF5EEA0ABAC33500470E20 /* Property.cpp in Sources */,
+				0BBF5EEB0ABAC33500470E20 /* PropertyAction.cpp in Sources */,
+				0BBF5EED0ABAC33500470E20 /* PropertyEnumerator.cpp in Sources */,
+				0BBF5EEE0ABAC33500470E20 /* PropertyImp.cpp in Sources */,
+				0B6D41BC190A9B9800A28B83 /* ElementFactory.cpp in Sources */,
+				0BBF5EF00ABAC33500470E20 /* PropertyList.cpp in Sources */,
+				0BBF5EF20ABAC33500470E20 /* PropertyTypeEnumerator.cpp in Sources */,
+				0BBF5EF40ABAC33500470E20 /* PropertyTypeList.cpp in Sources */,
+				0BBF5EF60ABAC33500470E20 /* RemoveNodeAction.cpp in Sources */,
+				0BBF5EF80ABAC33500470E20 /* StitchAction.cpp in Sources */,
+				0BBF5EFA0ABAC33500470E20 /* StringEnumerator.cpp in Sources */,
+				0BBF5EFB0ABAC33500470E20 /* StringList.cpp in Sources */,
+				0BB28BB21AFB914D00336018 /* LoadCaseAction.cpp in Sources */,
+				0BBF5EFD0ABAC33500470E20 /* UnitTable.cpp in Sources */,
+				0BBF5EFF0ABAC33500470E20 /* WorldPoint.cpp in Sources */,
+				0BBF5F000ABAC33500470E20 /* WorldRect.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0B295C1718A2DEC60018140C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D2AAC045055464E500DB518D /* StructLib */;
+			targetProxy = 0B295C1618A2DEC60018140C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		0B295BA118A2DC9F0018140C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/dcs/Projects/gtest-framework/Library/Frameworks",
+				);
+				GCC_C_LANGUAGE_STANDARD = "compiler-default";
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREFIX_HEADER = structure.h;
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/dcs/Projects/gtest-framework/usr/local/lib",
+					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/Projects-ahuvcfmhjlbthcceyfktkcbagiwq/Build/Products/Debug",
+					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/Frame-feczvqenhcatwzfhxcvqhjwjwlgd/Build/Products/Debug",
+				);
+				MACH_O_TYPE = mh_execute;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SEPARATE_STRIP = YES;
+				STRIP_STYLE = debugging;
+				USER_HEADER_SEARCH_PATHS = "../Common/Recipes ../Common/Util/**";
+			};
+			name = Debug;
+		};
+		0B295BA218A2DC9F0018140C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/dcs/Projects/gtest-framework/Library/Frameworks",
+				);
+				GCC_C_LANGUAGE_STANDARD = "compiler-default";
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+				GCC_UNROLL_LOOPS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/dcs/Projects/gtest-framework/usr/local/lib",
+					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/Projects-ahuvcfmhjlbthcceyfktkcbagiwq/Build/Products/Debug",
+					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/Frame-feczvqenhcatwzfhxcvqhjwjwlgd/Build/Products/Debug",
+				);
+				LLVM_VECTORIZE_LOOPS = YES;
+				MACH_O_TYPE = mh_execute;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SEPARATE_STRIP = YES;
+				STRIP_STYLE = debugging;
+				USER_HEADER_SEARCH_PATHS = "../Common/Recipes ../Common/Util/**";
+			};
+			name = Release;
+		};
+		1DEB91EC08733DB70010E9CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREFIX_HEADER = structure_dbg.h;
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+				GCC_WARN_CHECK_SWITCH_STATEMENTS = YES;
+				GCC_WARN_HIDDEN_VIRTUAL_FUNCTIONS = YES;
+				GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;
+				GCC_WARN_MISSING_PARENTHESES = YES;
+				GCC_WARN_NON_VIRTUAL_DESTRUCTOR = YES;
+				GCC_WARN_TYPECHECK_CALLS_TO_PRINTF = YES;
+				INSTALL_PATH = "";
+				LLVM_VECTORIZE_LOOPS = NO;
+				PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR = NO;
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_NAME = StructLib;
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = macosx;
+				USER_HEADER_SEARCH_PATHS = "$(inherited) ../Common/Recipes ../Common/Util ../Common/Util/Mac ../Common/Util/Mac/MWFixes ../Common/Util/Socket ../Common/Util/Strings";
+			};
+			name = Debug;
+		};
+		1DEB91ED08733DB70010E9CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = YES;
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+				GCC_UNROLL_LOOPS = YES;
+				GCC_WARN_CHECK_SWITCH_STATEMENTS = YES;
+				GCC_WARN_HIDDEN_VIRTUAL_FUNCTIONS = YES;
+				GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;
+				GCC_WARN_MISSING_PARENTHESES = YES;
+				GCC_WARN_NON_VIRTUAL_DESTRUCTOR = YES;
+				GCC_WARN_TYPECHECK_CALLS_TO_PRINTF = YES;
+				INSTALL_PATH = "";
+				LLVM_VECTORIZE_LOOPS = YES;
+				PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR = NO;
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_NAME = StructLib;
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = macosx;
+				USER_HEADER_SEARCH_PATHS = "$(inherited) ../Common/Recipes ../Common/Util ../Common/Util/Mac ../Common/Util/Mac/MWFixes ../Common/Util/Socket ../Common/Util/Strings";
+			};
+			name = Release;
+		};
+		1DEB91F008733DB70010E9CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				GCC_INPUT_FILETYPE = sourcecode.cpp.cpp;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR = NO;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		1DEB91F108733DB70010E9CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				GCC_INPUT_FILETYPE = sourcecode.cpp.cpp;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = structure.h;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0B295BA018A2DC9F0018140C /* Build configuration list for PBXNativeTarget "StructLib-Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0B295BA118A2DC9F0018140C /* Debug */,
+				0B295BA218A2DC9F0018140C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1DEB91EB08733DB70010E9CD /* Build configuration list for PBXNativeTarget "StructLib" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DEB91EC08733DB70010E9CD /* Debug */,
+				1DEB91ED08733DB70010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1DEB91EF08733DB70010E9CD /* Build configuration list for PBXProject "StructLib" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DEB91F008733DB70010E9CD /* Debug */,
+				1DEB91F108733DB70010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 08FB7793FE84155DC02AAC07 /* Project object */;
+}

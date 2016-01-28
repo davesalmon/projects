@@ -1,0 +1,266 @@
+/*+
+ *	File:		NodeEnumerator.cpp
+ *
+ *	Contains:	Interface for node enumerator
+ *
+ *	Written by:	David C. Salmon
+ *
+ *	Copyright:	COPYRIGHT (C) 2000 By David C. Salmon.  *WORLDWIDE RIGHTS RESERVED*
+ *
+ *
+ *	To Do:
+-*/
+/*
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along
+with this program; if not, write to the Free Software Foundation, Inc.,
+51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+*/
+
+#include "Enumerator.h"
+#include "DlString.h"
+
+//---------------------------------- Class -------------------------------------
+
+template <class List, class Object> 
+Enumerator<List,Object>::Enumerator() 
+	: itsList(NEW List)
+{
+	itsList->IncReference();
+}
+
+//------------------------------------------------------------------------------
+//	Enumerator::Enumerator											constructor
+//
+//		construct the enumerator with some data.
+//
+//	init						->	the initializer list
+//------------------------------------------------------------------------------
+template <class List, class Object>
+Enumerator<List,Object>::Enumerator(std::initializer_list<Object> init)
+	: itsList(NEW List)
+{
+	itsList->IncReference();
+	for (const auto& o : init)
+	{
+		Add(o);
+	}
+}
+
+//------------------------------------------------------------------------------
+//	Enumerator<List,Object>::Enumerator								constructor
+//
+//		const the string enumerator from an implementation
+//
+//	imp							->	the implementation
+//------------------------------------------------------------------------------
+template <class List, class Object> 
+Enumerator<List,Object>::Enumerator(const List * e) 
+	: itsList(const_cast<List *>(e))
+{
+	itsList->IncReference();
+}
+
+//------------------------------------------------------------------------------
+//	Enumerator::Enumerator								constructor
+//
+//		copy the enumerator
+//
+//	e							->	the enumerator to copy
+//------------------------------------------------------------------------------
+template <class List, class Object> 
+Enumerator<List,Object>::Enumerator(const Enumerator & e) 
+	: itsList(e.itsList)
+{
+	itsList->IncReference();
+}
+
+//------------------------------------------------------------------------------
+//	template <class List, class Object> Enumerator<List,Object>::operator=
+//
+//		assign the enumerator
+//
+//	e							->	the enumerator to assign
+//------------------------------------------------------------------------------
+template <class List, class Object> 
+Enumerator<List,Object> & Enumerator<List,Object>::operator= (const Enumerator<List,Object> & e)
+{
+	if (this != &e)
+	{
+		itsList->DecReference(itsList);
+		itsList = e.itsList;
+		itsList->IncReference();
+	}
+	return *this;
+}
+
+
+//------------------------------------------------------------------------------
+//	Enumerator<List,Object>::~Enumerator								destructor
+//
+//		destruct the enumerator
+//
+//------------------------------------------------------------------------------
+template <class List, class Object> 
+Enumerator<List,Object>::~Enumerator()
+{
+	itsList->DecReference(itsList);
+}
+
+//------------------------------------------------------------------------------
+//	Enumerator<List,Object>::Clone
+//
+//		copy the enumerator to allow reset of the enumeration. If there are 
+//		multiple copies of the list, we need a new wrapper so we don't mess
+//		up any iteration over this list.
+//
+//------------------------------------------------------------------------------
+template <class List, class Object> 
+void Enumerator<List,Object>::Clone()
+{
+	if (!itsList->IsOwner())
+	{
+		List * imp = NEW List(*itsList);
+		itsList->DecReference(itsList);
+		itsList = imp;
+		itsList->IncReference();
+	}
+	itsList->Reset();
+}
+
+//------------------------------------------------------------------------------
+//	Enumerator<List,Object>::HasMore
+//
+//		return true if there are more strings
+//
+//	returns				<- true if there are more strings
+//------------------------------------------------------------------------------
+template <class List, class Object> 
+bool Enumerator<List,Object>::HasMore() const
+{
+	return itsList->HasMore();
+}
+
+//------------------------------------------------------------------------------
+//	Enumerator<List,Object>::Next
+//
+//		return the next string
+//
+//	returns				<- pointer to the next string in the list
+//------------------------------------------------------------------------------
+template <class List, class Object> 
+Object Enumerator<List,Object>::Next() const
+{
+	return Object(itsList->Next());
+}
+
+//------------------------------------------------------------------------------
+//	Enumerator<List,Object>::At
+//
+//		return the next string
+//
+//	returns				<- pointer to the next string in the list
+//------------------------------------------------------------------------------
+template <class List, class Object> 
+Object Enumerator<List,Object>::At(DlInt32 index) const
+{
+	if (index < Length())
+		return Object(itsList->ElementAt(index));
+	return Object(NULL);
+}
+
+//------------------------------------------------------------------------------
+//	Enumerator<List,Object>::Next
+//
+//		return the next string
+//
+//	returns				<- pointer to the next string in the list
+//------------------------------------------------------------------------------
+//template <class List, class Object> 
+// Object Enumerator<List,Object>::Next()
+//{
+//	return Object(itsList->Next());
+//}
+
+//------------------------------------------------------------------------------
+//	Enumerator<List,Object>::Reset
+//
+//		reset the iterator
+//
+//------------------------------------------------------------------------------
+template <class List, class Object> 
+void Enumerator<List,Object>::Reset() const
+{
+	itsList->Reset();
+}
+
+//------------------------------------------------------------------------------
+//	Enumerator<List,Object>::Length
+//
+//		return the length of the list
+//
+//	returns				<- number of strings in the list
+//------------------------------------------------------------------------------
+template <class List, class Object> 
+DlInt32 Enumerator<List,Object>::Length() const
+{
+	return itsList->Length();
+}
+
+//------------------------------------------------------------------------------
+//	Enumerator<List,Object>::Length
+//
+//		return the length of the list
+//
+//	returns				<- number of strings in the list
+//------------------------------------------------------------------------------
+template <class List, class Object> 
+bool Enumerator<List,Object>::Add(const Object & n)
+{
+	if (!itsList->Contains(n)) {
+		Clone();
+		return itsList->Add(n);
+	}
+	return false;
+}
+
+//------------------------------------------------------------------------------
+//	Enumerator<List,Object>::Length
+//
+//		return the length of the list
+//
+//	returns				<- number of strings in the list
+//------------------------------------------------------------------------------
+template <class List, class Object> 
+void Enumerator<List,Object>::Remove(const Object & n)
+{
+	if (itsList->Contains(n)) {
+		Clone();
+		itsList->Remove(n);
+	}
+}
+
+//------------------------------------------------------------------------------
+//	Enumerator<List,Object>::Length
+//
+//		return the length of the list
+//
+//	returns				<- number of strings in the list
+//------------------------------------------------------------------------------
+template <class List, class Object>
+bool 
+Enumerator<List,Object>::Contains(const Object & n)
+{
+	return itsList->Contains(n);
+}
+
+//eof
