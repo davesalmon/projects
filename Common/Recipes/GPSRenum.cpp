@@ -72,7 +72,7 @@ GPSRenum::GPSRenum(const array_type & connect, const array_type & starts, bool p
     , itsWorkSize(6 * itsNeq + 3)
     , itsBetter(false)
     , itsOptPro(profile)
-	, itsWorkingSet((DlInt32*)operator new(sizeof(DlInt32)*(itsWorkSize + 1)))
+	, itsWorkingSet((DlInt32*)OPERATORNEW(sizeof(DlInt32)*(itsWorkSize + 1)))
 {
 	std::memset(itsWorkingSet.get(), 0, (itsWorkSize + 1) * sizeof(DlInt32));
 	//	the number of equations is diag.size	
