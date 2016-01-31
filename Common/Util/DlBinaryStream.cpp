@@ -39,7 +39,7 @@
 //----------------------------------------------------------------------------------------
 DlBinaryStream::DlBinaryStream(DlStream& stream, DlUInt32 bufSize)
 	: _stream(stream)
-	, _buffer((DlUInt8*)operator new (bufSize))
+	, _buffer((DlUInt8*) OPERATORNEW (bufSize))
 	, _bufferLen(bufSize)
 	, _readPos(_buffer.get())
 	, _readEnd(_buffer.get())
