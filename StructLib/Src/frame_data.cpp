@@ -694,7 +694,9 @@ frame_data::updateNodeLoadCombos(LoadCase lc, const std::vector<DlFloat32>& fact
 		if (p.first && p.second)
 			itsComboNodeLoads.Add(p.second);
 		else if (!p.first && p.second) {
+			// remove the combo from the list and delete it.
 			itsComboNodeLoads.Remove(p.second);
+			delete p.second;
 		}
 	}
 }
@@ -709,7 +711,9 @@ frame_data::updateElemLoadCombos(LoadCase lc, const std::vector<DlFloat32>& fact
 		if (p.first && p.second) {
 			itsComboElemLoads.Add(p.second);
 		} else if (!p.first && p.second) {
+			// remove the combo from the list and delete it.
 			itsComboElemLoads.Remove(p.second);
+			delete p.second;
 		}
 	}
 }

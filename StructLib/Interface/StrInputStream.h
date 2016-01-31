@@ -1,7 +1,7 @@
 /*+
  *	File:		StrInputStream.h
  *
- *	Contains:	Interface for input stream
+ *	Contains:	Interface for structure input stream
  *
  *	Written by:	David C. Salmon
  *
