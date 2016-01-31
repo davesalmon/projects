@@ -32,27 +32,9 @@ protected:
 	
 	using ActPtr = std::unique_ptr<Action>;
 
-	virtual void SetUp() {
-		if (!frame) {
-#if _DEBUG
-			DebugNewForgetLeaks();
-#endif
-			frame = NEW FrameStructure("default");
-		}
-	}
+	virtual void SetUp() override;
+	virtual void TearDown() override;
 	
-	virtual void TearDown() override {
-	if (finalize) {
-		delete frame;
-		frame = nullptr;
-		finalize = false;
-#if _DEBUG
-		DebugNewValidateAllBlocks();
-		DebugNewReportLeaks();
-#endif
-	}
-}
-
 protected:
 
 	const int ActLoadCase = 0;
@@ -73,7 +55,10 @@ protected:
 
 	static FrameStructure* frame;
 	static bool finalize;
+	
+#if _DEBUG
+	static int frame_count; // for counter leaks
+#endif
 };
-
 
 #endif

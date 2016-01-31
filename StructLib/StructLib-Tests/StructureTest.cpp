@@ -41,6 +41,41 @@
 FrameStructure* StructLibTest::frame {nullptr};
 bool StructLibTest::finalize {false};
 
+#if _DEBUG
+	int StructLibTest::frame_count {1};
+static const char* kStructTestPath { "/tmp/leaks-StructTest%d.log" };
+#endif
+
+void
+StructLibTest::SetUp()
+{
+	if (!frame) {
+#if _DEBUG
+		DebugNewForgetLeaks();
+#endif
+		frame = NEW FrameStructure("default");
+	}
+}
+
+void
+StructLibTest::TearDown()
+{
+	if (finalize) {
+		delete frame;
+		frame = nullptr;
+		finalize = false;
+		
+#if _DEBUG
+		DebugNewValidateAllBlocks();
+		
+		char buf[256];
+		snprintf(buf, sizeof(buf), kStructTestPath, frame_count++);
+		
+		DebugNewReportLeaks(buf);
+#endif
+	}
+}
+
 //----------------------------------------------------------------------------------------
 //  StructLibTest::addNode
 //
@@ -499,6 +534,8 @@ TEST_F(StructLibTest, BuildComplex)
 
 	frame->DoForEachNode(printDisplacement, (void*)res);
 
+//	operator new (256);
+	
 	finalize = true;
 
 }

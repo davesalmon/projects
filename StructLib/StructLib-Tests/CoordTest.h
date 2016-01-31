@@ -32,10 +32,13 @@ class CoordTest : public testing::Test {
 	
 protected:
 	
+#if _DEBUG
+
 	virtual void SetUp() override;
-	
 	virtual void TearDown() override;
 
+	static int leak_count;
+#endif
 };
 
 #endif /* defined(__StructLib__CoordTest__) */

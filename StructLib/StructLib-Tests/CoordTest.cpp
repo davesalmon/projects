@@ -31,21 +31,43 @@
 
 const double kTolerance = 1.0e-15;
 
-void CoordTest::SetUp()
-{
 #if _DEBUG
+
+int CoordTest::leak_count {1};
+
+static const char* kCoordTestPath { "/tmp/leaks-CoordTest%d.log" };
+
+//----------------------------------------------------------------------------------------
+//  CoordTest::SetUp
+//
+//	set up tests.
+//
+//  returns nothing
+//----------------------------------------------------------------------------------------
+void
+CoordTest::SetUp()
+{
 	DebugNewForgetLeaks();
-#endif
 }
 
+//----------------------------------------------------------------------------------------
+//  CoordTest::TearDown
+//
+//	tear donw tests.
+//
+//  returns nothing
+//----------------------------------------------------------------------------------------
 void
 CoordTest::TearDown()
 {
-#if _DEBUG
+	char buf[256];
+	snprintf(buf, sizeof(buf), kCoordTestPath, leak_count++);
+
 	DebugNewValidateAllBlocks();
-	DebugNewReportLeaks();
-#endif
+	DebugNewReportLeaks(buf);
 }
+
+#endif
 
 //----------------------------------------------------------------------------------------
 //  TestPoints
