@@ -1,0 +1,5 @@
+/* Localized versions of Info.plist keys */
+
+NSHumanReadableCopyright = "© David C. Salmon, 2014";
+CFBundleGetInfoString = "Plane-Frame Analysis v. 1.0, © David C. Salmon, 2014";
+//CFBundleShortVersionString = "${EXECUTABLE_NAME} v. 1.0";

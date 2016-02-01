@@ -1,0 +1,131 @@
+﻿/* 
+  Localizable.strings
+  Frame
+
+  Created by David Salmon on 4/5/14.
+
+*/
+
+"Can't undo or redo"		= "Can't undo or redo";
+"Add Element"				= "Add Element";
+
+"Add Element Load"			= "Add Element Load";
+"Assign Element Load"		= "Assign Element Load";
+"Remove Element Load"		= "Remove Element Load";
+"Change Element Load Value"	= "Remove Element Load";
+
+"Add Node"					= "Add Node";
+"Set Node Restraint"		= "Set Node Restraint";
+"Toggle Node Restraint"		= "Toggle Node Restraint";
+"Move Nodes"				= "Move Nodes";
+
+"Add Node Load"				= "Add Node Load";
+"Assign Node Load"			= "Assign Node Load";
+"Remove Node Load"			= "Remove Node Load";
+"Change Node Load Value"	= "Change Node Load Value";
+
+"Paste"						= "Paste";
+
+"Create Property"			= "Create Property";
+"Assign Property"			= "Assign Property";
+"Change Property Value"		= "Change Property Value";
+
+"Remove Nodes"				= "Remove Nodes";
+"Remove Elements"			= "Remove Elements";
+"Remove Selected"			= "Remove Selected";
+"Remove Duplicate Nodes"	= "Remove Duplicate Nodes";
+
+"Remove Element"			= "Remove Element";
+"Split Element"				= "Split Element";
+
+/* No comment provided by engineer. */
+"A node already exists at this location" = "A node already exists at this location";
+
+/* No comment provided by engineer. */
+"Cancel" = "Cancel";
+
+/* No comment provided by engineer. */
+"Change Units" = "Change Units";
+
+/* No comment provided by engineer. */
+"Combine" = "Combine";
+
+/* No comment provided by engineer. */
+"Combine overlapping nodes?" = "Combine overlapping nodes?";
+
+/* No comment provided by engineer. */
+"Error" = "Error";
+
+/* No comment provided by engineer. */
+"Ok" = "Ok";
+
+/* No comment provided by engineer. */
+"Set Scale" = "Set Scale";
+
+/* No comment provided by engineer. */
+"Some nodes occupy the same locations. Combine them?" = "Some nodes occupy the same locations. Combine them?";
+
+/* No comment provided by engineer. */
+"Update Workspace" = "Update Workspace";
+
+/* PrismElement.cpp */
+"Axial Force, A" = "Axial Force, A";
+"Shear Force, V" = "Shear Force, V";
+"Bending Moment, M" = "Bending Moment, M";
+
+/* titles for property view. */
+"Title" = "Title";
+"Modulus of Elasticity" = "Modulus of Elast.";
+"Moment of Inertia"     = "Mom. of Inertia";
+"Area"					= "Area";
+"Start Pinned"			= "Start Pinned";
+"End Pinned"			= "End Pinned";
+
+/* and for the results and inspector */
+"Length" = "Length";
+
+/* also for results adn inspector. */
+"A(0)" = "A(0)";
+"V(0)" = "V(0)";
+"M(0)" = "M(0)";
+"A(L)" = "A(L)";
+"V(L)" = "V(L)";
+"M(L)" = "M(L)";
+"A Max" = "A Max";
+"V Max" = "V Max";
+"M Max" = "M Max";
+"D(0)" = "∆(0)";
+"D(L/2)" = "∆(L/2)";
+"D(L)" = "∆(L)";
+
+"Axial" = "Axial";
+"Lateral" = "Lateral";
+"Slope" = "Slope";
+
+/* and for the node inspector */
+
+"X Coordinate" = "Location, X";
+"Y Coordinate" = "Location, Y";
+
+"Force, X" = "Force, X";
+"Force, Y" = "Force, Y";
+"Force, R" = "Moment";
+
+"Reaction, X" = "Reaction, X";
+"Reaction, Y" = "Reaction, Y";
+"Reaction, R" = "Reaction, M";
+
+"Displacement, X" = "∆X";
+"Displacement, Y" = "∆Y";
+"Displacement, R" = "∆θ";
+
+"Settlement, X" = "Settlement, X";
+"Settlement, Y" = "Settlement, Y";
+"Settlement, R" = "Settlement, θ";
+
+/*
+∆
+INCREMENT
+Unicode: U+2206, UTF-8: E2 88 86
+ */
+

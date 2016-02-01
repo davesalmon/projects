@@ -1,0 +1,79 @@
+/*
+ *  Copyright © 2002 Metrowerks Corporation.  All Rights Reserved.
+ *
+ *  Questions and comments to:
+ *       <mailto:support@metrowerks.com>
+ *       <http://www.metrowerks.com/>
+ */
+
+// Change this to your bundle identifier string
+#define kBundleIdentifier "FrameApplicationPrefs"
+
+// Change this to your short version string
+#define kBundleShortVersion __OUTPUT_FILENAME__ " version 1.0"
+
+// Change this to the string to display in the Finder's Get Info window
+#define kCopyrightInfo "Copyright © 2003 by David C. Salmon.  All rights reserved."
+#define kBundleGetInfo kBundleShortVersion ", " kCopyrightInfo
+
+plist
+{
+	dictionary
+	{
+		key "CFBundleIdentifier" value string kBundleIdentifier
+
+		key "CFBundleDevelopmentRegion" value string "English"
+		
+		key "CFBundleDocumentTypes" value array [
+			dictionary {
+				key "CFBundleTypeExtensions" value array [
+					string "frm"
+				]
+//				key "CFBundleTypeIconFile" value string "StockTrackerIcon.icns"
+				key "CFBundleTypeName" value string "FrameDocument"
+				key "CFBundleTypeOSTypes" value array [
+					string "sFrD"
+				]
+				key "CFBundleTypeRole" value string "Editor"
+				key "NSDocumentClass" value string "FrameDocument"
+			}
+			dictionary {
+				key "CFBundleTypeExtensions" value array [
+					string "fres"
+				]
+//				key "CFBundleTypeIconFile" value string "StockTrackerIcon.icns"
+				key "CFBundleTypeName" value string "FrameResults"
+				key "CFBundleTypeOSTypes" value array [
+					string "sFrR"
+				]
+				key "CFBundleTypeRole" value string "Viewer"
+				key "NSDocumentClass" value string "FrameDocument"
+			}
+		]
+
+		key "CFBundleName" value string __OUTPUT_FILENAME__
+		key "CFBundleGetInfoString" value string kBundleGetInfo
+		key "CFBundleShortVersionString" value string kBundleShortVersion
+		
+		key "CFBundlePackageType" value string __OUTPUT_TYPE__
+		key "CFBundleSignature" value string __OUTPUT_CREATOR__
+		key "CFBundleExecutable" value string __OUTPUT_FILENAME__
+		key "CFBundleVersion" value string "1.0"
+		
+//		key "CFBundleDevelopmentRegion" value string "English"
+		key "CFBundleInfoDictionaryVersion" value string "6.0"
+
+		key "NSMainNibFile" value string "MainMenu"
+		key "NSPrincipalClass" value string "NSApplication"
+		key "NSHumanReadableCopyright" value string kCopyrightInfo
+	}
+}
+
+// Change this to be localized for English
+//localize "English"
+//{
+//	comment "Localized versions of Info.plist keys"
+//	key "CFBundleName" value string __OUTPUT_FILENAME__
+//	key "CFBundleGetInfoString" value string kBundleGetInfo
+//	key "CFBundleShortVersionString" value string kBundleShortVersion
+//}

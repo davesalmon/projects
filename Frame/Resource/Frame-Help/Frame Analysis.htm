@@ -1,0 +1,611 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+			"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta name=Title content="Plane-Frame Analysis Help">
+<meta name=Keywords content="">
+
+<meta name="AppleTitle" content="Plane-Frame Analysis Help" />
+<meta name="AppleIcon" content="FrameAppIcon.png" />
+
+<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+
+<link href="styles.css" rel="stylesheet" type="text/css" />
+
+<!-- script for toggling the sections on and off -->
+<script language="javascript" type="text/javascript">
+	// this function toggles the display of chapter pages
+	function toggleView(image,list)
+	{
+		var listElementStyle=document.getElementById(list).style;
+		if (listElementStyle.display=="none")
+		{
+			listElementStyle.display="block";
+			document.getElementById(image).src="images/down.gif";
+		}
+		else
+		{
+			listElementStyle.display="none";
+			document.getElementById(image).src="images/up.gif";
+		}
+	}
+
+	// used to start off with a page of only chapter headings
+	function collapseAll()
+	{
+		var elems = document.getElementsByClassName("section");
+		var len = elems.length;
+
+		for (var i=0; i < len; i++)
+		{
+			var el = elems.item(i);
+
+			if (el != null)
+				el.style.display="none";
+		}
+
+		elems = document.getElementsByClassName("subsection");
+		len = elems.length;
+
+		for (var i=0; i < len; i++)
+		{
+			var el = elems.item(i);
+
+			if (el != null)
+			el.style.display="none";
+		}
+
+	}
+</script>
+
+</head>
+
+<body lang="EN-US">
+
+<div class="WordSection1">
+
+<p class="Plain" align="center" style='text-align:center'>
+	<span>
+		<img width="131" height="131" src="FrameAppIcon.png"/>
+	</span></p>
+
+<a onclick="toggleView('image0', 'warranty')">
+	<h1 class="Warranty">
+		<img id="image0" src="images/up.gif"/> License Agreement
+	</h1>
+</a>
+
+<div class="section" id="warranty">
+
+<h2 class="Warranty">Plane-Frame Analysis 1.0. License Agreement.</h2>
+
+<p class="Warranty">This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.</p>
+
+<p class="Warranty">This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.</p>
+
+<p class="Warranty">You should have received a copy of the GNU General Public License along
+with this program; if not, write to the Free Software Foundation, Inc.,
+51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+</p>
+
+</div>
+
+<div style='border:none;border-bottom:solid #4F81BD 1.0pt;padding:0in 0in 4.0pt 0in'>
+
+<p class="Title">Plane-Frame Analysis</p>
+
+</div>
+
+<!-- Section 1 -->
+
+<a onclick="toggleView('image1', 'section1')">
+	<h1>
+		<img id="image1" src="images/up.gif"/> About Plane-Frame Analysis
+	</h1>
+</a>
+
+<div class="section" id="section1">
+
+<!-- Sub-Section 1-1 -->
+
+<a onclick="toggleView('image1-1', 'section1-1')">
+	<h2>
+		<img id="image1-1" src="images/up.gif"/> Overview
+	</h2>
+</a>
+
+<div class="subsection" id="section1-1">
+
+<p class="Plain">Plane linear frame analysis consists of discretizing a plane
+structure into beam and column segments (elements), connected to each other at
+joint points (nodes). Each node can move in 3 directions (degrees of freedom):
+horizontally (x), vertically (y), and rotationally (<span style='font-family:
+"Times New Roman"'>&#952;</span>). Plane-Frame Analysis assumes that the behavior of
+the structure remains elastic throughout the deformation, i.e., if the loads
+are removed the structure will return to its original shape.</p>
+
+<p class="Plain">After defining the nodes and elements for the frame,
+structural properties (modulus of elasticity, area, and moment of inertia) must
+be assigned to each element. Additionally, a sufficient number of degrees of
+freedom must be restrained to prevent the structure or portions of it from
+moving as a rigid body.</p>
+
+<p class="Plain">After the structure has been defined, load cases are assigned
+consisting of node and element loads to be applied to the structure.</p>
+
+<p class="Plain">Based on the structure definition and the defined load
+cases, the structure can be analyzed and the internal forces (shear, moment,
+and axial force) and the displacements can be determined. Plane-Frame Analysis shows
+these results graphically superimposed on the structure.</p>
+
+</div> <!-- end Sub-Section 1-1 -->
+
+<!-- Sub-Section 1-2 -->
+
+<a onclick="toggleView('image1-2', 'section1-2')">
+	<h2>
+		<img id="image1-2" src="images/up.gif"/> Analysis method
+	</h2>
+</a>
+
+<div class="subsection" id="section1-2">
+
+<p class="Plain">Each unconstrained degree of freedom can potentially move
+due to the forces applied to the structure. This motion is resisted by the
+elements proportionally to their respective stiffness. Plane-Frame Analysis assumes
+that the behavior of each of the members and their connections to each other
+remain elastic throughout the deformation.</p>
+
+<p class="Plain">A set of linear simultaneous equations is constructed, one
+for each unrestrained degree of freedom.</p>
+
+<p class="Plain">[K]{x} = {b}</p>
+
+<p class="Plain">where [K] is the stiffness matrix, {x} is a vector of
+deformations in each unconstrained degree of freedom, and {b} is the load
+vector.</p>
+
+<p class="Plain">Each element in the structure contributes some resistance to
+deformation in each of the degrees of freedom to which it is attached. The
+combination of these resistances forms the stiffness matrix.</p>
+
+<p class="Plain">The loads applied to the structure contribute to the load
+vector. Loads may be applied directly to the nodes, or may be distributed along
+the length of the elements. In addition, pre-stress within elements due to
+thermal loading or pre tensioning may also contribute to the load vector.</p>
+
+<p class="Plain">After the equations have been constructed, they are solved for the deformations
+in each degree of freedom. These deformations are subsequently used to determine the internal
+forces (bending moment, shear force, and axial force) present in each element. </p>
+
+</div> <!-- end Sub-Section 1-2 -->
+
+</div> <!-- end Section 1 -->
+
+<!-- Section 2 -->
+
+<a onclick="toggleView('image2', 'section2')">
+	<h1>
+		<img id="image2" src="images/up.gif"/> Creating a structure
+	</h1>
+</a>
+
+<div class="section" id="section2">
+
+<!-- Sub-Section 2-1 -->
+
+<a onclick="toggleView('image2-1', 'section2-1')">
+	<h2>
+		<img id="image2-1" src="images/up.gif"/> Tools panel
+	</h2>
+</a>
+
+<div class="subsection" id="section2-1">
+
+<p class="Plain">A structure is created using the tools from the Tools panel (Fig
+1). The node creation tool
+<span>
+	<img width="18" height="18" src="images/add-node.png"/>
+</span> is used to create new nodes
+for the structure. When this tool is active, any click in the main view will create a new node
+point at that location. A grid is optionally provided (see Workspace) to assist in locating these nodes.</p>
+
+<p class="Plain">The created nodes are connected into a structure using the element creation
+tool <span><img width="18" height="18" src="images/add-element.png"/></span>.
+The element creation tool will create a new element
+between a selected node and either an existing node if one is clicked on, or a new node if the
+clicked location is not near any existing node. Holding the option key will temporarily change the
+element creation tool into the selection tool to allow quickly changing the selected node while
+creating the structure.</p>
+
+<p class="Figure">
+	<img id="figure1" width="296" height="222" src="images/tools-window.png"/>
+</p>
+
+<p class="Caption">Figure 1. Tools panel.</p>
+
+<p class="Plain">The restraint assignment buttons in the second box within the
+tools window are used to restrain various degrees of freedom. Proceeding clockwise from
+the top-left they are: no restraint; restrain <span style='font-family:"Times New Roman"'>&#952;</span>
+only; restrain x and <span style='font-family:"Times New Roman"'>&#952;</span>;
+restrain y and <span style='font-family:"Times New Roman"'>&#952;</span>;
+restrain x, y, and <span style='font-family:"Times New Roman"'>&#952;</span>;
+restrain x and y, restrain, y, and restrain x.</p>
+
+<p class="Plain">Figure 2 shows a created frame with 3 elements and 4 nodes that is
+restrained at both base nodes in the x and y directions.</p>
+
+<p class="Figure">
+	<img id="figure2" width="290" height="231" src="images/simple-bent.png"/>
+</p>
+
+<p class="Caption">Figure 2. Frame structure.</p>
+
+</div> <!-- end Sub-Section 2-1 -->
+
+<!-- Sub-Section 2-2 -->
+
+<a onclick="toggleView('image2-2', 'section2-2')">
+	<h2>
+		<img id="image2-2" src="images/up.gif"/> Structure units
+	</h2>
+</a>
+
+<div class="subsection" id="section2-2">
+
+<p class="Plain">The units menu in the tools window can be used to select the
+units to use for the structure. There are three choices: Consistent, English, and SI.</p>
+
+<p class="Plain">Consistent units imply that the units used for force,
+distance, area, moment of inertia, and modulus of elasticity are all consistent.
+For example, pound, inch, inch<sup>2</sup>, inch<sup>4</sup>, and pounds/inch<sup>2</sup>.
+ Such units are typically used when only the relative stiffnesses between the various structural
+ elements are known.</p>
+
+<p class="Plain">English units are the standard set of units used in the
+United States: Forces in kips, dimensions in feet, moment of inertia in inch<sup>4</sup>,
+modulus of elasticity in ksi, area in inch<sup>2</sup>, and displacement in
+inches.</p>
+
+<p class="Plain">SI (international) units are the standard units in most of
+the rest of the world. Forces in kN, dimensions in m, moment of inertia in mm<sup>4</sup>,
+modulus of elasticity in kPa, and displacements in mm.</p>
+
+<p class="Plain">Note that the units for any specified quantity entered may
+be specified along with the value for that entity. The application will convert
+the value into the required units.</p>
+
+</div> <!-- end Sub-Section 2-2 -->
+
+<!-- Sub-Section 2-3 -->
+
+<a onclick="toggleView('image2-3', 'section2-3')">
+	<h2>
+		<img id="image2-3" src="images/up.gif"/> Workspace
+	</h2>
+</a>
+
+<div class="subsection" id="section2-3">
+
+<p class="Plain">The workspace is the coordinate system scaling and grid
+spacing used when defining a structure. It can be modified using the workspace
+panel (Fig. 3).</p>
+
+<p class="Figure">
+	<img id="figure3" width="236" height="366" src="images/workspace-panel.png"/>
+</p>
+
+<p class="Caption">Figure 3. Workspace panel.</p>
+
+<p class="Plain">The world dimensions define the coordinate system of the
+window in which the structure is created. The world dimensions should be
+selected such that the structure being analyzed fits within the bounds. By
+default a window with 40 units in each direction is created with gridlines
+spaced one unit apart.</p>
+
+<p class="Plain">An optional grid may be drawn behind the structure. The spacing of the
+grid is set in the workspace panel. The checkboxes are used to specify if the grid is
+visible and if grid snap is enabled.</p>
+
+<p class="Plain">If grid snap
+is enabled, nodes added or selected within a radius of 25% of the grid spacing to a grid
+intersection will be assumed to have ocurred on the grid. This allows accurate placement
+and selection of nodes.</p>
+
+<p class="Plain">The scale defines the mapping between the screen and the
+world. For the workspace shown in Fig. 3, the world is 20 meters in width and
+height, and one inch on the screen corresponds to 1.0 meter. The scale must be sufficiently large
+that the world dimensions completely fill the window.</p>
+
+</div> <!-- end Sub-Section 2-3 -->
+
+<!-- Sub-Section 2-4 -->
+
+<a onclick="toggleView('image2-4', 'section2-4')">
+	<h2>
+		<img id="image2-4" src="images/up.gif"/> Selecting nodes and elements
+	</h2>
+</a>
+
+<div class="subsection" id="section2-4">
+
+<p class="Plain">The selection tool <span><img width="18" height="18" src="images/select-tool.png"/>
+</span>&nbsp;is used to select nodes or elements.</p>
+
+<p class="Plain">Clicking on an individual node or element will select it.
+Nodes or elements may be added or removed from the current selection by holding
+the shift-key while selecting. </p>
+
+<p class="Plain">Multiple nodes (and their connecting elements) can be
+selected by clicking and dragging to select everything within the drag
+rectangle. Holding the shift key while dragging will add or remove nodes from
+the current selection.</p>
+
+<p class="Plain">Elements (without nodes) may be selected by holding the option key down
+while dragging across a portion of the structure. Any elements intersecting the
+drag rectangle will be selected (or added/removed from the selection if the
+shift key is down).</p>
+
+</div> <!-- end Sub-Section 2-3 -->
+
+<a onclick="toggleView('image2-5', 'section2-5')">
+	<h2>
+		<img id="image2-5" src="images/up.gif"/> Copy and Paste
+	</h2>
+</a>
+
+<div class="subsection" id="section2-5">
+
+<p class="Plain">One quick method of creating a larger structure is to construct a representative
+sample of it and to use copy and paste to generate the rest. When node and elements are
+pasted into the structure they originated from, they retain all the properties and loads
+from the original copy. This means you can create a representative bay of one floor of the
+structure and copy that to generate all the other bays.</p>
+
+<p class="Plain">When a portion of a structure is placed such that one or more nodes overlap existing nodes,
+a dialog is presented asking if the nodes should be combined. Combining the nodes removes
+all the overlapping nodes and elements (Figure 4).
+
+<p class="Figure">
+<img id="figure4" src="images/combining-nodes.png"/>
+</p>
+
+<p class="Caption">Figure 4. Combining pasted nodes.</p>
+
+</div>
+
+</div> <!-- end Section 2 -->
+
+<!-- Section 3 -->
+
+<a onclick="toggleView('image3', 'section3')">
+	<h1>
+		<img id="image3" src="images/up.gif"/> Assigning element properties
+	</h1>
+</a>
+
+<div class="section" id="section3">
+
+<p class="Plain">Element properties are assigned using the element properties
+window (Figure 5).</p>
+
+<p class="Figure">
+	<img id="figure5" width="597" height="270" src="images/properties-panel.png"/>
+</p>
+
+<p class="Caption">Figure 5. Element property definition.</p>
+
+<p class="Plain">Each row in the element property table defines a set of
+element properties that can be attached to one or more elements in the
+structure. The properties for each element are:</p>
+
+<p class="Plain">Modulus (of Elasticity): The inherent stiffness of the
+material being used.</p>
+
+<p class="Plain">Moment of Inertia: The second moment of area of the
+cross-section of the element, providing resistance to bending.</p>
+
+<p class="Plain">Area: The area of the cross-section of the element providing
+resistance to stretching.</p>
+
+<p class="Plain">Start Pinned: Checked if the start of the element is
+attached to its node with a pin connection.</p>
+
+<p class="Plain">End Pinned: Checked if the end of the element is attached to
+its node with a pin connection.</p>
+
+<p class="Plain">To attach a property definition, select the set of elements
+for each property type, then select the desired property row and press the attach
+button.</p>
+
+<p class="Plain">When a property row is selected and the Properties panel is
+in front, the elements attached to the selected property set are highlighted.</p>
+
+<p class="Figure">
+	<img id="figure6" width="288" height="232" src="images/hilite-properties.png"/>
+</p>
+
+<p class="Caption">Figure 6. Highlighted property set.</p>
+
+</div> <!-- end Section 3 -->
+
+<!-- Section 4 -->
+
+<a onclick="toggleView('image4', 'section4')">
+	<h1>
+		<img id="image4" src="images/up.gif"/> Assigning node and element loads
+	</h1>
+</a>
+
+<div class="section" id="section4">
+
+<p class="Plain">Loads may be applied to the structure either directly to
+nodes or distributed along the length of the elements. Typically loads are
+divided into several categories including dead load, and one or more live load
+case.</p>
+
+<p class="Plain">Dead loads are loads that are typically well known such as
+the weight of the structure itself or the weight of permanent fixtures in the
+structure.</p>
+
+<p class="Plain">Live loads consist of people, things, wind, seismic loads,
+etc that may be applied to the structure during its life. These loads are
+typically not well known.</p>
+
+<p class="Plain">Loads are described using the Node Loads (Fig. 7) and
+Element Loads (Fig. 8) lists. You can create as many different load
+configurations as you want and assign each configuration to one or more
+elements.</p>
+
+<p class="Figure">
+	<img id="figure7" width="421" height="242" src="images/nodeload-panel.png"/>
+</p>
+
+<p class="Caption">Figure 7. Node load panel.</p>
+
+<p class="Plain">Each button in the node load list can be clicked to toggle
+between point forces applied to a node, and specified displacement. It makes
+sense only to applied specified displacement to degrees of freedom that are
+constrained. Such specified displacements can be used to evaluate the structure
+subject to support settlement.</p>
+
+<p class="Figure">
+	<img id="figure8" width="393" height="242" src="images/elementload-panel.png"/>
+</p>
+
+<p class="Caption">Figure 8. Element load panel.</p>
+
+<p class="Plain">The rows in the element load list define load cases to be
+applied to the elements in the structure. For example, the weight of a beam or
+the pressure of the wind on the side of the frame would be defined as a lateral
+distributed load. Thermal loads can be applied as pre-force, while pre-moment
+could be used to simulated post-tensioning of concrete beams.</p>
+
+<p class="Figure">
+	<img id="figure9" width="344" height="288" src="images/attached-loads.png"/>
+</p>
+
+<p class="Caption">Figure 9. Attached loads.</p>
+
+<p class="Plain">Figure 9 shows a simple bent with the loads shown in figures 4 and 5 applied.</p>
+
+</div> <!-- end Section 4 -->
+
+<!-- Section 5 Running an analysis -->
+
+<a onclick="toggleView('image5', 'section5')">
+	<h1>
+		<img id="image5" src="images/up.gif"/> Running an analysis
+	</h1>
+</a>
+
+<div class="section" id="section5">
+
+<p class="Plain">Once a frame has been defined and loaded, an analysis can be
+executed to solve for the displacements and internal forces. Figure 10 shows the
+analysis dialog for the structure above.</p>
+
+<p class="Figure">
+	<img id="figure10" width="363" height="239" src="images/analysis-dialog.png"/>
+</p>
+
+<p class="Caption">Figure 10. Analysis dialog.</p>
+
+</div> <!-- end Section 5 -->
+
+<!-- Section 6 Viewing results -->
+
+<a onclick="toggleView('image6', 'section6')">
+	<h1>
+		<img id="image6" src="images/up.gif"> Viewing results
+	</h1>
+</a>
+
+<div class="section" id="section6">
+
+<p class="Plain">Results are display superimposed on the structure,
+controlled by the display drop-down menu and the displacement scale slider on
+the Tools window.</p>
+
+<p class="Plain">The bending moment diagram and displaced shape for the
+structure above are shown in Figure 11.</p>
+
+<p class="Figure">
+	<img id="figure11" width="403" height="383" src="images/result-diagrams.png"/>
+</p>
+
+<p class="Caption">Figure 11. Result diagrams.</p>
+
+<p class="Plain">Numerical results can also be obtained through the results
+window Figure 12. The rows in this table are synchronized with the structure view
+so that selecting one or more rows from the will select the corresponding elements
+in the main view and vice-versa.</p>
+
+<p class="Figure">
+	<img id="figure12" width="878" height="180" src="images/results-panel.png"/>
+</p>
+
+<p class="Caption">Figure 12. The results window.</p>
+
+</div> <!-- end Section 6 -->
+
+<!-- Section 7 Node and Element inspectors -->
+
+<a onclick="toggleView('image7', 'section7')">
+	<h1>
+		<img id="image7" src="images/up.gif"> Node and Element Inspectors
+	</h1>
+</a>
+
+<div class="section" id="section7">
+
+<p class="Plain">Node and Element inspector panel are provided to inspect the details for each node
+point or element. Typical node and element inspector panels for the sample structure are
+shown in Figure 13.
+<p>
+
+<p class="Figure">
+	<img id="figure12" width="272" height="466" src="images/element-inspector.png"/>
+	<img id="figure12" width="272" height="382" src="images/node-inspector.png"/>
+</p>
+
+<p class="Caption">Figure 13. Inspector Panels.</p>
+
+<p class="Plain">Selecting one or more elements or nodes in either inspector selects the
+corresponding elements or nodes in both the main structure window and in the results
+table (for elements). The inspector shows a comprehensive summary of the characteristics
+of each node or element for the selected load case.
+</p>
+
+<p class="Plain">In the case of nodes, the inspector shows the location and applied
+point forces for the selected load case. If an analysis has been run, the node inspector
+also shows the reaction forces for restrained degrees of freedom and displacement for
+unrestrained degrees of freedom.
+</p>
+
+<p class="Plain">In the case of elements, the inspector shows the length and applied
+distributed forces for the selected load case. If an analysis has been run, the element inspector
+also shows the internal forces (axial, shear, and moment) at each end of the element, the
+maximum internal forces for the element, and the lateral displacement at each end and at
+the center of the element.
+</p>
+
+</div>
+
+</div> <!-- WordSection1 -->
+
+<script language="javascript">
+	collapseAll();
+</script>
+
+</body>
+
+</html>

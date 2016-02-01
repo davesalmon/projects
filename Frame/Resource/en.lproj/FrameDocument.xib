@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6751" systemVersion="13F1077" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+    <dependencies>
+        <deployment version="1070" identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6751"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="FrameDocument">
+            <connections>
+                <outlet property="_displacementScaleSlider" destination="1jN-m0-Htx" id="W1i-sa-Xel"/>
+                <outlet property="_displayPopup" destination="213" id="224"/>
+                <outlet property="_elementTypePopup" destination="227" id="233"/>
+                <outlet property="_fixityMatrix" destination="Rnc-GW-qUd" id="E9X-6p-NGE"/>
+                <outlet property="_frameView" destination="7" id="64"/>
+                <outlet property="_loadCasePopup" destination="140" id="143"/>
+                <outlet property="_toolMatrix" destination="46" id="62"/>
+                <outlet property="_toolWindow" destination="32" id="36"/>
+                <outlet property="_unitsPopup" destination="235" id="240"/>
+                <outlet property="window" destination="5" id="19"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="FrameWindow" animationBehavior="default" id="5" userLabel="Window">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+            <windowCollectionBehavior key="collectionBehavior" fullScreenPrimary="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="247" y="41" width="734" height="547"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1418"/>
+            <view key="contentView" id="6">
+                <rect key="frame" x="0.0" y="0.0" width="734" height="547"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <scrollView toolTip="Use the add node tool or the add element tool to draw a structure to analyze." horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="9">
+                        <rect key="frame" x="0.0" y="1" width="733" height="546"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <clipView key="contentView" autoresizesSubviews="NO" id="vg6-P1-acN">
+                            <rect key="frame" x="1" y="1" width="716" height="529"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <customView id="7" customClass="FrameView">
+                                    <rect key="frame" x="0.0" y="0.0" width="803" height="803"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <connections>
+                                        <outlet property="_xCoordBox" destination="208" id="210"/>
+                                        <outlet property="_yCoordBox" destination="209" id="211"/>
+                                    </connections>
+                                </customView>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </clipView>
+                        <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="256">
+                            <rect key="frame" x="1" y="530" width="716" height="15"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </scroller>
+                        <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="257">
+                            <rect key="frame" x="717" y="1" width="15" height="529"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </scroller>
+                    </scrollView>
+                </subviews>
+            </view>
+            <connections>
+                <outlet property="delegate" destination="-2" id="30"/>
+            </connections>
+        </window>
+        <window title="Tools" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="ToolsWindow" animationBehavior="default" id="32" userLabel="Panel" customClass="ToolPanel">
+            <windowStyleMask key="styleMask" titled="YES" utility="YES" nonactivatingPanel="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="268" y="754" width="280" height="190"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1418"/>
+            <view key="contentView" id="33">
+                <rect key="frame" x="0.0" y="0.0" width="280" height="190"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <matrix verticalHuggingPriority="750" selectionByRect="NO" allowsEmptySelection="NO" id="46">
+                        <rect key="frame" x="10" y="74" width="32" height="96"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        <size key="cellSize" width="32" height="32"/>
+                        <size key="intercellSpacing" width="-1" height="-1"/>
+                        <buttonCell key="prototype" type="square" bezelStyle="shadowlessSquare" imagePosition="above" alignment="center" borderStyle="border" tag="-1" inset="1" id="254">
+                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
+                            <font key="font" metaFont="label"/>
+                        </buttonCell>
+                        <cells>
+                            <column>
+                                <buttonCell type="square" title="node select" bezelStyle="shadowlessSquare" image="tool0" imagePosition="only" alignment="center" state="on" borderStyle="border" toolTip="Node Select Tool. Use this tool to select nodes for attaching loads or restraints." inset="1" id="128">
+                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
+                                    <font key="font" metaFont="miniSystem"/>
+                                </buttonCell>
+                                <buttonCell type="square" title="add node" bezelStyle="shadowlessSquare" image="tool1" imagePosition="only" alignment="center" borderStyle="border" toolTip="Add Node Tool. Use this tool to add new nodes to the structure." tag="1" inset="1" id="129">
+                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
+                                    <font key="font" metaFont="miniSystem"/>
+                                </buttonCell>
+                                <buttonCell type="square" title="add element" bezelStyle="shadowlessSquare" image="tool2" imagePosition="only" alignment="center" borderStyle="border" tag="2" inset="1" id="130">
+                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
+                                    <font key="font" metaFont="miniSystem"/>
+                                    <string key="toolTip">Add Element Tool. Use this tool to connect nodes with elements. Each node must have at least one attached elements. This tool will create nodes if clicked in a location that lacks one.</string>
+                                </buttonCell>
+                            </column>
+                        </cells>
+                        <connections>
+                            <action selector="toolSelect:" target="-2" id="131"/>
+                        </connections>
+                    </matrix>
+                    <textField verticalHuggingPriority="750" id="133">
+                        <rect key="frame" x="120" y="86" width="57" height="13"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Load Case:" id="243">
+                            <font key="font" metaFont="label"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <popUpButton toolTip="Select active load case" verticalHuggingPriority="750" id="140">
+                        <rect key="frame" x="184" y="85" width="68" height="15"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                        <popUpButtonCell key="cell" type="push" title="1" bezelStyle="rounded" alignment="left" controlSize="mini" lineBreakMode="clipping" state="on" borderStyle="borderAndBezel" inset="2" arrowPosition="arrowAtCenter" preferredEdge="maxY" selectedItem="134" id="244">
+                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="miniSystem"/>
+                            <menu key="menu" title="OtherViews" id="138">
+                                <items>
+                                    <menuItem title="1" state="on" id="134"/>
+                                </items>
+                            </menu>
+                        </popUpButtonCell>
+                        <connections>
+                            <action selector="selectLoadCase:" target="-2" id="142"/>
+                        </connections>
+                    </popUpButton>
+                    <textField verticalHuggingPriority="750" id="206">
+                        <rect key="frame" x="120" y="157" width="71" height="13"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="X Coordinate:" id="245">
+                            <font key="font" metaFont="label"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField verticalHuggingPriority="750" id="207">
+                        <rect key="frame" x="120" y="135" width="71" height="13"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Y Coordinate:" id="246">
+                            <font key="font" metaFont="label"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField verticalHuggingPriority="750" id="208">
+                        <rect key="frame" x="196" y="156" width="66" height="14"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="right" title="122.00" id="247">
+                            <font key="font" metaFont="smallSystem"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField verticalHuggingPriority="750" id="209">
+                        <rect key="frame" x="196" y="135" width="66" height="14"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="right" title="122.00" id="248">
+                            <font key="font" metaFont="smallSystem"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <popUpButton verticalHuggingPriority="750" id="213">
+                        <rect key="frame" x="121" y="107" width="126" height="20"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                        <popUpButtonCell key="cell" type="squareTextured" title="Display" bezelStyle="texturedSquare" alignment="left" controlSize="small" lineBreakMode="clipping" borderStyle="borderAndBezel" inset="2" pullsDown="YES" preferredEdge="maxY" selectedItem="222" id="249">
+                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="smallSystem"/>
+                            <menu key="menu" title="OtherViews" id="216">
+                                <items>
+                                    <menuItem title="Display" hidden="YES" keyEquivalent="0" id="214"/>
+                                    <menuItem title="Joints" tag="1" keyEquivalent="0" id="222"/>
+                                    <menuItem title="Members" tag="2" keyEquivalent="1" id="217"/>
+                                    <menuItem title="Loads" tag="4" keyEquivalent="2" id="215"/>
+                                    <menuItem title="Displacement" tag="8" keyEquivalent="3" id="225"/>
+                                    <menuItem title="Moment" tag="16" keyEquivalent="4" id="218"/>
+                                    <menuItem title="Shear" tag="32" keyEquivalent="5" id="219"/>
+                                    <menuItem title="Axial" tag="64" keyEquivalent="6" id="220"/>
+                                </items>
+                            </menu>
+                        </popUpButtonCell>
+                        <connections>
+                            <action selector="setItemDisplay:" target="-2" id="223"/>
+                        </connections>
+                    </popUpButton>
+                    <textField verticalHuggingPriority="750" id="226">
+                        <rect key="frame" x="120" y="61" width="65" height="13"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Elem. Type:" id="250">
+                            <font key="font" metaFont="label"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <popUpButton verticalHuggingPriority="750" id="227">
+                        <rect key="frame" x="184" y="61" width="68" height="15"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                        <popUpButtonCell key="cell" type="push" title="Item1" bezelStyle="rounded" alignment="left" controlSize="mini" lineBreakMode="clipping" state="on" borderStyle="borderAndBezel" inset="2" arrowPosition="arrowAtCenter" preferredEdge="maxY" selectedItem="231" id="251">
+                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="miniSystem"/>
+                            <menu key="menu" title="OtherViews" id="228">
+                                <items>
+                                    <menuItem title="Item1" state="on" id="231"/>
+                                </items>
+                            </menu>
+                        </popUpButtonCell>
+                        <connections>
+                            <action selector="setElementType:" target="-2" id="232"/>
+                        </connections>
+                    </popUpButton>
+                    <textField verticalHuggingPriority="750" id="234">
+                        <rect key="frame" x="120" y="39" width="33" height="13"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Units:" id="252">
+                            <font key="font" metaFont="label"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <popUpButton verticalHuggingPriority="750" id="235">
+                        <rect key="frame" x="160" y="38" width="92" height="15"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                        <popUpButtonCell key="cell" type="push" title="Consistent" bezelStyle="rounded" alignment="left" controlSize="mini" lineBreakMode="clipping" state="on" borderStyle="borderAndBezel" inset="2" arrowPosition="arrowAtCenter" preferredEdge="maxY" selectedItem="237" id="253">
+                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="miniSystem"/>
+                            <menu key="menu" title="OtherViews" id="236">
+                                <items>
+                                    <menuItem title="Consistent" state="on" id="237"/>
+                                    <menuItem title="English" id="238"/>
+                                    <menuItem title="SI" id="239"/>
+                                </items>
+                            </menu>
+                        </popUpButtonCell>
+                        <connections>
+                            <action selector="setUnitType:" target="-2" id="241"/>
+                        </connections>
+                    </popUpButton>
+                    <matrix autoresizesSubviews="NO" focusRingType="none" verticalHuggingPriority="750" mode="highlight" allowsEmptySelection="NO" autosizesCells="NO" id="Rnc-GW-qUd">
+                        <rect key="frame" x="50" y="42" width="64" height="128"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        <size key="cellSize" width="32" height="32"/>
+                        <buttonCell key="prototype" type="square" title="Free" bezelStyle="shadowlessSquare" imagePosition="only" alignment="left" borderStyle="border" inset="2" id="07u-KL-9Ua">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <cells>
+                            <column>
+                                <buttonCell type="square" title="free" bezelStyle="shadowlessSquare" imagePosition="only" alignment="left" state="on" borderStyle="border" toolTip="Press to remove all restraint from selected nodes." tag="64" inset="2" id="upd-cQ-Szs" customClass="PictureButtonCell">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <buttonCell type="square" title="Fix X" bezelStyle="shadowlessSquare" imagePosition="only" alignment="left" borderStyle="border" toolTip="Press to restrain selected nodes in the X direction." tag="65" inset="2" id="9df-Q3-7XJ" customClass="PictureButtonCell">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <buttonCell type="square" title="Fix Y" bezelStyle="shadowlessSquare" imagePosition="only" alignment="left" borderStyle="border" toolTip="Press to restrain selected nodes in the Y direction." tag="66" inset="2" id="o14-hD-SB0" customClass="PictureButtonCell">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <buttonCell type="square" title="Fix XY" bezelStyle="shadowlessSquare" imagePosition="only" alignment="left" borderStyle="border" toolTip="Press to restrain selected nodes in both the X and Y directions." tag="67" inset="2" id="qC6-qG-7mq" customClass="PictureButtonCell">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </column>
+                            <column>
+                                <buttonCell type="square" title="Fix θ" bezelStyle="shadowlessSquare" imagePosition="only" alignment="left" borderStyle="border" toolTip="Press to restrain selected nodes from rotation." tag="68" inset="2" id="VsS-Lc-glu" customClass="PictureButtonCell">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <buttonCell type="square" title="Fix Xθ" bezelStyle="shadowlessSquare" imagePosition="only" alignment="left" borderStyle="border" toolTip="Press to restrain selected nodes both rotationally and in the X direction." tag="69" inset="2" id="50T-EO-hYk" customClass="PictureButtonCell">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <buttonCell type="square" title="Fix Yθ" bezelStyle="shadowlessSquare" imagePosition="only" alignment="left" borderStyle="border" toolTip="Press to restrain selected nodes rotationally and in the Y direction." tag="70" inset="2" id="YmN-UC-AU8" customClass="PictureButtonCell">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <buttonCell type="square" title=" Fix XYθ" bezelStyle="shadowlessSquare" imagePosition="only" alignment="left" borderStyle="border" toolTip="Press to completely restrain the selected nodes." tag="71" inset="2" id="RIY-Om-muk" customClass="PictureButtonCell">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </column>
+                        </cells>
+                        <connections>
+                            <action selector="fixityAction:" target="-2" id="vqL-Aw-lQu"/>
+                        </connections>
+                    </matrix>
+                    <slider verticalHuggingPriority="750" id="1jN-m0-Htx">
+                        <rect key="frame" x="122" y="11" width="138" height="20"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <sliderCell key="cell" controlSize="small" continuous="YES" enabled="NO" state="on" alignment="left" maxValue="8" doubleValue="1" tickMarkPosition="below" numberOfTickMarks="9" sliderType="linear" id="eYo-es-95L"/>
+                        <connections>
+                            <action selector="updateAnalysisScale:" target="-2" id="Nab-oR-7kY"/>
+                        </connections>
+                    </slider>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="dDR-Cn-Zi6">
+                        <rect key="frame" x="53" y="14" width="63" height="17"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" title="Disp. Scale:" id="1Rw-lu-Jpz">
+                            <font key="font" metaFont="label"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                </subviews>
+            </view>
+        </window>
+    </objects>
+    <resources>
+        <image name="tool0" width="16" height="16"/>
+        <image name="tool1" width="16" height="16"/>
+        <image name="tool2" width="16" height="16"/>
+    </resources>
+</document>
