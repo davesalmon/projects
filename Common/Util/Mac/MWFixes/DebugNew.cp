@@ -20,10 +20,9 @@
 
 #include "DebugNew.h"
 #include <Carbon/Carbon.h>
-//#include <MacTypes.h>
-//#include <MacMemory.h>
-//#include <LowMem.h>
+
 #include <cstdlib>
+#include <cstdio>
 
 #define NEWMODE_SIMPLE	1			//	call NewPtr/DisposPtr
 #define NEWMODE_MALLOC	2			//	use malloc/free
@@ -112,7 +111,7 @@ unsigned long						gSequentialBlockCount;	// dcs -sequential counter.
 
 #pragma warn_implicitconv off
 const int	kHashTableSize		=	499; // a prime number
-static BlockHeader* 				gBlockHash[kHashTableSize];
+static BlockHeader* 				gBlockHash[kHashTableSize] { 0 };
 static inline int Hash(const void* p)
 {
 	// shift to smallest alloc size and truncate to 32 bits
@@ -467,23 +466,6 @@ static BlockStatus_t GetBlockStatus(char* ptr, Boolean fValidateFree)
 {
 	if (!ptr)
 		return blockPtrNull;
-
-// JWW - This check isn't good under OS X, so it's completely taken out for Carbon
-// It'd probably be better to test the system version Gestalt value around this
-// instead of completely ignoring the test under Carbon, but that would make
-// execution time slower.
-#if !TARGET_API_MAC_CARBON
-	if (gDebugNewFlags & dnCheckBlocksInApplZone)
-	{
-		// Validate that pointer is in the application heap. This
-		// will also trap attempts to free pointers whose values
-		// are inside uninitialized or free blocks, i.e.
-		// 0xF1F1F1F1 or 0xF3F3F3F3.
-		THz applZone = LMGetApplZone();
-		if ((void*)ptr < &applZone->heapData || ptr > applZone->bkLim)
-			return blockPtrOutOfRange;
-	}
-#endif
 	
 	const BlockHeader& h = *GetHeader(ptr);
 	if (!(&h))
@@ -655,65 +637,12 @@ void  DebugNewValidateAllBlocks()
 	}
 }
 
-#include <cstdio>
-//#include <Files.h>
-//#include <TextUtils.h>
-//#include <Processes.h>
-
-//static _CSTD::FILE *FSSpecOpen(FSSpec& fsspec, const char *mode)
-//{	
-//	_CSTD::FILE* file = 0;
-//	short savedVol;
-//	long dirID;
-//	OSErr err;
-//	
-//	err = HGetVol(0, &savedVol, &dirID);
-//	if (err == noErr)
-//	{
-//		err = HSetVol(0, fsspec.vRefNum, fsspec.parID);
-//		if (err == noErr)
-//		{
-//			char name[256];
-//			unsigned char theSize = fsspec.name[0];
-//			BlockMoveData(&fsspec.name[1], name, theSize);
-//			name[theSize] = 0;
-//			
-//			file = _CSTD::fopen(name, mode);
-//		}
-//		HSetVol(0, savedVol, dirID);
-//	}
-//	return file;
-//}
-
-
 long DebugNewReportLeaks(const char* name)
 {
-//	ProcessSerialNumber psn;
-//	OSErr err = GetCurrentProcess(&psn);
-//	if (err != noErr) return 0;
-	
-//	ProcessInfoRec info;
-//	int i;
-	
-//	info.processInfoLength = sizeof(info);
-//	info.processName = 0;
-#if !__LP64__
-//	FSSpec spec;
-//	info.processAppSpec = &spec;
-#else
-//	FSRef ref;
-//	info.processAppRef = &ref;
-#endif
-	
-//	err = GetProcessInformation(&psn, &info);
-//	if (err != noErr) return 0;
-	
 	if (name == 0)
 		name = "/tmp/leaks.log";
 	
-	//ConstStringPtr s = "\pleaks.log";
-	//BlockMoveData(s, spec.name, s[0]+1);
-	_CSTD::FILE* f = fopen(name, name != 0 ? "a" : "w");
+	_CSTD::FILE* f = fopen(name, "w");
 	if (!f) return 0;
 
 	unsigned long count = 0;
