@@ -44,6 +44,10 @@ public:
 	virtual DlFloat64 	GetDouble();
 	virtual DlString	GetString();
 
+	bool eof() const {
+		return _pos == _len;
+	}
+	
 private:
     FrameReader(const FrameReader& f);
     FrameReader& operator=(const FrameReader& f);

@@ -100,7 +100,8 @@
 - (void) refresh
 {
 //	[_table reloadData];
-	[_table setNeedsDisplay: YES];
+	[_table noteNumberOfRowsChanged];
+//	[_table setNeedsDisplay: YES];
 }
 
 //----------------------------------------------------------------------------------------

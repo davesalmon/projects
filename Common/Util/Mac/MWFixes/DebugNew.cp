@@ -23,6 +23,7 @@
 
 #include <cstdlib>
 #include <cstdio>
+#include <mutex>
 
 #define NEWMODE_SIMPLE	1			//	call NewPtr/DisposPtr
 #define NEWMODE_MALLOC	2			//	use malloc/free
@@ -278,6 +279,77 @@ void operator delete[](void* ptr, const _STD::nothrow_t&, const char*, int) thro
 
 #endif	// !DEBUG_NEW_NO_GLOBAL_OPERATORS
 
+// unfortunately, a static mutex gets deleted in the normal course of the applicaition
+//	shutdown. This causes a race condition and infinite recursion and crash.
+//
+// So, create a class that manages a pointer to the mutex.
+// when the static destructor gets called, mark the mutex as invalid and then delete it.
+// Check validity of mutex before using it.
+//
+class mutex_holder
+{
+public:
+	mutex_holder() {
+		m = new std::mutex();
+	}
+	~mutex_holder() {
+		// just leak the mutex. we cannot delete it. withoout race condition.
+		std::mutex*tmp = m;
+		m = nullptr;
+		
+		delete tmp;
+	}
+	
+	bool valid() const {
+		return m != nullptr;
+	}
+	
+	// cast to std::mutex& so we act same
+	operator std::mutex& () {
+		return *m;
+	}
+	
+private:
+	
+	std::mutex* m;
+};
+
+
+static void removeblock(BlockHeader* h, Boolean fDoFree)
+{
+	// find the block in the block list
+	int hash = Hash(h);
+	if (hash < 0 || hash >= kHashTableSize)
+		NSLog(@"hash is %d\n", hash);
+	BlockHeader* curr = gBlockHash[hash];
+	if (hash < 0 || hash >= kHashTableSize)
+		NSLog(@"hash is %d\n", hash);
+	BlockHeader* prev = 0;
+	while (curr)
+	{
+		if (curr == h)
+			break;
+		prev = curr;
+		curr = curr->next;
+	}
+	
+	if (!curr)
+	{
+		gErrorHandler(dbgnewBlockNotInList);
+		return;
+	}
+	else if (fDoFree)
+	{
+		if (prev)
+			prev->next = curr->next;
+		else
+			gBlockHash[hash] = curr->next;
+		curr->next = 0;
+	}
+}
+
+mutex_holder gblock_hash_mutex;
+//static bool already_reported = false;
 
 void DebugNewDoFree(void* ptr, void (*free_func)(void* ptr), bool is_array)
 {
@@ -330,34 +402,19 @@ void DebugNewDoFree(void* ptr, void (*free_func)(void* ptr), bool is_array)
 	const Boolean fDoFree = !(gDebugNewFlags & dnDontFreeBlocks);
 
 #if DEBUG_NEW == DEBUG_NEW_LEAKS
-//		printf("free block %lu is %p\n", h->nAlloc, ptr);
+	
+	// dont count any leaks after
+	if (gblock_hash_mutex.valid())
+	{
+		std::lock_guard<std::mutex> guard(gblock_hash_mutex);
+		removeblock(h, fDoFree);
+	}
+	else
+	{
+		// mutext is gone... we are in shutdown, no lock needed.
+		removeblock(h, fDoFree);
+	}
 
-		// find the block in the block list
-		int hash = Hash(h);
-        if (hash < 0 || hash >= kHashTableSize)
-            NSLog(@"hash is %d\n", hash);
-		BlockHeader* curr = gBlockHash[hash];
-		BlockHeader* prev = 0;
-		while (curr)
-		{
-			if (curr == h)
-				break;
-			prev = curr;
-			curr = curr->next;	
-		}
-		if (!curr)
-		{
-			gErrorHandler(dbgnewBlockNotInList);
-			return;
-		}
-		else if (fDoFree)
-		{
-			if (prev)
-				prev->next = curr->next;
-			else
-				gBlockHash[hash] = curr->next;
-			curr->next = 0;
-		}
 #endif
  		ZapBlock(ptr, h->size + BLOCK_TRAILER_SIZE, ZAP_RELEASED);
    				
@@ -447,14 +504,30 @@ static void* FinishAllocate(char* p, _CSTD::size_t size, const char* file, int l
 	t->tag = BLOCK_SUFFIX;
 	
 #if DEBUG_NEW == DEBUG_NEW_LEAKS
-	++gSequentialBlockCount;
+	if (gblock_hash_mutex.valid())
+	{
+		std::lock_guard<std::mutex> guard(gblock_hash_mutex);
+
+		++gSequentialBlockCount;
+			// new blocks go to front of the block list
+		int hash = Hash(h);
+		h->next = gBlockHash[hash];
+		gBlockHash[hash] = h;
+		h->file = file;
+		h->line = line;
+		h->nAlloc = gSequentialBlockCount;
+	}
+	else
+	{
+		++gSequentialBlockCount;
 		// new blocks go to front of the block list
-	int hash = Hash(h);
-	h->next = gBlockHash[hash];
-	gBlockHash[hash] = h;
-	h->file = file;
-	h->line = line;
-	h->nAlloc = gSequentialBlockCount;
+		int hash = Hash(h);
+		h->next = gBlockHash[hash];
+		gBlockHash[hash] = h;
+		h->file = file;
+		h->line = line;
+		h->nAlloc = gSequentialBlockCount;
+	}
 #endif
 	p += BLOCK_HEADER_SIZE;
 //	printf("block %lu is %p\n", h->nAlloc, p);
@@ -714,22 +787,28 @@ long DebugNewReportLeaks(const char* name)
 		fprintf(f, "Warning: total allocations in block list different from gDebugNewAllocCurr.\n");
 
 	fclose(f);
+	
+	
 	return leakCount;
 }
 
 void DebugNewForgetLeaks()
 {
-	for (int i = 0; i < kHashTableSize; i++)
-	{
-		BlockHeader* curr = gBlockHash[i];
-		while (curr)
+	if (gblock_hash_mutex.valid()) {
+		std::lock_guard<std::mutex> guard(gblock_hash_mutex);
+
+		for (int i = 0; i < kHashTableSize; i++)
 		{
-			if (curr->tag == BLOCK_PREFIX_ALLOC || curr->tag == BLOCK_PREFIX_ALLOC_ARRAY)
+			BlockHeader* curr = gBlockHash[i];
+			while (curr)
 			{
-				curr->file = NULL;
-				curr->line = -1;
+				if (curr->tag == BLOCK_PREFIX_ALLOC || curr->tag == BLOCK_PREFIX_ALLOC_ARRAY)
+				{
+					curr->file = NULL;
+					curr->line = -1;
+				}
+				curr = curr->next;
 			}
-			curr = curr->next;
 		}
 	}
 }

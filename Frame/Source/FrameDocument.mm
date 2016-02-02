@@ -138,6 +138,8 @@ const int kDragPixelLimit = 4;
 	_resultsIsVisible = false;
 	_nodeInspectorIsVisible = false;
 
+	_currUnits = -1;
+	
 	return self;
 }
 
@@ -742,8 +744,11 @@ const int kDragPixelLimit = 4;
 	}
     
     // Create the units popup
-    _currUnits = UnitTable::GetDefaultTable();
+	if (_currUnits == -1)
+   		_currUnits = UnitTable::GetDefaultTable();
 
+	[self setUnits: [NSNumber numberWithInt: _currUnits]];
+	
 	//	now hook everything up
 
 	_listener = NEW FrameListener(self);
@@ -2606,6 +2611,9 @@ NSString* kDocType = @"dcs.plane-frame-data";
             writer.PutInt(_currUnits);
 
 			_structure->Save(writer);
+			
+			writer.PutInt(_currUnits);
+			
 			return writer.GetBytes();
 		} 
 		catch(DlException& ex)
@@ -2652,9 +2660,14 @@ NSString* kDocType = @"dcs.plane-frame-data";
 			_graphics = graphics::createGraphics(reader);
 			_grid = [[FrameGrid createFromFile: reader] retain];
             _currUnits = reader.GetInt();
+			
 			_structure = NEW FrameStructure([NSLocalizedString(@"default", nil) UTF8String]);
 			_structure->Load(reader);
 			_structure->SetActiveLoadCase(act);
+			
+			if (!reader.eof()) {
+				_currUnits = reader.GetInt();
+			}
 			
 //			[self setLoadCase: currLC];
 			return YES;

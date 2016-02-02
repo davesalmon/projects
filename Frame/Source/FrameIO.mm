@@ -59,17 +59,17 @@ inline DlFloat64 intToFloat64(uint64_t f)
 inline DlUInt32 
 FrameReader::GetOne() 
 {
-	if (_len == 0)
+	if (_len == _pos)
 		throw DlException("File too short");
-	_len -= 1;
+//	_len -= 1;
 	return _bytes[_pos++];
 }
 
 inline void
 FrameReader::GetBuffer(void* buf, DlUInt32 len) {
-	if (_len < len)
+	if ((_len - _pos) < len)
 		throw DlException("File too short");
-	_len -= len;
+//	_len -= len;
 	memcpy(buf, _bytes + _pos, len);
 	_pos += len;
 }
