@@ -43,4 +43,7 @@
 + (DlUInt32) lateralLoadColor;
 + (DlUInt32) axialLoadColor;
 
+// update from prefs.
++ (void) update;
+
 @end

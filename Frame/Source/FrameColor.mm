@@ -207,4 +207,22 @@ constexpr DlUInt32 kTealColor { graphics::makeColor(0x22, 0x77, 0x55) }; //0x664
 	return kDefaultColors._axialLoadColor;
 }
 
+// update from prefs.
++ (void) update
+{
+	NSUserDefaults* defs = [NSUserDefaults standardUserDefaults];
+	
+	kDefaultColors._axialColor				= [defs integerForKey: @"AxialColor"];
+	kDefaultColors._shearColor				= [defs integerForKey: @"ShearColor"];
+	kDefaultColors._momentColor				= [defs integerForKey: @"MomentColor"];
+	kDefaultColors._displacementColor 		= [defs integerForKey: @"AxialColor"];
+	kDefaultColors._elementColor			= [defs integerForKey: @"ElementColor"];
+	kDefaultColors._elementSelectionColor	= [defs integerForKey: @"ElementSelectedColor"];
+	kDefaultColors._nodeColor				= [defs integerForKey: @"NodeColor"];
+	kDefaultColors._nodeSelectionColor		= [defs integerForKey: @"NodeSelectedColor"];
+	kDefaultColors._lateralLoadColor		= [defs integerForKey: @"LateralLoadColor"];
+	kDefaultColors._axialLoadColor			= [defs integerForKey: @"AxialLoadColor"];
+	kDefaultColors._activeColor				= [defs integerForKey: @"ActiveLoadPropColor"];	
+}
+
 @end

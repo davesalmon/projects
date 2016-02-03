@@ -41,6 +41,7 @@
 #import "WorkspaceData.h"
 #import "LoadCaseCombinationController.h"
 #import "LoadCaseController.h"
+#import "FrameAppController.h"
 
 #include "graphics.h"
 #include "FrameStructure.h"
@@ -431,27 +432,33 @@ const int kDragPixelLimit = 4;
 
 	if (currSize.x < p.x || currSize.y < p.y)
 	{
+#if _DEBUG
 		printWorldRect("original world is", _graphics->GetWorldRect());
 		printNSSize("view size is", [_frameView frame].size);
+#endif
 		
 		WorldPoint topRight = _graphics->ToWorld(p);
-
-		DlFloat64 newWid = topRight.x();
-		DlFloat64 newHgt = topRight.y();
-
+		
+		
 		WorldRect w { _graphics->GetWorldRect() };
+		WorldPoint botLeft = w.bottomLeft();
+		
+		DlFloat64 newWid = topRight.x() - botLeft.x();
+		DlFloat64 newHgt = topRight.y() - botLeft.y();
 
 		DlFloat64 exWid = w.right() - w.left();
 		DlFloat64 exHgt = w.top() - w.bottom();
 
 		if (newWid > exWid)
-			w.right() = w.left() + topRight.x();// - 0.1;
+			w.right() = w.left() + newWid;// - 0.1;
 
 		if (newHgt > exHgt)
-			w.top() = w.bottom() + topRight.y();// - 0.1;
+			w.top() = w.bottom() + newHgt;// - 0.1;
 
 		_graphics->SetWorldRect(w);
+#if _DEBUG
 		printWorldRect("modified world is", _graphics->GetWorldRect());
+#endif
 	}
 }
 
@@ -707,7 +714,10 @@ const int kDragPixelLimit = 4;
 - (void)windowControllerDidLoadNib:(NSWindowController *) aController
 {
     [super windowControllerDidLoadNib:aController];
-    
+	
+	// make sure the defaults exist.
+	[FrameAppController ensureUserDefaults];
+	
     [aController setShouldCloseDocument: YES];
     
     // Add any code here that need to be executed once the windowController
@@ -715,13 +725,18 @@ const int kDragPixelLimit = 4;
 
 	// Create graphics and empty structure if necessary
 	if (!_graphics) {
-		_graphics = graphics::createGraphics(20.0, WorldRect(0, 0, 40, 40));
+		FrameAppController* app = [FrameAppController instance];
+		_graphics = graphics::createGraphics([app getDefaultScale], [app getDefaultWorld]);
 	}
+	
 	if (!_structure) {
 		_structure = NEW FrameStructure([NSLocalizedString(@"default", nil) UTF8String]);
 	}
-	if (!_grid)
-		_grid = [[FrameGrid createWithSpacing: 1 on: YES] retain];
+	
+	if (!_grid) {
+		FrameAppController* app = [FrameAppController instance];
+		_grid = [[app getDefaultGrid] retain];
+	}
 	
 	// Create the element type popup
 	[_elementTypePopup removeAllItems];
@@ -745,7 +760,8 @@ const int kDragPixelLimit = 4;
     
     // Create the units popup
 	if (_currUnits == -1)
-   		_currUnits = UnitTable::GetDefaultTable();
+		_currUnits = [[FrameAppController instance] getDefaultUnits];
+ //  		_currUnits = UnitTable::GetDefaultTable();
 
 	[self setUnits: [NSNumber numberWithInt: _currUnits]];
 	

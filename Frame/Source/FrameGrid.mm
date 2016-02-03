@@ -47,6 +47,10 @@ const DlUInt32 kGridDarkColor = 0xffbbbbbb;
 - (id) initWithSpacing:(DlFloat32)spc on:(BOOL)on
 {
 //	[super init];
+	
+	if (spc < 0)
+		spc = 1;
+	
 	_xSpacing = spc;
 	_ySpacing = spc;
 	_gridSnap = on;

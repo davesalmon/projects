@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AxialColor</key>			<integer>0xff880000</integer>
+	<key>ShearColor</key>			<integer>0xff008800</integer>
+	<key>MomentColor</key>			<integer>0xff0000aa</integer>
+	<key>DisplacementColor</key>	<integer>0x88888888</integer>
+	<key>ElementColor</key>			<integer>0xff000000</integer>
+	<key>ElementSelectedColor</key>	<integer>0xff93cdff</integer>
+	<key>NodeColor</key>			<integer>0xffffffff</integer>
+	<key>NodeSelectedColor</key>	<integer>0xff93cdff</integer>
+	<key>LateralLoadColor</key>		<integer>0xff888888</integer>
+	<key>AxialLoadColor</key>		<integer>0xffff8888</integer>
+	<key>ActiveLoadPropColor</key>	<integer>0xff0063cd</integer>
+	<key>Units</key>
+	<integer>0</integer>
+	<key>GridSpacing</key>
+	<integer>1</integer>
+	<key>GridSnap</key>
+	<true/>
+	<key>WorldLeft</key>
+	<integer>-1</integer>
+	<key>WorldBottom</key>
+	<integer>-1</integer>
+	<key>WorldRight</key>
+	<integer>79</integer>
+	<key>WorldTop</key>
+	<integer>39</integer>
+	<key>Scale</key>
+	<integer>40</integer>
+</dict>
+</plist>

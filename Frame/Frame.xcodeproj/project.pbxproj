@@ -27,6 +27,7 @@
 		0B0951A21AC74A0700B04D97 /* InspectorControllerBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0951A11AC74A0700B04D97 /* InspectorControllerBase.m */; };
 		0B0B2FCF0C6FE90A00E67A14 /* UnitsFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0B2FCE0C6FE90A00E67A14 /* UnitsFormatter.m */; };
 		0B121B000ABC1D3800AE7F29 /* ResultTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B121AFF0ABC1D3800AE7F29 /* ResultTableController.m */; };
+		0B18D41C1C626E3400DF124F /* setup.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0B18D41B1C626E3400DF124F /* setup.plist */; };
 		0B21F0950D29CE3500ACA965 /* ElementInspectorController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0B21F0940D29CE3500ACA965 /* ElementInspectorController.mm */; };
 		0B4F36D918E339830032669F /* Frame-Help in Resources */ = {isa = PBXBuildFile; fileRef = 0B4F36D818E339830032669F /* Frame-Help */; };
 		0B54999E1B0392270004A357 /* LoadCaseController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0B54999C1B0392270004A357 /* LoadCaseController.mm */; };
@@ -103,6 +104,7 @@
 		0B10079F18CFC098002B44D1 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		0B121AFE0ABC1D3800AE7F29 /* ResultTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultTableController.h; sourceTree = "<group>"; };
 		0B121AFF0ABC1D3800AE7F29 /* ResultTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultTableController.m; sourceTree = "<group>"; };
+		0B18D41B1C626E3400DF124F /* setup.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = setup.plist; sourceTree = "<group>"; };
 		0B21F0930D29CE3500ACA965 /* ElementInspectorController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ElementInspectorController.h; sourceTree = "<group>"; };
 		0B21F0940D29CE3500ACA965 /* ElementInspectorController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ElementInspectorController.mm; sourceTree = "<group>"; };
 		0B21F3690D2C781A00ACA965 /* FramePanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FramePanel.h; sourceTree = "<group>"; };
@@ -298,6 +300,7 @@
 		0BBF5E0D0ABABD2300470E20 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				0B18D41B1C626E3400DF124F /* setup.plist */,
 				0B06C6731AD41E5F00F69211 /* InfoPlist.strings */,
 				0B06C6751AD41E5F00F69211 /* Localizable.strings */,
 				0B06C6701AD41E5100F69211 /* Credits.rtf */,
@@ -468,6 +471,7 @@
 				0BCE6197186DEAF400EACE10 /* FrameIcon.png in Resources */,
 				0B5499A01B0393AE0004A357 /* LoadCaseController.xib in Resources */,
 				0BCE6199186E2BBC00EACE10 /* FrameAppIcon.png in Resources */,
+				0B18D41C1C626E3400DF124F /* setup.plist in Resources */,
 				0BBF5E300ABABD2300470E20 /* tool0.tif in Resources */,
 				0B06C66A1AD41CFB00F69211 /* ResultsWindow.xib in Resources */,
 				0B06C6781AD41E5F00F69211 /* Localizable.strings in Resources */,

@@ -23,6 +23,8 @@
 -*/
 
 #import <Cocoa/Cocoa.h>
+#import "FrameGrid.h"
+#include "WorldRect.h"
 
 @interface FrameAppController : NSObject <NSApplicationDelegate>
 {
@@ -30,6 +32,14 @@
 
 + (FrameAppController*) instance;
 
++ (void) ensureUserDefaults;
+
 - (IBAction)handlePreferences:(id)sender;
 - (IBAction)showAboutBox:(id)sender;
+
+- (WorldRect) getDefaultWorld;
+- (double) getDefaultScale;
+- (FrameGrid*) getDefaultGrid;
+- (int) getDefaultUnits;
+
 @end

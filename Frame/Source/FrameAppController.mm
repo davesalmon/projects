@@ -24,6 +24,10 @@
 
 #import "FrameAppController.h"
 #import "FrameClipboard.h"
+#import "WorkspaceData.h"
+#import "FrameGrid.h"
+#import "FrameColor.h"
+#import "FrameDocument.h"
 
 @implementation FrameAppController
 
@@ -69,6 +73,34 @@
 	[NSApp orderFrontStandardAboutPanel:sender];
 }
 
+NSString* kDefaultWorldLeft = @"WorldLeft";
+NSString* kDefaultWorldBottom = @"WorldBottom";
+NSString* kDefaultWorldRight = @"WorldRight";
+NSString* kDefaultWorldTop = @"WorldTop";
+
+NSString* kDefaultGridSnap = @"GridSnap";
+NSString* kDefaultGridSpacing = @"GridSpacing";
+
+NSString* kDefaultScale = @"Scale";
+
+NSString* kDefaultUnits = @"Units";
+
++ (void) ensureUserDefaults
+{
+	// if there are no keys in the app, then add them
+	if ([[NSUserDefaults standardUserDefaults] objectForKey: kDefaultWorldLeft] == nil) {
+	
+		NSString *setupPath = [[NSBundle mainBundle] pathForResource:@"setup" ofType:@"plist"];
+		NSDictionary *dict = [[NSDictionary alloc] initWithContentsOfFile: setupPath];
+		
+		// just copy in all the keys in setup
+		for (id key in dict) {
+			[[NSUserDefaults standardUserDefaults] setObject: [dict objectForKey: key]
+													  forKey: key];
+		}
+	}
+}
+
 //----------------------------------------------------------------------------------------
 //  applicationDidFinishLaunching:
 //
@@ -80,10 +112,64 @@
 //----------------------------------------------------------------------------------------
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
+	[FrameColor update];
+	
+	for (FrameDocument* doc in [[NSDocumentController sharedDocumentController] documents]) {
+		[doc refresh];
+	}
+	
 #if _DEBUG
 //	printf("forget leaks\n");
 	DebugNewForgetLeaks();
 #endif
+}
+
+- (WorldRect) getDefaultWorld
+{
+	NSUserDefaults* defs = [NSUserDefaults standardUserDefaults];
+	WorldRect wr {
+		[defs doubleForKey: kDefaultWorldLeft],
+		[defs doubleForKey: kDefaultWorldBottom],
+		[defs doubleForKey: kDefaultWorldRight],
+		[defs doubleForKey: kDefaultWorldTop] };
+	
+	if (wr.left() == wr.right()) {
+		wr.left() = -1;
+		wr.right() = 39;
+	} else if (wr.left() > wr.right()) {
+		double t = wr.left();
+		wr.left() = wr.right();
+		wr.right() = t;
+	}
+	
+	if (wr.bottom() == wr.top()) {
+		wr.bottom() = -1;
+		wr.top() = 39;
+	} else if (wr.bottom() > wr.top()) {
+		double t = wr.bottom();
+		wr.bottom() = wr.top();
+		wr.top() = t;
+	}
+
+	return wr;
+}
+
+- (double) getDefaultScale
+{
+	double s = [[NSUserDefaults standardUserDefaults] doubleForKey: kDefaultScale];
+	return s > 0 ? s : 40.0;
+}
+
+- (FrameGrid*) getDefaultGrid
+{
+	NSUserDefaults* defs = [NSUserDefaults standardUserDefaults];
+	return [FrameGrid createWithSpacing: [defs doubleForKey: kDefaultGridSpacing]
+									 on: [defs boolForKey: kDefaultGridSnap]];
+}
+
+- (int) getDefaultUnits
+{
+	return [[NSUserDefaults standardUserDefaults] integerForKey: kDefaultUnits];
 }
 
 //----------------------------------------------------------------------------------------
