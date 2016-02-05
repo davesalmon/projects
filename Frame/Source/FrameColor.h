@@ -43,6 +43,8 @@
 + (DlUInt32) lateralLoadColor;
 + (DlUInt32) axialLoadColor;
 
++ (void) setColor: (NSColor*) color forKey: (NSString*) key updateDefaults: (bool) upd;
+
 // update from prefs.
 + (void) update;
 

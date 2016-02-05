@@ -29,6 +29,8 @@
 		0B121B000ABC1D3800AE7F29 /* ResultTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B121AFF0ABC1D3800AE7F29 /* ResultTableController.m */; };
 		0B18D41C1C626E3400DF124F /* setup.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0B18D41B1C626E3400DF124F /* setup.plist */; };
 		0B21F0950D29CE3500ACA965 /* ElementInspectorController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0B21F0940D29CE3500ACA965 /* ElementInspectorController.mm */; };
+		0B28FFF81C63F2AD00D9C6A1 /* PreferencesPanelController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B28FFF61C63F2AD00D9C6A1 /* PreferencesPanelController.m */; };
+		0B28FFF91C63F2AD00D9C6A1 /* PreferencesPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B28FFF71C63F2AD00D9C6A1 /* PreferencesPanel.xib */; };
 		0B4F36D918E339830032669F /* Frame-Help in Resources */ = {isa = PBXBuildFile; fileRef = 0B4F36D818E339830032669F /* Frame-Help */; };
 		0B54999E1B0392270004A357 /* LoadCaseController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0B54999C1B0392270004A357 /* LoadCaseController.mm */; };
 		0B5499A01B0393AE0004A357 /* LoadCaseController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B5499A21B0393AE0004A357 /* LoadCaseController.xib */; };
@@ -108,6 +110,9 @@
 		0B21F0930D29CE3500ACA965 /* ElementInspectorController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ElementInspectorController.h; sourceTree = "<group>"; };
 		0B21F0940D29CE3500ACA965 /* ElementInspectorController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ElementInspectorController.mm; sourceTree = "<group>"; };
 		0B21F3690D2C781A00ACA965 /* FramePanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FramePanel.h; sourceTree = "<group>"; };
+		0B28FFF51C63F2AD00D9C6A1 /* PreferencesPanelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesPanelController.h; sourceTree = "<group>"; };
+		0B28FFF61C63F2AD00D9C6A1 /* PreferencesPanelController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesPanelController.m; sourceTree = "<group>"; };
+		0B28FFF71C63F2AD00D9C6A1 /* PreferencesPanel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreferencesPanel.xib; sourceTree = "<group>"; };
 		0B3E6A2F18E3658F00A677D7 /* libUtil.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libUtil.a; path = "../../Library/Developer/Xcode/DerivedData/Projects-ahuvcfmhjlbthcceyfktkcbagiwq/Build/Products/Debug/libUtil.a"; sourceTree = "<group>"; };
 		0B4F36D818E339830032669F /* Frame-Help */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Frame-Help"; sourceTree = "<group>"; };
 		0B54999B1B0392270004A357 /* LoadCaseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadCaseController.h; sourceTree = "<group>"; };
@@ -286,6 +291,8 @@
 				0B05E0091ADEA89300992AED /* LoadCaseCombinationController.mm */,
 				0B54999B1B0392270004A357 /* LoadCaseController.h */,
 				0B54999C1B0392270004A357 /* LoadCaseController.mm */,
+				0B28FFF51C63F2AD00D9C6A1 /* PreferencesPanelController.h */,
+				0B28FFF61C63F2AD00D9C6A1 /* PreferencesPanelController.m */,
 				0BBF5DDA0ABABC1000470E20 /* main.m */,
 				0BBF5DE50ABABC1000470E20 /* quartzgraphics.h */,
 				0BBF5DE60ABABC1000470E20 /* quartzGraphics.mm */,
@@ -313,6 +320,7 @@
 				0B06C6601AD41CD800F69211 /* MainMenu.xib */,
 				0B06C6631AD41CE000F69211 /* NodeInspector.xib */,
 				0B06C6661AD41CE900F69211 /* NodeLoadPanel.xib */,
+				0B28FFF71C63F2AD00D9C6A1 /* PreferencesPanel.xib */,
 				0B06C6691AD41CF300F69211 /* PropertyPanel.xib */,
 				0B06C66C1AD41CFB00F69211 /* ResultsWindow.xib */,
 				0B06C66F1AD41D0200F69211 /* Workspace.xib */,
@@ -469,6 +477,7 @@
 				0B06C6581AD41CC800F69211 /* ElemLoadPanel.xib in Resources */,
 				0B06C66D1AD41D0200F69211 /* Workspace.xib in Resources */,
 				0BCE6197186DEAF400EACE10 /* FrameIcon.png in Resources */,
+				0B28FFF91C63F2AD00D9C6A1 /* PreferencesPanel.xib in Resources */,
 				0B5499A01B0393AE0004A357 /* LoadCaseController.xib in Resources */,
 				0BCE6199186E2BBC00EACE10 /* FrameAppIcon.png in Resources */,
 				0B18D41C1C626E3400DF124F /* setup.plist in Resources */,
@@ -514,6 +523,7 @@
 				0BD8AA491AC97AC20066F010 /* InspectorTree.m in Sources */,
 				0BBF5DF90ABABC1000470E20 /* FrameGrid.mm in Sources */,
 				0BBF5DFA0ABABC1000470E20 /* FrameIO.mm in Sources */,
+				0B28FFF81C63F2AD00D9C6A1 /* PreferencesPanelController.m in Sources */,
 				0BBF5DFB0ABABC1000470E20 /* FrameListener.mm in Sources */,
 				0BBF5DFC0ABABC1000470E20 /* FrameView.mm in Sources */,
 				0BBF5DFE0ABABC1000470E20 /* graphics.cpp in Sources */,

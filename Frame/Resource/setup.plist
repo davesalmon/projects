@@ -19,6 +19,8 @@
 	<integer>1</integer>
 	<key>GridSnap</key>
 	<true/>
+	<key>GridVisible</key>
+	<true/>
 	<key>WorldLeft</key>
 	<integer>-1</integer>
 	<key>WorldBottom</key>

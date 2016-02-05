@@ -28,6 +28,7 @@
 #import "FrameGrid.h"
 #import "FrameColor.h"
 #import "FrameDocument.h"
+#import "PreferencesPanelController.h"
 
 @implementation FrameAppController
 
@@ -56,6 +57,8 @@
 {
 	printf("preferences\n");
 	// no preferences at this time.
+	if ([PreferencesPanelController runDialog])
+		;
 }
 
 //----------------------------------------------------------------------------------------
@@ -112,7 +115,7 @@ NSString* kDefaultUnits = @"Units";
 //----------------------------------------------------------------------------------------
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-	[FrameColor update];
+//	[FrameColor update];
 	
 	for (FrameDocument* doc in [[NSDocumentController sharedDocumentController] documents]) {
 		[doc refresh];

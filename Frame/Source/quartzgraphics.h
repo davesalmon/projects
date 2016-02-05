@@ -164,6 +164,24 @@ colorFromNSColor(const NSColor* color) {
 }
 
 //----------------------------------------------------------------------------------------
+//  makeNSColor                                                                    static
+//
+//      make an NSColor.
+//
+//  DlUInt32 color     -> packed color.
+//
+//  returns NSColor*   <- mac color.
+//----------------------------------------------------------------------------------------
+inline NSColor*
+makeNSColor(DlUInt32 color)
+{
+	return [NSColor colorWithCalibratedRed : graphics::getRed(color)/255.0
+								  green: graphics::getGreen(color)/255.0
+								   blue: graphics::getBlue(color)/255.0
+								  alpha: graphics::getAlpha(color)/255.0 ];
+}
+
+//----------------------------------------------------------------------------------------
 //  printNSRect                                                                    inline
 //
 //      print rect.

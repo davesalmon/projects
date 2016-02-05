@@ -30,25 +30,6 @@
 #include "graphics.h"
 
 //----------------------------------------------------------------------------------------
-//  makeNSColor                                                                    static
-//
-//      make an NSColor.
-//
-//  DlUInt32 color     -> packed color.
-//
-//  returns NSColor*   <- mac color.
-//----------------------------------------------------------------------------------------
-static NSColor*
-makeNSColor(DlUInt32 color)
-{
-	
-	return [NSColor colorWithDeviceRed : graphics::getRed(color)/255.0 
-							green: graphics::getGreen(color)/255.0 
-							blue: graphics::getBlue(color)/255.0 
-							alpha: graphics::getAlpha(color)/255.0 ];
-}
-
-//----------------------------------------------------------------------------------------
 //  graphics::DrawCurve
 //
 //      draw a curve connecting the specified points.

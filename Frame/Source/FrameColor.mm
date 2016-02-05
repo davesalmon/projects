@@ -24,39 +24,84 @@
 
 #import "FrameColor.h"
 #import "FrameDocument.h"
+#import "FrameAppController.h"
 
 #include "FrameStructure.h"
 #include "graphics.h"
 
-typedef struct PreferenceColors {
-	DlUInt32			_axialColor;
-	DlUInt32			_shearColor;
-	DlUInt32			_momentColor;
-	DlUInt32			_displacementColor;
-	DlUInt32			_elementColor;
-	DlUInt32			_elementSelectionColor;
-	DlUInt32			_nodeColor;
-	DlUInt32			_nodeSelectionColor;
-	DlUInt32			_lateralLoadColor;
-	DlUInt32			_axialLoadColor;
-	DlUInt32			_activeColor;
-}	PreferenceColors;
+//typedef struct PreferenceColors {
+//	DlUInt32			_axialColor;
+//	DlUInt32			_shearColor;
+//	DlUInt32			_momentColor;
+//	DlUInt32			_displacementColor;
+//	DlUInt32			_elementColor;
+//	DlUInt32			_elementSelectionColor;
+//	DlUInt32			_nodeColor;
+//	DlUInt32			_nodeSelectionColor;
+//	DlUInt32			_lateralLoadColor;
+//	DlUInt32			_axialLoadColor;
+//	DlUInt32			_activeColor;
+//}	PreferenceColors;
 
-static PreferenceColors kDefaultColors = {
-	graphics::makeColor(0x88, 0x00, 0x00)	//0xff880000	//	axial
-	, graphics::makeColor(0x00, 0x88, 0x00)	//0xff008800	// shear
-	, graphics::makeColor(0x00, 0x00, 0xaa)	//0xff0000aa	// moment
-	, graphics::makeColor(0x88, 0x88, 0x88, 0x88)	//0x88888888	// displacement
-	, graphics::makeColor(0x00, 0x00, 0x00)	// element
-	, graphics::makeColor(0x77, 0xaa, 0x77)	// 0xff77aa77	// selected elem
-	, graphics::makeColor(0xff, 0xff, 0xff)	// 0xffffffff	// node
-	, graphics::makeColor(0xff, 0x88, 0x88)	// 0xffff8888	// selected node
-	, graphics::makeColor(0x88, 0x88, 0x88) // 0xff888888	// lateral load
-	, graphics::makeColor(0xff, 0x88, 0x88)	//0xffff8888	// axial load
+//static PreferenceColors kDefaultColors = {
+//	  graphics::makeColor(0x88, 0x00, 0x00)	//0xff880000	//	axial
+//	, graphics::makeColor(0x00, 0x88, 0x00)	//0xff008800	// shear
+//	, graphics::makeColor(0x00, 0x00, 0xaa)	//0xff0000aa	// moment
+//	, graphics::makeColor(0x88, 0x88, 0x88, 0x88)	//0x88888888	// displacement
+//	, graphics::makeColor(0x00, 0x00, 0x00)	// element
+//	, graphics::makeColor(0x77, 0xaa, 0x77)	// 0xff77aa77	// selected elem
+//	, graphics::makeColor(0xff, 0xff, 0xff)	// 0xffffffff	// node
+//	, graphics::makeColor(0xff, 0x88, 0x88)	// 0xffff8888	// selected node
+//	, graphics::makeColor(0x88, 0x88, 0x88) // 0xff888888	// lateral load
+//	, graphics::makeColor(0xff, 0x88, 0x88)	//0xffff8888	// axial load
+//};
+
+//constexpr DlUInt32 kYellowColor { graphics::makeColor(0xff, 0xff, 0x00) };
+//constexpr DlUInt32 kTealColor { graphics::makeColor(0x22, 0x77, 0x55) }; //0x6644
+
+
+const DlUInt32 kAxialColor				=  0;
+const DlUInt32 kShearColor				=  1;
+const DlUInt32 kMomentColor				=  2;
+const DlUInt32 kDisplacementColor		=  3;
+const DlUInt32 kElementColor			=  4;
+const DlUInt32 kElementSelectedColor	=  5;
+const DlUInt32 kNodeColor				=  6;
+const DlUInt32 kNodeSelectedColor		=  7;
+const DlUInt32 kLateralLoadColor		=  8;
+const DlUInt32 kAxialLoadColor			=  9;
+const DlUInt32 kActiveLoadPropColor		= 10;
+const DlUInt32 kNumColors				= 11;
+
+
+static DlUInt32 kPreferenceColors[kNumColors];
+
+NSString* const kColorIdentifiers[] = {
+	@"AxialColor",
+	@"ShearColor",
+	@"MomentColor",
+	@"DisplacementColor",
+	@"ElementColor",
+	@"ElementSelectedColor",
+	@"NodeColor",
+	@"NodeSelectedColor",
+	@"LateralLoadColor",
+	@"AxialLoadColor",
+	@"ActiveLoadPropColor"
 };
 
-constexpr DlUInt32 kYellowColor { graphics::makeColor(0xff, 0xff, 0x00) };
-constexpr DlUInt32 kTealColor { graphics::makeColor(0x22, 0x77, 0x55) }; //0x6644
+static
+DlInt32 findColorIndex(NSString* name)
+{
+	for (auto i = 0; i < DlArrayElements(kColorIdentifiers); i++) {
+		const NSString* colorName = kColorIdentifiers[i];
+		if ([colorName isEqualToString: name]) {
+			return i;
+		}
+	}
+	
+	return -1;
+}
 
 @implementation FrameColor
 
@@ -69,11 +114,8 @@ constexpr DlUInt32 kTealColor { graphics::makeColor(0x22, 0x77, 0x55) }; //0x664
 //----------------------------------------------------------------------------------------
 + (void) initialize
 {
-	DlUInt32 theColor = colorFromNSColor([NSColor selectedControlColor]);
-	kDefaultColors._nodeSelectionColor = theColor;
-	kDefaultColors._elementSelectionColor = theColor;
-	
-	kDefaultColors._activeColor = colorFromNSColor([NSColor alternateSelectedControlColor]);
+	[FrameAppController ensureUserDefaults];
+	[self update];
 }
 
 //----------------------------------------------------------------------------------------
@@ -90,7 +132,7 @@ constexpr DlUInt32 kTealColor { graphics::makeColor(0x22, 0x77, 0x55) }; //0x664
 {
 	Property p = [doc hilitedProperty];
 	if (!p.Empty() && e.GetProperty() == p) {
-		return kDefaultColors._activeColor;
+		return kPreferenceColors[kActiveLoadPropColor];
 	}
 	
 	FrameStructure* s = [doc structure];
@@ -98,15 +140,15 @@ constexpr DlUInt32 kTealColor { graphics::makeColor(0x22, 0x77, 0x55) }; //0x664
 	if (s->ActiveLoadCaseIsEditable()) {
 		ElementLoad l = [doc hilitedElementLoad];
 		if (!l.Empty() && l == e.GetLoad(s->GetActiveLoadCase())) {
-			return kDefaultColors._activeColor;
+			return kPreferenceColors[kActiveLoadPropColor];
 		}
 	}
 	
 	if ([doc elementSelection]->Contains(e)) {
-		return kDefaultColors._elementSelectionColor;
+		return kPreferenceColors[kElementSelectedColor];
 	}
 	
-	return kDefaultColors._elementColor;
+	return kPreferenceColors[kElementColor];
 }
 
 //----------------------------------------------------------------------------------------
@@ -125,14 +167,14 @@ constexpr DlUInt32 kTealColor { graphics::makeColor(0x22, 0x77, 0x55) }; //0x664
 	if (s->ActiveLoadCaseIsEditable()) {
 		NodeLoad l = [doc hilitedNodeLoad];
 		if (!l.Empty() && n.GetLoad(s->GetActiveLoadCase()) == l) {
-			return kDefaultColors._activeColor;
+			return kPreferenceColors[kActiveLoadPropColor];
 		}
 	}
 	
 	if ([doc nodeSelection]->Contains(n))
-		return kDefaultColors._nodeSelectionColor;
+		return kPreferenceColors[kNodeSelectedColor];
 	
-	return kDefaultColors._nodeColor;
+	return kPreferenceColors[kNodeColor];;
 }
 
 //----------------------------------------------------------------------------------------
@@ -144,7 +186,7 @@ constexpr DlUInt32 kTealColor { graphics::makeColor(0x22, 0x77, 0x55) }; //0x664
 //----------------------------------------------------------------------------------------
 + (DlUInt32) axialColor
 {
-	return kDefaultColors._axialColor;
+	return kPreferenceColors[kAxialColor];
 }
 
 //----------------------------------------------------------------------------------------
@@ -156,7 +198,7 @@ constexpr DlUInt32 kTealColor { graphics::makeColor(0x22, 0x77, 0x55) }; //0x664
 //----------------------------------------------------------------------------------------
 + (DlUInt32) momentColor
 {
-	return kDefaultColors._momentColor;
+	return kPreferenceColors[kMomentColor];
 }
 
 //----------------------------------------------------------------------------------------
@@ -168,7 +210,7 @@ constexpr DlUInt32 kTealColor { graphics::makeColor(0x22, 0x77, 0x55) }; //0x664
 //----------------------------------------------------------------------------------------
 + (DlUInt32) shearColor
 {
-	return kDefaultColors._shearColor;
+	return kPreferenceColors[kShearColor];
 }
 
 //----------------------------------------------------------------------------------------
@@ -180,7 +222,7 @@ constexpr DlUInt32 kTealColor { graphics::makeColor(0x22, 0x77, 0x55) }; //0x664
 //----------------------------------------------------------------------------------------
 + (DlUInt32) displacementColor
 {
-	return kDefaultColors._displacementColor;
+	return kPreferenceColors[kDisplacementColor];
 }
 
 //----------------------------------------------------------------------------------------
@@ -192,7 +234,7 @@ constexpr DlUInt32 kTealColor { graphics::makeColor(0x22, 0x77, 0x55) }; //0x664
 //----------------------------------------------------------------------------------------
 + (DlUInt32) lateralLoadColor
 {
-	return kDefaultColors._lateralLoadColor;
+	return kPreferenceColors[kLateralLoadColor];
 }
 
 //----------------------------------------------------------------------------------------
@@ -204,25 +246,36 @@ constexpr DlUInt32 kTealColor { graphics::makeColor(0x22, 0x77, 0x55) }; //0x664
 //----------------------------------------------------------------------------------------
 + (DlUInt32) axialLoadColor
 {
-	return kDefaultColors._axialLoadColor;
+	return kPreferenceColors[kAxialLoadColor];
 }
 
-// update from prefs.
++ (void) setColor: (NSColor*) color forKey: (NSString*) key updateDefaults: (bool) upd
+{
+	DlInt32 whichColor = findColorIndex(key);
+	if (whichColor >= 0 && whichColor < kNumColors) {
+		kPreferenceColors[whichColor] = colorFromNSColor(color);
+		if (upd) {
+			// update defaults
+			[[NSUserDefaults standardUserDefaults] integerForKey: key];
+		}
+		
+		for (FrameDocument* doc in [[NSDocumentController sharedDocumentController] documents]) {
+			[doc refresh];
+		}
+		
+	} else {
+		NSLog(@"[FrameColor setColor ...] called with invalid key %@", key);
+	}
+}
+
 + (void) update
 {
 	NSUserDefaults* defs = [NSUserDefaults standardUserDefaults];
 	
-	kDefaultColors._axialColor				= [defs integerForKey: @"AxialColor"];
-	kDefaultColors._shearColor				= [defs integerForKey: @"ShearColor"];
-	kDefaultColors._momentColor				= [defs integerForKey: @"MomentColor"];
-	kDefaultColors._displacementColor 		= [defs integerForKey: @"AxialColor"];
-	kDefaultColors._elementColor			= [defs integerForKey: @"ElementColor"];
-	kDefaultColors._elementSelectionColor	= [defs integerForKey: @"ElementSelectedColor"];
-	kDefaultColors._nodeColor				= [defs integerForKey: @"NodeColor"];
-	kDefaultColors._nodeSelectionColor		= [defs integerForKey: @"NodeSelectedColor"];
-	kDefaultColors._lateralLoadColor		= [defs integerForKey: @"LateralLoadColor"];
-	kDefaultColors._axialLoadColor			= [defs integerForKey: @"AxialLoadColor"];
-	kDefaultColors._activeColor				= [defs integerForKey: @"ActiveLoadPropColor"];	
+	for (auto i = 0; i < DlArrayElements(kColorIdentifiers); i++) {
+		NSString* colorName = kColorIdentifiers[i];
+		kPreferenceColors[i] = [defs integerForKey: colorName];
+	}
 }
 
 @end
