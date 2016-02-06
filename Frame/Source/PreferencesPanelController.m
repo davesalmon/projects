@@ -12,12 +12,13 @@
 #import "UnitsFormatter.h"
 
 #include "graphics.h"
+#include "UnitTable.h"
 
 @interface PreferencesPanelController ()
 
 - (IBAction)ok:(id)sender;
 - (IBAction)cancel:(id)sender;
-
+- (IBAction)menuChanged: (id)sender;
 
 - (IBAction)ColorWellClicked:(id)sender;
 
@@ -30,33 +31,31 @@
 @property (assign) IBOutlet NSTextField *gridSpacing;
 
 @property (assign) IBOutlet NSTextField *scale;
+@property (assign) IBOutlet NSPopUpButton *units;
+
+@property bool colorsChanged;
 
 @end
 
 @implementation PreferencesPanelController
 
 //----------------------------------------------------------------------------------------
-//  runDialogWithDocument:
+//  runDialog
 //
-//      Run the analysis dialog. This should actually run in a separate thread.
+//      Run the preferences dialog.
 //
-//  runDialogWithDocument: FrameDocument* doc  -> the document
-//
-//  returns bool                               <- true if we ran it.
+//  returns bool                               <- true if user pressed OK.
 //----------------------------------------------------------------------------------------
 + (bool) runDialog
 {
 	PreferencesPanelController* controller = [[PreferencesPanelController alloc]
 										   initWithWindowNibName:@"PreferencesPanel"];
 	
-	
+	// just run as a modal dialog
 	int result = [NSApp runModalForWindow:[controller window]];
 	
-//	[NSApp endSheet: [controller window]];
 	[controller close];
 	[controller release];
-	
-//	[[controller window] orderOut: nil];
 	
 	return result == NSModalResponseStop;
 }
@@ -80,28 +79,44 @@
 	}
 
 	[self updateData];
+	_colorsChanged = false;
+	
+	[[self window] makeFirstResponder:nil];
 }
 
-- (IBAction)ok:(id)sender {
+- (IBAction)ok: (id)sender {
 	[NSApp stopModalWithCode: NSModalResponseStop];
 	
 	// here we need to grab the data and update preferences.
+	if (_colorsChanged) {
+		[FrameColor pushToDefaults];
+	}
 }
 
-- (IBAction)cancel:(id)sender {
+- (IBAction)cancel: (id)sender {
 	[NSApp stopModalWithCode: NSModalResponseAbort];
 }
 
 - (IBAction)ColorWellClicked: (NSColorWell* )sender {
 	// invoke the color picker.
 	NSLog(@"got message from color well %@ with color %@", sender.identifier, sender.color);
-	[FrameColor setColor: sender.color forKey: sender.identifier updateDefaults: NO];
+	[FrameColor setColor: sender.color forKey: sender.identifier];
+}
+
+- (IBAction)menuChanged: (id)sender {
+	
+	int selUnits = _units.indexOfSelectedItem;
+
+	UnitTable::SetUnits(selUnits);
+	[[[self window] contentView] setNeedsDisplay: YES];
+	
+	[[self window] makeFirstResponder:nil];
 }
 
 //----------------------------------------------------------------------------------------
 //  updateData
 //
-//      update the date from the document.
+//      update the data from the defaults.
 //
 //  returns nothing
 //----------------------------------------------------------------------------------------
@@ -142,7 +157,10 @@
 	
 	// fill in the check boxes.
 	[_snapCheckBox setState: [grid snapOn] ? NSOnState : NSOffState];
-	[_visibleCheckBox setState: [grid gridOn] ? NSOnState : NSOffState];	
+	[_visibleCheckBox setState: [grid gridOn] ? NSOnState : NSOffState];
+	
+	int units = [app getDefaultUnits];
+	[_units selectItemAtIndex: units];
 }
 
 @end

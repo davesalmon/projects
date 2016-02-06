@@ -44,7 +44,7 @@ const DlUInt32 kGridDarkColor = 0xffbbbbbb;
 //
 //  returns id                     <- self
 //----------------------------------------------------------------------------------------
-- (id) initWithSpacing:(DlFloat32)spc on:(BOOL)on
+- (id) initWithSpacing: (DlFloat32)spc snapOn: (BOOL)on andVisible: (BOOL) vis
 {
 //	[super init];
 	
@@ -54,7 +54,7 @@ const DlUInt32 kGridDarkColor = 0xffbbbbbb;
 	_xSpacing = spc;
 	_ySpacing = spc;
 	_gridSnap = on;
-	_gridOn = on;
+	_gridOn = vis;
 	return self;
 }
 
@@ -89,7 +89,16 @@ const DlUInt32 kGridDarkColor = 0xffbbbbbb;
 //----------------------------------------------------------------------------------------
 + (FrameGrid*)createWithSpacing:(DlFloat32)spc on:(BOOL)on
 {
-	return [[[FrameGrid alloc] initWithSpacing: spc on: on] autorelease];
+	return [[[FrameGrid alloc] initWithSpacing: spc
+										snapOn: on
+									andVisible: on] autorelease];
+}
+
++ (FrameGrid*)createWithSpacing:(DlFloat32)spc gridOn: (BOOL)on andVisible: (BOOL)vis
+{
+	return [[[FrameGrid alloc] initWithSpacing: spc
+										snapOn: on
+									andVisible: vis] autorelease];
 }
 
 //----------------------------------------------------------------------------------------
@@ -323,6 +332,12 @@ snapit(DlFloat64 val, DlFloat64 spc)
 - (void) setSpacing: (const WorldPoint&) spacing { 
 	_xSpacing = spacing.x(); 
 	_ySpacing = spacing.y(); 
+}
+
+- (BOOL) isEqual: (FrameGrid*) grid
+{
+	return WorldPoint(_xSpacing, _ySpacing) == grid.spacing &&
+					(grid.gridOn == _gridOn) && (grid.snapOn == _gridSnap);
 }
 
 @end

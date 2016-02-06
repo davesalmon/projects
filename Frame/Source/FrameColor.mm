@@ -249,15 +249,11 @@ DlInt32 findColorIndex(NSString* name)
 	return kPreferenceColors[kAxialLoadColor];
 }
 
-+ (void) setColor: (NSColor*) color forKey: (NSString*) key updateDefaults: (bool) upd
++ (void) setColor: (NSColor*) color forKey: (NSString*) key
 {
 	DlInt32 whichColor = findColorIndex(key);
 	if (whichColor >= 0 && whichColor < kNumColors) {
 		kPreferenceColors[whichColor] = colorFromNSColor(color);
-		if (upd) {
-			// update defaults
-			[[NSUserDefaults standardUserDefaults] integerForKey: key];
-		}
 		
 		for (FrameDocument* doc in [[NSDocumentController sharedDocumentController] documents]) {
 			[doc refresh];
@@ -277,5 +273,18 @@ DlInt32 findColorIndex(NSString* name)
 		kPreferenceColors[i] = [defs integerForKey: colorName];
 	}
 }
+
++ (void) pushToDefaults
+{
+	NSUserDefaults* defs = [NSUserDefaults standardUserDefaults];
+
+	for (auto i = 0; i < DlArrayElements(kColorIdentifiers); i++) {
+		NSString* colorName = kColorIdentifiers[i];
+		
+		[defs setInteger: kPreferenceColors[i] forKey: colorName];
+	}
+
+}
+
 
 @end

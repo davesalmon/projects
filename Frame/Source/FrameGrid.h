@@ -37,7 +37,8 @@ class graphics;
 	bool		_gridOn;
 }
 
-+ (FrameGrid*)createWithSpacing:(DlFloat32)spc on:(BOOL)on;
++ (FrameGrid*)createWithSpacing: (DlFloat32)spc on: (BOOL)on;
++ (FrameGrid*)createWithSpacing: (DlFloat32)spc gridOn: (BOOL)on andVisible: (BOOL) vis;
 + (FrameGrid*)createFromFile:(StrInputStream&) s;
 
 - (WorldPoint) spacing;
@@ -51,5 +52,7 @@ class graphics;
 - (void) saveToFile:(StrOutputStream&) s;
 
 - (void) drawRect: (const NSRect&) r withGraphics: (graphics*) g;
+
+- (BOOL) isEqual: (FrameGrid*) grid;
 
 @end

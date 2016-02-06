@@ -82,6 +82,7 @@ NSString* kDefaultWorldRight = @"WorldRight";
 NSString* kDefaultWorldTop = @"WorldTop";
 
 NSString* kDefaultGridSnap = @"GridSnap";
+NSString* kDefaultGridVisible = @"GridVisible";
 NSString* kDefaultGridSpacing = @"GridSpacing";
 
 NSString* kDefaultScale = @"Scale";
@@ -167,12 +168,46 @@ NSString* kDefaultUnits = @"Units";
 {
 	NSUserDefaults* defs = [NSUserDefaults standardUserDefaults];
 	return [FrameGrid createWithSpacing: [defs doubleForKey: kDefaultGridSpacing]
-									 on: [defs boolForKey: kDefaultGridSnap]];
+										 gridOn: [defs boolForKey: kDefaultGridSnap]
+									 andVisible: [defs boolForKey: kDefaultGridVisible]];
 }
 
 - (int) getDefaultUnits
 {
 	return [[NSUserDefaults standardUserDefaults] integerForKey: kDefaultUnits];
+}
+
+- (void) setDefaultWorld : (const WorldRect&) wr
+{
+	WorldRect oldWr = [self getDefaultWorld];
+	if (!(oldWr == wr)) {
+		NSUserDefaults* defs = [NSUserDefaults standardUserDefaults];
+		
+		[defs setDouble: wr.left() forKey: kDefaultWorldLeft];
+		[defs setDouble: wr.bottom() forKey: kDefaultWorldBottom];
+		[defs setDouble: wr.right() forKey: kDefaultWorldRight];
+		[defs setDouble: wr.top() forKey: kDefaultWorldTop];
+	}
+}
+
+- (void) setDefaultScale : (double) scale
+{
+	NSUserDefaults* defs = [NSUserDefaults standardUserDefaults];
+	[defs setDouble: scale forKey: kDefaultScale];
+}
+
+- (void) setDefaultUnits : (int) units
+{
+	[[NSUserDefaults standardUserDefaults] setInteger: units forKey: kDefaultUnits];
+}
+
+- (void) setDefaultGrid : (FrameGrid*) grid
+{
+	[grid isEqual: [self getDefaultGrid]];
+	NSUserDefaults* defs = [NSUserDefaults standardUserDefaults];
+	[defs setDouble: [grid spacing].x() forKey: kDefaultWorldLeft];
+	[defs setBool: [grid snapOn] forKey: kDefaultGridSnap];
+	[defs setBool: [grid gridOn] forKey: kDefaultGridVisible];
 }
 
 //----------------------------------------------------------------------------------------

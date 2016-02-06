@@ -34,12 +34,17 @@
 
 + (void) ensureUserDefaults;
 
-- (IBAction)handlePreferences:(id)sender;
-- (IBAction)showAboutBox:(id)sender;
+- (IBAction) handlePreferences:(id)sender;
+- (IBAction) showAboutBox:(id)sender;
 
-- (WorldRect) getDefaultWorld;
-- (double) getDefaultScale;
-- (FrameGrid*) getDefaultGrid;
-- (int) getDefaultUnits;
+- (WorldRect)	getDefaultWorld;
+- (double)		getDefaultScale;
+- (FrameGrid*)	getDefaultGrid;
+- (int)			getDefaultUnits;
+
+- (void) setDefaultWorld : (const WorldRect&) wr;
+- (void) setDefaultScale : (double) scale;
+- (void) setDefaultGrid  : (FrameGrid*) spacing;
+- (void) setDefaultUnits : (int) units;
 
 @end
