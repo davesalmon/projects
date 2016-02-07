@@ -29,37 +29,7 @@
 #include "FrameStructure.h"
 #include "graphics.h"
 
-//typedef struct PreferenceColors {
-//	DlUInt32			_axialColor;
-//	DlUInt32			_shearColor;
-//	DlUInt32			_momentColor;
-//	DlUInt32			_displacementColor;
-//	DlUInt32			_elementColor;
-//	DlUInt32			_elementSelectionColor;
-//	DlUInt32			_nodeColor;
-//	DlUInt32			_nodeSelectionColor;
-//	DlUInt32			_lateralLoadColor;
-//	DlUInt32			_axialLoadColor;
-//	DlUInt32			_activeColor;
-//}	PreferenceColors;
-
-//static PreferenceColors kDefaultColors = {
-//	  graphics::makeColor(0x88, 0x00, 0x00)	//0xff880000	//	axial
-//	, graphics::makeColor(0x00, 0x88, 0x00)	//0xff008800	// shear
-//	, graphics::makeColor(0x00, 0x00, 0xaa)	//0xff0000aa	// moment
-//	, graphics::makeColor(0x88, 0x88, 0x88, 0x88)	//0x88888888	// displacement
-//	, graphics::makeColor(0x00, 0x00, 0x00)	// element
-//	, graphics::makeColor(0x77, 0xaa, 0x77)	// 0xff77aa77	// selected elem
-//	, graphics::makeColor(0xff, 0xff, 0xff)	// 0xffffffff	// node
-//	, graphics::makeColor(0xff, 0x88, 0x88)	// 0xffff8888	// selected node
-//	, graphics::makeColor(0x88, 0x88, 0x88) // 0xff888888	// lateral load
-//	, graphics::makeColor(0xff, 0x88, 0x88)	//0xffff8888	// axial load
-//};
-
-//constexpr DlUInt32 kYellowColor { graphics::makeColor(0xff, 0xff, 0x00) };
-//constexpr DlUInt32 kTealColor { graphics::makeColor(0x22, 0x77, 0x55) }; //0x6644
-
-
+// define the color indexes
 const DlUInt32 kAxialColor				=  0;
 const DlUInt32 kShearColor				=  1;
 const DlUInt32 kMomentColor				=  2;
@@ -90,8 +60,18 @@ NSString* const kColorIdentifiers[] = {
 	@"ActiveLoadPropColor"
 };
 
+//----------------------------------------------------------------------------------------
+//  findColorIndex                                                                 static
+//
+//      return the index for the specified name.
+//
+//  NSString* name     -> 
+//
+//  returns DlInt32    <- 
+//----------------------------------------------------------------------------------------
 static
-DlInt32 findColorIndex(NSString* name)
+DlInt32
+findColorIndex(NSString* name)
 {
 	for (auto i = 0; i < DlArrayElements(kColorIdentifiers); i++) {
 		const NSString* colorName = kColorIdentifiers[i];
@@ -249,6 +229,16 @@ DlInt32 findColorIndex(NSString* name)
 	return kPreferenceColors[kAxialLoadColor];
 }
 
+//----------------------------------------------------------------------------------------
+//  setColor:forKey:
+//
+//      set the color for the specified key.
+//
+//  setColor: NSColor* color   -> 
+//  forKey: NSString* key      -> 
+//
+//  returns nothing
+//----------------------------------------------------------------------------------------
 + (void) setColor: (NSColor*) color forKey: (NSString*) key
 {
 	DlInt32 whichColor = findColorIndex(key);
@@ -264,6 +254,13 @@ DlInt32 findColorIndex(NSString* name)
 	}
 }
 
+//----------------------------------------------------------------------------------------
+//  update
+//
+//      update the colors from the preferences.
+//
+//  returns nothing
+//----------------------------------------------------------------------------------------
 + (void) update
 {
 	NSUserDefaults* defs = [NSUserDefaults standardUserDefaults];
@@ -274,6 +271,13 @@ DlInt32 findColorIndex(NSString* name)
 	}
 }
 
+//----------------------------------------------------------------------------------------
+//  pushToDefaults
+//
+//      push the colors to the defaults.
+//
+//  returns nothing
+//----------------------------------------------------------------------------------------
 + (void) pushToDefaults
 {
 	NSUserDefaults* defs = [NSUserDefaults standardUserDefaults];
@@ -283,7 +287,6 @@ DlInt32 findColorIndex(NSString* name)
 		
 		[defs setInteger: kPreferenceColors[i] forKey: colorName];
 	}
-
 }
 
 

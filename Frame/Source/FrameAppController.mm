@@ -89,6 +89,13 @@ NSString* kDefaultScale = @"Scale";
 
 NSString* kDefaultUnits = @"Units";
 
+//----------------------------------------------------------------------------------------
+//  ensureUserDefaults
+//
+//      make sure the defaults have been set.
+//
+//  returns nothing
+//----------------------------------------------------------------------------------------
 + (void) ensureUserDefaults
 {
 	// if there are no keys in the app, then add them
@@ -128,6 +135,13 @@ NSString* kDefaultUnits = @"Units";
 #endif
 }
 
+//----------------------------------------------------------------------------------------
+//  getDefaultWorld
+//
+//      return the default world rectangle.
+//
+//  returns WorldRect  <- 
+//----------------------------------------------------------------------------------------
 - (WorldRect) getDefaultWorld
 {
 	NSUserDefaults* defs = [NSUserDefaults standardUserDefaults];
@@ -158,12 +172,26 @@ NSString* kDefaultUnits = @"Units";
 	return wr;
 }
 
+//----------------------------------------------------------------------------------------
+//  getDefaultScale
+//
+//      return the default world scale.
+//
+//  returns double <- 
+//----------------------------------------------------------------------------------------
 - (double) getDefaultScale
 {
 	double s = [[NSUserDefaults standardUserDefaults] doubleForKey: kDefaultScale];
-	return s > 0 ? s : 40.0;
+	return s > 0.0 ? s : 40.0;
 }
 
+//----------------------------------------------------------------------------------------
+//  getDefaultGrid
+//
+//      return the default grid settings.
+//
+//  returns FrameGrid* <- 
+//----------------------------------------------------------------------------------------
 - (FrameGrid*) getDefaultGrid
 {
 	NSUserDefaults* defs = [NSUserDefaults standardUserDefaults];
@@ -172,11 +200,27 @@ NSString* kDefaultUnits = @"Units";
 									 andVisible: [defs boolForKey: kDefaultGridVisible]];
 }
 
+//----------------------------------------------------------------------------------------
+//  getDefaultUnits
+//
+//      return the default units.
+//
+//  returns int    <- 
+//----------------------------------------------------------------------------------------
 - (int) getDefaultUnits
 {
 	return [[NSUserDefaults standardUserDefaults] integerForKey: kDefaultUnits];
 }
 
+//----------------------------------------------------------------------------------------
+//  setDefaultWorld:
+//
+//      set the default world rectangle.
+//
+//  setDefaultWorld: const WorldRect& wr   -> 
+//
+//  returns nothing
+//----------------------------------------------------------------------------------------
 - (void) setDefaultWorld : (const WorldRect&) wr
 {
 	WorldRect oldWr = [self getDefaultWorld];
@@ -190,22 +234,49 @@ NSString* kDefaultUnits = @"Units";
 	}
 }
 
+//----------------------------------------------------------------------------------------
+//  setDefaultScale:
+//
+//      set the default world scale.
+//
+//  setDefaultScale: double scale  -> 
+//
+//  returns nothing
+//----------------------------------------------------------------------------------------
 - (void) setDefaultScale : (double) scale
 {
 	NSUserDefaults* defs = [NSUserDefaults standardUserDefaults];
 	[defs setDouble: scale forKey: kDefaultScale];
 }
 
+//----------------------------------------------------------------------------------------
+//  setDefaultUnits:
+//
+//      set the defalut units.
+//
+//  setDefaultUnits: int units -> 
+//
+//  returns nothing
+//----------------------------------------------------------------------------------------
 - (void) setDefaultUnits : (int) units
 {
 	[[NSUserDefaults standardUserDefaults] setInteger: units forKey: kDefaultUnits];
 }
 
+//----------------------------------------------------------------------------------------
+//  setDefaultGrid:
+//
+//      set the default grid setting.
+//
+//  setDefaultGrid: FrameGrid* grid    -> 
+//
+//  returns nothing
+//----------------------------------------------------------------------------------------
 - (void) setDefaultGrid : (FrameGrid*) grid
 {
 	[grid isEqual: [self getDefaultGrid]];
 	NSUserDefaults* defs = [NSUserDefaults standardUserDefaults];
-	[defs setDouble: [grid spacing].x() forKey: kDefaultWorldLeft];
+	[defs setDouble: [grid spacing].x() forKey: kDefaultGridSpacing];
 	[defs setBool: [grid snapOn] forKey: kDefaultGridSnap];
 	[defs setBool: [grid gridOn] forKey: kDefaultGridVisible];
 }

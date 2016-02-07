@@ -29,10 +29,10 @@
 
 @interface WorkspaceController : NSWindowController <FramePanel>
 {
-    IBOutlet NSForm *_gridForm;
+    IBOutlet NSMatrix *_gridForm;
     IBOutlet NSButton *_gridSnap;
     IBOutlet NSButton *_gridVisible;
-    IBOutlet NSForm *_worldForm;
+    IBOutlet NSMatrix *_worldForm;
     IBOutlet NSTextField*_errorText;
     IBOutlet NSTextField*_scale;
     

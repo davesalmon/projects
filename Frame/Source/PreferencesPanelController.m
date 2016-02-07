@@ -1,10 +1,26 @@
-//
-//  PreferencesPanelController.m
-//  Frame
-//
-//  Created by David Salmon on 2/4/16.
-//
-//
+/*+
+ *
+ *  PreferencesPanelController.m
+ *
+ *  Copyright © 2016 David C. Salmon. All Rights Reserved.
+ *
+ *  Implement logic for updating application preferences.
+ *
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License along
+ * with this program; if not, write to the Free Software Foundation, Inc.,
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+-*/
 
 #import "PreferencesPanelController.h"
 #import "FrameColor.h"
@@ -20,7 +36,7 @@
 - (IBAction)cancel:(id)sender;
 - (IBAction)menuChanged: (id)sender;
 
-- (IBAction)ColorWellClicked:(id)sender;
+- (IBAction)colorChanged:(id)sender;
 
 
 @property (assign) IBOutlet NSBox *appColorsBox;
@@ -60,6 +76,13 @@
 	return result == NSModalResponseStop;
 }
 
+//----------------------------------------------------------------------------------------
+//  windowDidLoad
+//
+//      initialize the view.
+//
+//  returns nothing
+//----------------------------------------------------------------------------------------
 - (void)windowDidLoad {
     [super windowDidLoad];
     
@@ -84,25 +107,87 @@
 	[[self window] makeFirstResponder:nil];
 }
 
+//----------------------------------------------------------------------------------------
+//  ok:
+//
+//      handle the OK button.
+//
+//  ok: id sender  -> 
+//
+//  returns nothing
+//----------------------------------------------------------------------------------------
 - (IBAction)ok: (id)sender {
+	
 	[NSApp stopModalWithCode: NSModalResponseStop];
 	
 	// here we need to grab the data and update preferences.
+	
+	// update colors
 	if (_colorsChanged) {
 		[FrameColor pushToDefaults];
 	}
+	
+	FrameAppController* app = [FrameAppController instance];
+
+	// update grid
+	FrameGrid* grid = [FrameGrid createWithSpacing: _gridSpacing.doubleValue
+											gridOn: _snapCheckBox.state == NSOnState
+										andVisible: _visibleCheckBox.state == NSOnState];
+	[app setDefaultGrid: grid];
+	
+	// update world
+	WorldRect wr {
+		[[_worldForm cellWithTag:0] doubleValue],
+		[[_worldForm cellWithTag:1] doubleValue],
+		[[_worldForm cellWithTag:2] doubleValue],
+		[[_worldForm cellWithTag:3] doubleValue]
+	};
+	[app setDefaultWorld: wr];
+	
+	// update units
+	[app setDefaultUnits:_units.indexOfSelectedItem];
+	
+	// and update scale
+	[app setDefaultScale: 100.0 / _scale.doubleValue];
 }
 
+//----------------------------------------------------------------------------------------
+//  cancel:
+//
+//      handle the cancel button.
+//
+//  cancel: id sender  -> 
+//
+//  returns nothing
+//----------------------------------------------------------------------------------------
 - (IBAction)cancel: (id)sender {
 	[NSApp stopModalWithCode: NSModalResponseAbort];
 }
 
-- (IBAction)ColorWellClicked: (NSColorWell* )sender {
+//----------------------------------------------------------------------------------------
+//  colorChanged:
+//
+//      the color for a color well changed.
+//
+//  colorChanged: NSColorWell*  sender ->
+//
+//  returns nothing
+//----------------------------------------------------------------------------------------
+- (IBAction)colorChanged: (NSColorWell* )sender {
 	// invoke the color picker.
 	NSLog(@"got message from color well %@ with color %@", sender.identifier, sender.color);
 	[FrameColor setColor: sender.color forKey: sender.identifier];
 }
 
+//----------------------------------------------------------------------------------------
+//  menuChanged:
+//
+//      the menu changed.
+//
+//  menuChanged: id sender -> 
+//
+//  returns nothing
+//----------------------------------------------------------------------------------------
 - (IBAction)menuChanged: (id)sender {
 	
 	int selUnits = _units.indexOfSelectedItem;
@@ -128,6 +213,10 @@
 	double scale = [app getDefaultScale];
 	FrameGrid* grid = [app getDefaultGrid];
 	
+	int units = [app getDefaultUnits];
+	[_units selectItemAtIndex: units];
+	UnitTable::SetUnits(units);
+
 	// fill in the dimensions form.
 	UnitsFormatter* fmt = [UnitsFormatter
 						   formatterWithDocument: nil
@@ -159,8 +248,6 @@
 	[_snapCheckBox setState: [grid snapOn] ? NSOnState : NSOffState];
 	[_visibleCheckBox setState: [grid gridOn] ? NSOnState : NSOffState];
 	
-	int units = [app getDefaultUnits];
-	[_units selectItemAtIndex: units];
 }
 
 @end

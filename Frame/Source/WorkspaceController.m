@@ -66,10 +66,10 @@
     try
     {
         WorldRect wr(
-            [[_worldForm cellAtIndex:0] doubleValue],
-            [[_worldForm cellAtIndex:1] doubleValue],
-            [[_worldForm cellAtIndex:2] doubleValue],
-            [[_worldForm cellAtIndex:3] doubleValue]);
+            [[_worldForm cellWithTag: 0] doubleValue],
+            [[_worldForm cellWithTag: 1] doubleValue],
+            [[_worldForm cellWithTag: 2] doubleValue],
+            [[_worldForm cellWithTag: 3] doubleValue]);
 
         WorldPoint limits(graphics::getScaleLimits(
         		DlScreenPoint2d(MIN_SCREEN_SIZE, MIN_SCREEN_SIZE), wr));
@@ -107,10 +107,10 @@
 			wr.right() = wr.left() + screenSize.width;
 			wr.top() = wr.bottom() + screenSize.height;
 
-			[[_worldForm cellAtIndex:0] setDoubleValue: wr.left()];
-			[[_worldForm cellAtIndex:1] setDoubleValue: wr.bottom()];
-			[[_worldForm cellAtIndex:2] setDoubleValue: wr.right()];
-			[[_worldForm cellAtIndex:3] setDoubleValue: wr.top()];
+			[[_worldForm cellWithTag: 0] setDoubleValue: wr.left()];
+			[[_worldForm cellWithTag: 1] setDoubleValue: wr.bottom()];
+			[[_worldForm cellWithTag: 2] setDoubleValue: wr.right()];
+			[[_worldForm cellWithTag: 3] setDoubleValue: wr.top()];
 
         	[_errorText setStringValue: @"world may not be smaller than window."];
 
@@ -119,8 +119,8 @@
 
         {
             WorldPoint spacing(
-                [[_gridForm cellAtIndex:0] doubleValue],
-                [[_gridForm cellAtIndex:1] doubleValue]);
+                [[_gridForm cellWithTag: 0] doubleValue],
+                [[_gridForm cellWithTag: 1] doubleValue]);
             bool snapOn = [_gridSnap state] == NSOnState;
             bool visible = [_gridVisible state] == NSOnState;
             
@@ -142,9 +142,14 @@
 
 /** private and utility methods **/
 
-- (void) awakeFromNib
-{
+- (void)windowDidLoad {
+	
+	[super windowDidLoad];
+
 	[self updateData];
+	[[self window] makeFirstResponder: _scale];
+//	[[self window] makeFirstResponder: nil];
+//	[self refresh];
 }
 
 //----------------------------------------------------------------------------------------
@@ -165,29 +170,29 @@
                              precision: 2
                             showingTag: true];
     
+	[_scale setFormatter: fmt];
     [_scale setDoubleValue: 100.0 / [data scale]];
-    [_scale setFormatter: fmt];
-    
-    [[_worldForm cellAtIndex:0] setDoubleValue: wr.left()];
-    [[_worldForm cellAtIndex:0] setFormatter: fmt];
+	
+	[[_worldForm cellWithTag: 0] setFormatter: fmt];
+    [[_worldForm cellWithTag: 0] setDoubleValue: wr.left()];
 
-    [[_worldForm cellAtIndex:1] setDoubleValue: wr.bottom()];
-    [[_worldForm cellAtIndex:1] setFormatter: fmt];
+	[[_worldForm cellWithTag: 1] setFormatter: fmt];
+    [[_worldForm cellWithTag: 1] setDoubleValue: wr.bottom()];
 
-    [[_worldForm cellAtIndex:2] setDoubleValue: wr.right()];
-    [[_worldForm cellAtIndex:2] setFormatter: fmt];
+	[[_worldForm cellWithTag: 2] setFormatter: fmt];
+    [[_worldForm cellWithTag: 2] setDoubleValue: wr.right()];
 
-    [[_worldForm cellAtIndex:3] setDoubleValue: wr.top()];
-    [[_worldForm cellAtIndex:3] setFormatter: fmt];
-  
+	[[_worldForm cellWithTag: 3] setFormatter: fmt];
+    [[_worldForm cellWithTag: 3] setDoubleValue: wr.top()];
+	
     WorldPoint spacing = [data gridSpacing];
     
-    [[_gridForm cellAtIndex:0] setDoubleValue: spacing.x()];
-    [[_gridForm cellAtIndex:0] setFormatter: fmt];
+	[[_gridForm cellWithTag: 0] setFormatter: fmt];
+    [[_gridForm cellWithTag: 0] setDoubleValue: spacing.x()];
 
-    [[_gridForm cellAtIndex:1] setDoubleValue: spacing.y()];
-    [[_gridForm cellAtIndex:1] setFormatter: fmt];
-    
+	[[_gridForm cellWithTag: 1] setFormatter: fmt];
+    [[_gridForm cellWithTag: 1] setDoubleValue: spacing.y()];
+	
     // fill in the check boxes.
     [_gridSnap setState: [data gridSnapOn] ? NSOnState : NSOffState];
     [_gridVisible setState: [data gridVisible] ? NSOnState : NSOffState];
