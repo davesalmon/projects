@@ -101,14 +101,20 @@ NSString* kDefaultUnits = @"Units";
 	// if there are no keys in the app, then add them
 	if ([[NSUserDefaults standardUserDefaults] objectForKey: kDefaultWorldLeft] == nil) {
 	
+		
+		
 		NSString *setupPath = [[NSBundle mainBundle] pathForResource:@"setup" ofType:@"plist"];
 		NSDictionary *dict = [[NSDictionary alloc] initWithContentsOfFile: setupPath];
 		
+		// register the setup values as defaults.
+		[[NSUserDefaults standardUserDefaults] registerDefaults: dict];
+#if 0
 		// just copy in all the keys in setup
 		for (id key in dict) {
 			[[NSUserDefaults standardUserDefaults] setObject: [dict objectForKey: key]
 													  forKey: key];
 		}
+#endif
 	}
 }
 
