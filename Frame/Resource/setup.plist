@@ -5,7 +5,7 @@
 	<key>AxialColor</key>			<integer>0xff880000</integer>
 	<key>ShearColor</key>			<integer>0xff008800</integer>
 	<key>MomentColor</key>			<integer>0xff0000aa</integer>
-	<key>DisplacementColor</key>	<integer>0x88888888</integer>
+	<key>DisplacementColor</key>	<integer>0xffbbbbbb</integer>
 	<key>ElementColor</key>			<integer>0xff000000</integer>
 	<key>ElementSelectedColor</key>	<integer>0xff93cdff</integer>
 	<key>NodeColor</key>			<integer>0xffffffff</integer>

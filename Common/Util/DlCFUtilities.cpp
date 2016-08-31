@@ -232,6 +232,24 @@ GetDictionaryValue(const char* key, CFDictionaryRef dict)
 	return GetDictionaryValue(CFStringTracker(key).get(), dict);
 }
 
+void
+PrintStringDictionary(CFDictionaryRef dict)
+{
+	size_t size = CFDictionaryGetCount(dict);
+	CFTypeRef *keysTypeRef = (CFTypeRef *) malloc( size * sizeof(CFTypeRef) );
+	CFDictionaryGetKeysAndValues(dict, (const void **) keysTypeRef, NULL);
+	
+	fprintf(stderr, "dict has %ld keys", size);
+	for (size_t i = 0; i < size; i++) {
+		CFStringRef key = (CFStringRef)keysTypeRef[i];
+		
+		std::string s(GetCFStringUTF8Value(key));
+		std::string v(GetStringAsciiValue(key, dict));
+		
+		fprintf(stderr, "%s = %s\n", s.c_str(), v.c_str());
+	}
+}
+
 //----------------------------------------------------------------------------------------
 //  GetStringAsciiValue
 //
@@ -464,9 +482,33 @@ GetHttpResponse(std::string& resp, const std::string& url,
 	if (!headerComplete)
 		throw DlException("Incomplete response for %s", url.c_str());
 	
+//#if DlDebugging
+//	PrintStringDictionary(headers);
+//#endif
+
 	CFRefTracker<CFDataRef> body(CFHTTPMessageCopyBody(httpResp));
-	resp.assign((char*)CFDataGetBytePtr(body), CFDataGetLength(body));
+	CFIndex len = CFDataGetLength(body);
+
+	resp.assign((char*)CFDataGetBytePtr(body), len);
+	size_t cstrl = strlen(resp.c_str());
 	
+#if DlDebugging
+	fprintf(stderr, "len = %ld, cstrlen= %ld\n", len, cstrl);
+	fprintf(stderr, "body is %s\n", resp.c_str());
+#endif
+	
+	// check if there is some other encoding.
+	if (cstrl != len && cstrl < 2) {
+		// if 0x or x0 we are BE or LE.
+		CFStringEncoding enc = resp.length() == 0 ? kCFStringEncodingUTF16BE : kCFStringEncodingUTF16LE;
+		CFRefTracker<CFStringRef> str(
+				CFStringCreateFromExternalRepresentation(
+														 kCFAllocatorDefault,
+														 body,
+														 enc));
+		resp.assign(GetCFStringUTF8Value(str));
+	}
+
 	return headers;
 }
 

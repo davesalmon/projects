@@ -44,6 +44,8 @@ CFRefTracker<CFDictionaryRef> GetPropertyList(CFStringRef resourceName,
 CFDictionaryRef	GetDictionaryValue(CFStringRef key, CFDictionaryRef dict);
 CFDictionaryRef	GetDictionaryValue(const char* key, CFDictionaryRef dict);
 
+void			PrintStringDictionary(CFDictionaryRef dict);
+
 std::string GetStringAsciiValue(const char* key, CFDictionaryRef dict);
 std::string GetStringAsciiValue(CFStringRef key, CFDictionaryRef dict);
 std::string GetStringUTF8Value(const char* key, CFDictionaryRef dict);

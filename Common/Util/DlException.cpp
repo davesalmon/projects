@@ -223,7 +223,7 @@ DlException::Display(const char* title)
 {
 	if (!itsDisplayed) {
 		if (sExceptionDisplay) {
-			(*sExceptionDisplay)(itsType, "Ok", NULL, NULL, title, MakeString());
+			(*sExceptionDisplay)(itsType, "OK", NULL, NULL, title, MakeString());
 		} else {
 			fprintf(stderr, "%s: %s\n", title, MakeString());
 		}

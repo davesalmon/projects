@@ -96,6 +96,9 @@
 		0B6E828D18BA273D005DCDDF /* CFRefTracker.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B6E828C18BA273D005DCDDF /* CFRefTracker.h */; };
 		0B6E828F18BA2802005DCDDF /* CFStringTracker.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B6E828E18BA2802005DCDDF /* CFStringTracker.h */; };
 		0B98C65B18ABAE06006EA598 /* DlExchangeFiles.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0B98C65A18ABAE06006EA598 /* DlExchangeFiles.mm */; };
+		0B9DBC351D67594A0015781D /* CPDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B9DBC321D67594A0015781D /* CPDefines.h */; };
+		0B9DBC361D67594A0015781D /* GraphView.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B9DBC331D67594A0015781D /* GraphView.h */; };
+		0B9DBC371D67594A0015781D /* GraphView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0B9DBC341D67594A0015781D /* GraphView.mm */; };
 		0BB5C8B60AC4A73000B29026 /* DlFileRef.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BB5C8B50AC4A73000B29026 /* DlFileRef.h */; };
 		0BD306391A4EFECC0042587A /* TestExchangeFiles.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0BD306381A4EFECC0042587A /* TestExchangeFiles.mm */; };
 		0BD3063B1A4F08F20042587A /* TestFileSpec.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0BD3063A1A4F08F20042587A /* TestFileSpec.mm */; };
@@ -220,6 +223,9 @@
 		0B6E828E18BA2802005DCDDF /* CFStringTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CFStringTracker.h; sourceTree = "<group>"; };
 		0B98C65918ABAD9E006EA598 /* DlExchangeFiles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DlExchangeFiles.h; sourceTree = "<group>"; };
 		0B98C65A18ABAE06006EA598 /* DlExchangeFiles.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = DlExchangeFiles.mm; sourceTree = "<group>"; };
+		0B9DBC321D67594A0015781D /* CPDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPDefines.h; sourceTree = "<group>"; };
+		0B9DBC331D67594A0015781D /* GraphView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphView.h; sourceTree = "<group>"; };
+		0B9DBC341D67594A0015781D /* GraphView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GraphView.mm; sourceTree = "<group>"; };
 		0BB0A57B18B4143500F4DE2F /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		0BB5C8B50AC4A73000B29026 /* DlFileRef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DlFileRef.h; sourceTree = "<group>"; };
 		0BBAB8BB18E36A8C00E6559A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -281,6 +287,7 @@
 				0BBAB8BD18E36AA000E6559A /* Cocoa.framework */,
 				0BBAB8BB18E36A8C00E6559A /* Foundation.framework */,
 				0BB0A57B18B4143500F4DE2F /* AppKit.framework */,
+				0B9DBC311D6758B20015781D /* CocoaClasses */,
 				08FB77AEFE84172EC02AAC07 /* Classes */,
 				0867D69AFE84028FC02AAC07 /* External Frameworks and Libraries */,
 				0B27D6881A4B342C00D95A97 /* UtilTests */,
@@ -458,6 +465,16 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		0B9DBC311D6758B20015781D /* CocoaClasses */ = {
+			isa = PBXGroup;
+			children = (
+				0B9DBC321D67594A0015781D /* CPDefines.h */,
+				0B9DBC331D67594A0015781D /* GraphView.h */,
+				0B9DBC341D67594A0015781D /* GraphView.mm */,
+			);
+			path = CocoaClasses;
+			sourceTree = "<group>";
+		};
 		1058C7B0FEA5585E11CA2CBB /* Linked Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -483,6 +500,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B9DBC361D67594A0015781D /* GraphView.h in Headers */,
 				0B11910F095E2C0100232426 /* DlAction.h in Headers */,
 				0B119111095E2C0100232426 /* DlAlertBox.h in Headers */,
 				0B119112095E2C0100232426 /* DlAssert.h in Headers */,
@@ -501,6 +519,7 @@
 				0B6E828F18BA2802005DCDDF /* CFStringTracker.h in Headers */,
 				0B11912F095E2C0100232426 /* DlListener.h in Headers */,
 				0B119131095E2C0100232426 /* DlLogger.h in Headers */,
+				0B9DBC351D67594A0015781D /* CPDefines.h in Headers */,
 				0B119132095E2C0100232426 /* DlMacros.h in Headers */,
 				0B119134095E2C0100232426 /* DlParseArgs.h in Headers */,
 				0B119135095E2C0100232426 /* DlPlatform.h in Headers */,
@@ -676,6 +695,7 @@
 				0B119151095E2C0100232426 /* DebugNew.cp in Sources */,
 				0B119155095E2C0100232426 /* ObjCAction.mm in Sources */,
 				0B119157095E2C0100232426 /* DlConnectorSocket.cpp in Sources */,
+				0B9DBC371D67594A0015781D /* GraphView.mm in Sources */,
 				0B119159095E2C0100232426 /* DlHttpRequest.cpp in Sources */,
 				0B11915B095E2C0100232426 /* DlListenerSocket.cpp in Sources */,
 				0B11915D095E2C0100232426 /* DlSocket.cpp in Sources */,
